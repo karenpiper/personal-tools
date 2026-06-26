@@ -1,0 +1,39 @@
+name: Push briefing tasks to Karenban
+
+on:
+  push:
+    paths:
+      - 'briefing/pending-tasks.json'
+
+jobs:
+  push-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm ci
+
+      - name: Push tasks to Karenban
+        env:
+          KARENBAN_URL: https://karenban.vercel.app
+          KARENBAN_API_KEY: ${{ secrets.KARENBAN_API_KEY }}
+        run: |
+          TASKS=$(cat briefing/pending-tasks.json)
+          if [ "$TASKS" = "[]" ] || [ -z "$TASKS" ]; then
+            echo "No pending tasks."
+            exit 0
+          fi
+          node scripts/push-tasks.mjs "$TASKS"
+
+      - name: Clear pending tasks
+        run: |
+          echo '[]' > briefing/pending-tasks.json
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add briefing/pending-tasks.json
+          git diff --staged --quiet || git commit -m "Clear pending tasks after push to Karenban"
+          git push
