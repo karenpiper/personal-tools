@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Briefing — Karen Piper — June 26, 2026</title>
+<meta name="description" content="Karen Piper's daily operating briefing: schedule, emails, meeting notes, and extracted tasks for June 26, 2026.">
+<style>
+  :root {
+    --bg: #F8F7F5;
+    --surface: #FFFFFF;
+    --border: #E3E1DE;
+    --border-light: #EDECE9;
+    --ink: #1A191E;
+    --ink-2: #7A7875;
+    --ink-3: #B0ADA9;
+    --urgent: #C0350E;
+    --urgent-bg: #FEF0ED;
+    --high: #9A5200;
+    --high-bg: #FFF3E0;
+    --medium: #6B5D00;
+    --medium-bg: #FFFBE0;
+    --low: #5C5A58;
+    --low-bg: #F4F3F0;
+    --client: #0B5FA5;
+    --client-bg: #EBF4FF;
+    --organizer: #6B21A8;
+    --organizer-bg: #F5EEFF;
+    --teal: #1F7A5C;
+    --teal-bg: #E8F7F2;
+    --conflict: #B91C1C;
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 14px; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    padding: 28px 20px 60px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  a { color: var(--client); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--client); outline-offset: 2px; }
+
+  .header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-date {
+    font-family: 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 4px;
+  }
+  .header-title {
+    font-family: 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .header-meta {
+    font-size: 12px;
+    color: var(--ink-2);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .header-meta strong { color: var(--ink); }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label {
+    font-family: 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .section-sublabel {
+    font-size: 11.5px;
+    color: var(--ink-3);
+  }
+  .section-body { padding: 0; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 5px;
+    line-height: 1.4;
+  }
+  .b-client    { background: var(--client-bg);    color: var(--client); }
+  .b-organizer { background: var(--organizer-bg); color: var(--organizer); }
+  .b-external  { background: var(--teal-bg);      color: var(--teal); }
+  .b-optional  { background: var(--low-bg);       color: var(--low); }
+  .b-conflict  { background: #FEE2E2;             color: var(--conflict); }
+  .b-private   { background: var(--low-bg);       color: var(--ink-3); }
+  .b-int       { background: var(--low-bg);       color: var(--low); }
+
+  .pill {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    line-height: 1.4;
+  }
+  .p-urgent { background: var(--urgent-bg); color: var(--urgent); }
+  .p-high   { background: var(--high-bg);   color: var(--high); }
+  .p-medium { background: var(--medium-bg); color: var(--medium); }
+  .p-low    { background: var(--low-bg);    color: var(--low); }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+  }
+  .schedule-row:last-child { border-bottom: none; }
+
+  .schedule-time {
+    padding: 12px 14px 12px 18px;
+    font-family: 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-2);
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    border-right: 2px solid var(--border);
+  }
+  .schedule-time.t-client    { border-right-color: var(--client); }
+  .schedule-time.t-organizer { border-right-color: var(--organizer); }
+  .schedule-time.t-conflict  { border-right-color: var(--conflict); }
+  .schedule-time.t-private   { border-right-color: var(--border); }
+
+  .schedule-content { padding: 12px 18px; }
+  .schedule-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .schedule-detail {
+    font-size: 12px;
+    color: var(--ink-2);
+    margin-bottom: 4px;
+  }
+  .schedule-note {
+    font-size: 12px;
+    padding: 5px 9px;
+    border-radius: 4px;
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+  .sn-warn  { background: var(--urgent-bg);  color: var(--urgent);  border-left: 3px solid var(--urgent); }
+  .sn-info  { background: var(--client-bg);  color: var(--client);  border-left: 3px solid var(--client); }
+  .sn-note  { background: var(--high-bg);    color: var(--high);    border-left: 3px solid var(--high); }
+
+  .week-row {
+    display: grid;
+    grid-template-columns: 70px 72px 1fr;
+    gap: 10px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: start;
+    font-size: 13px;
+  }
+  .week-row:last-child { border-bottom: none; }
+  .week-day {
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .load {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-top: 1px;
+  }
+  .l-heavy    { background: var(--urgent-bg); color: var(--urgent); }
+  .l-moderate { background: var(--high-bg);   color: var(--high); }
+  .l-light    { background: var(--teal-bg);   color: var(--teal); }
+  .week-detail { color: var(--ink-2); line-height: 1.5; }
+  .week-detail strong { color: var(--ink); }
+
+  .email-row {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .email-row:last-child { border-bottom: none; }
+  .email-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+  .email-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .email-from  { font-size: 11.5px; color: var(--ink-3); white-space: nowrap; }
+  .email-body  { font-size: 13px; color: var(--ink-2); margin-bottom: 5px; }
+  .email-action {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal);
+    padding-left: 12px;
+    border-left: 2px solid var(--teal);
+    margin-top: 6px;
+  }
+
+  .granola-card {
+    border-bottom: 1px solid var(--border-light);
+    padding: 16px 18px;
+  }
+  .granola-card:last-child { border-bottom: none; }
+  .granola-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .granola-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .granola-meta { font-size: 11.5px; color: var(--ink-3); flex-shrink: 0; }
+  .granola-tldr {
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+  .granola-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .granola-cols { grid-template-columns: 1fr; } }
+  .granola-sub {
+    font-family: 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 5px;
+  }
+  .granola-list {
+    list-style: none;
+    padding: 0;
+  }
+  .granola-list li {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    padding: 2px 0 2px 12px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .granola-list li::before {
+    content: '\2014';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+    font-size: 10px;
+    top: 4px;
+  }
+  .granola-list li.kp {
+    color: var(--urgent);
+    font-weight: 600;
+  }
+  .granola-list li.kp::before { color: var(--urgent); }
+  .granola-list li.others { color: var(--client); }
+  .granola-list li.others::before { color: var(--client); }
+
+  .ryg-card {
+    display: flex;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: flex-start;
+  }
+  .ryg-card:last-child { border-bottom: none; }
+  .ryg-stripe {
+    flex-shrink: 0;
+    width: 4px;
+    align-self: stretch;
+    background: var(--urgent);
+    border-radius: 2px;
+    min-height: 20px;
+  }
+  .ryg-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .ryg-detail { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+  .ryg-detail strong { color: var(--urgent); font-weight: 600; }
+
+  .footer {
+    margin-top: 28px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--ink-3);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    .schedule-row { grid-template-columns: 74px 1fr; }
+    .week-row { grid-template-columns: 60px 64px 1fr; gap: 6px; }
+    .header { flex-direction: column; align-items: flex-start; }
+    .header-meta { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-date">Daily Briefing</div>
+    <div class="header-title">Karen Piper &mdash; Friday, June 26</div>
+  </div>
+  <div class="header-meta">
+    <strong>24 tasks extracted</strong><br>
+    Calendar &middot; Gmail &middot; Granola<br>
+    Slack DMs: check directly
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Today &mdash; Friday June 26</span>
+    <span class="section-sublabel">Packed 7&ndash;11am &mdash; multiple overlaps</span>
+  </div>
+  <div class="section-body">
+
+    <div class="schedule-row">
+      <div class="schedule-time t-conflict">7:00<br>7:45am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Weekly | New Biz Sync</div>
+        <div class="schedule-detail">Kaydia Ramsey &middot; ~12 attendees (Harris Baum, Julia LaRose, Pat McQueen, Zack Botos, Craig Elimeliah, others) &middot; Internal</div>
+        <div class="schedule-note sn-note">JJ, Michael Treff, Stef declined. Brent OOO.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-client">7:30<br>8:00am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-client">Client</span>
+          <span class="badge b-conflict">Overlaps</span>
+          Code and Theory &times; Pretium Brand Work
+        </div>
+        <div class="schedule-detail">Liz Bowyer/Pretium organizing &middot; Vince Quilici + Karen from C&amp;T &middot; Liz Bowyer, Devin Kelly, B. Karp from Pretium &middot; Zoom</div>
+        <div class="schedule-note sn-info">Prep needed: client-facing, external. Starts during New Biz Sync &mdash; you&rsquo;ll need to choose one.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-conflict">7:45<br>9:00am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-conflict">Overlaps</span>
+          Comcast Standups
+        </div>
+        <div class="schedule-detail">Zack Botos &middot; ~13 internal (Marti, Adam, Pia, Diana, Anne, Karina, Stephen, Katherine, Obrey, Leo, Victoria)</div>
+        <div class="schedule-note sn-warn">Broadridge deliverable was expected today: map non-gray messages to placement spreadsheet. Complete if not done.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-conflict">8:00<br>9:00am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-optional">Optional</span>
+          <span class="badge b-conflict">Overlaps</span>
+          [INT] MS NOW | Internal Review &amp; Check In
+        </div>
+        <div class="schedule-detail">Cassandra Hyde &middot; Jenny, Kira, Nick, Caro, Arjun, Yvette, Lisa Simon, Bernardo &middot; Karen is optional attendee</div>
+        <div class="schedule-note sn-note">Lisa updated this standup to cover creative review for client assets today.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time">9:00<br>9:30am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Flex: Karen / Lucy Weekly</div>
+        <div class="schedule-detail">Lucy Ye organizing &middot; 1:1 internal &middot; Google Meet</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time">9:30<br>10:00am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">[INT] MAD Daily Standup</div>
+        <div class="schedule-detail">Josh Currie &middot; Mike Cuilwik, Lewis Goldsmith, Robyn Matza, Kenton Jacobsen, Michael Radvak, Slobodan Dabovic, Roman Surzhko &middot; Internal</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-conflict">10:00<br>10:25am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-conflict">Overlaps</span>
+          Karen &amp; John Monthly
+        </div>
+        <div class="schedule-detail">John Whaley (C&amp;T) organizing &middot; + john.whaley@instrument.com &middot; Internal / cross-company</div>
+        <div class="schedule-note sn-note">Overlaps with Open Labs (10:00&ndash;10:30am). Choose one. Matthieu intro re: Novartis is on your plate from this week.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time">10:00<br>10:30am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Open Labs</div>
+        <div class="schedule-detail">Peter Steiner organizing &middot; &ldquo;See what&rsquo;s cooking in the Creative Labs&rdquo; &middot; <strong>Karen has not responded to this invite</strong></div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-organizer">10:30<br>11:00am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-organizer">Organizer</span>
+          Summer Friday Toast
+        </div>
+        <div class="schedule-detail">Karen organizing &middot; Brand Intelligence + Brand Strategy &middot; 30+ invited &middot; Deedy, Julian, Benaelle, Molly, Sarah and many others confirmed</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time t-conflict">10:45<br>11:15am</div>
+      <div class="schedule-content">
+        <div class="schedule-title">
+          <span class="badge b-conflict">Overlaps</span>
+          Adam + Karen
+        </div>
+        <div class="schedule-detail">Adam Kauder organizing &middot; 1:1 &middot; Slight overlap with Summer Friday toast</div>
+        <div class="schedule-note sn-note">Prep: Comcast client-facing lead situation, portfolio restructure, Adam&rsquo;s AT&amp;T alignment, AI charter doc status.</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time">12:30<br>1:00pm</div>
+      <div class="schedule-content">
+        <div class="schedule-title"><span class="badge b-private">Private</span> MindRX</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-time">2:45<br>5:00pm</div>
+      <div class="schedule-content">
+        <div class="schedule-title"><span class="badge b-private">Private</span> Movies w/ P</div>
+        <div class="schedule-note sn-warn">Hard stop. Bleacher pitch + Mack brief review must be done before this.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Tomorrow &mdash; Saturday June 27</span>
+  </div>
+  <div class="section-body">
+    <div class="schedule-row">
+      <div class="schedule-time">Personal</div>
+      <div class="schedule-content">
+        <div class="schedule-title">Piper sleepover (3pm Sat &ndash; 8:30am Sun) &nbsp;&middot;&nbsp; Dinner with Lisa and Andy (6&ndash;9pm)</div>
+        <div class="schedule-detail">No work commitments. Sunday: dance recital &mdash; no weekend push on Bleacher Report.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">This Week at a Glance</span>
+  </div>
+  <div class="section-body">
+
+    <div class="week-row">
+      <div class="week-day">Sun 6/28</div>
+      <span class="load l-light">Light</span>
+      <div class="week-detail">Dad FT (9am, personal). Rest day before a heavy Monday. Dance recital.</div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-day">Mon 6/29</div>
+      <span class="load l-heavy">Heavy</span>
+      <div class="week-detail"><strong>Parenting week begins.</strong> 7:15am <strong>Comcast client midpoint</strong> (prep needed today/weekend) &middot; 8:45am MS NOW Daily Jam &middot; 9am <strong>Mack freelancer briefing</strong> (2 sessions, immersion doc 10am) &middot; 10:30am MS NOW Creative Review &middot; 10:30am Karen/Jim 1:1 &middot; 12pm <strong>Brand Strat Leads Weekly</strong> (KP organizer &mdash; send agenda) &middot; 2pm Julian + Karen.</div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-day">Tue 6/30</div>
+      <span class="load l-moderate">Moderate</span>
+      <div class="week-detail">Karen/Laura (10am) &middot; Talking Heads (10:30am, KP organizer &mdash; Nick, Jonny, Dave) &middot; Karen &amp; Pam 1:1 (11am) &middot; Karen + Linds Monthly (11:30am) &middot; Therapy (12pm) &middot; Devorne x Karen (1:30pm).</div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-day">Wed 7/1</div>
+      <span class="load l-moderate">Moderate</span>
+      <div class="week-detail">User &amp; Brand Intelligence Resourcing (10am) &middot; Karen/Marti (11am) &middot; Karen/Lucy (12pm). Good day to loop Laura on Workday references.</div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-day">Thu 7/2</div>
+      <span class="load l-moderate">Moderate</span>
+      <div class="week-detail"><strong>Weekly Brand Strategy Full Team</strong> (9am, KP organizer, ~30 people) &middot; KP/Stef Monthly (10am) &middot; Monthly Social Update (1:30pm).</div>
+    </div>
+
+    <div class="week-row">
+      <div class="week-day">Fri 7/3</div>
+      <span class="load l-light">Light</span>
+      <div class="week-detail">New Biz Sync (7am). Pre-holiday Friday &mdash; likely quiet otherwise.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Emails Requiring Action</span>
+  </div>
+  <div class="section-body">
+
+    <div class="email-row">
+      <div class="email-header">
+        <div><span class="pill p-urgent">Urgent</span><span class="email-title">3 RTO Requests Awaiting Approval</span></div>
+        <span class="email-from">rto.notifications@codeandtheory.com &middot; Jun 25</span>
+      </div>
+      <div class="email-body">Two separate reminders arrived Thursday: 2 requests in one, 1 in another. Sitting in the queue since yesterday.</div>
+      <div class="email-action">Click &ldquo;Approve As-Is&rdquo; or open the Approval Form in each email.</div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-header">
+        <div><span class="pill p-medium">Medium</span><span class="email-title">Re: Head of Brand Intelligence &mdash; inbound from Anu</span></div>
+        <span class="email-from">alingala91@gmail.com &middot; Jun 25, 4:09pm</span>
+      </div>
+      <div class="email-body">Reached out after seeing your LinkedIn post. Applied online a few weeks ago. 12 years in cultural intelligence, trend forecasting, and brand strategy (agency + in-house). Writes a Substack newsletter (5K+ subscribers including Anthropic, Netflix, Snap, Sephora execs). Cited in WSJ and The Business of Fashion. Has built cultural intelligence practices from the ground up. CV attached.</div>
+      <div class="email-action">Reply with a warm acknowledgment and route to Alyssa Mastrocco / Maya Collins. Strong independent inbound &mdash; don&rsquo;t let it drop.</div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-header">
+        <div><span class="pill p-medium">Medium</span><span class="email-title">What Launched: Config 2026 (Figma)</span></div>
+        <span class="email-from">jonny.hawton@codeandtheory.com &middot; Jun 25, forwarded</span>
+      </div>
+      <div class="email-body">Jonny shared the Config 2026 launch highlights &mdash; more expressive canvas with code, motion, and shaders. Relevant for creative workflow and Bleacher Report conversations.</div>
+      <div class="email-action">Read when time permits. No reply needed.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Granola &mdash; Meeting Summaries</span>
+    <span class="section-sublabel">Jun 22&ndash;25 &middot; 7 meetings</span>
+  </div>
+  <div class="section-body">
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-external">External</span>
+          <span class="granola-title">Nick &times; Karen Bleacher &mdash; Creative Direction</span>
+        </div>
+        <span class="granola-meta">Jun 24 &middot; 9:30am &middot; Nick Francis</span>
+      </div>
+      <div class="granola-tldr">Brief was misrouted (Craig sent it directly to Alex/video team; strategy was never looped in). Karen and Nick are rescuing the pitch with a clear creative direction. Core idea: <strong>&ldquo;The Fan Factor&rdquo;</strong> &mdash; the unquantifiable unpredictability of fandom that no platform owns. Pitch is due <strong>today</strong>. Karen builds ecosystem/strategy slides; Nick does creative. No weekend work (dance recital Sunday).</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Decisions Made</div>
+          <ul class="granola-list">
+            <li>Creative territory: BR owns the last unindexed space in sports &mdash; the fan factor</li>
+            <li>NBA tip-off night as launch moment (Knicks ring ceremony, TNT)</li>
+            <li>Deck: idea first, then executions, then ecosystem/launch</li>
+            <li>Friday is the target; no weekend work</li>
+            <li>Will Leivenberg tagged Karen in 5 Figma comments at ~3am today &mdash; answer these</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Build ecosystem + strategy slides today (before 2:45pm)</li>
+            <li class="kp">[KP] Respond to Will&rsquo;s Figma comments (VO examples, framing questions, sponsorship angle)</li>
+            <li class="others">[Nick] Creative direction + executions</li>
+          </ul>
+          <div class="granola-sub" style="margin-top:10px">Open / Process Flag</div>
+          <ul class="granola-list">
+            <li>Brief came through Craig to Alex &mdash; bypassed strategy entirely. Process failure to address post-pitch.</li>
+            <li>Freelancers still rejected by Aubrey + Will despite resource constraints</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">Mack Briefs Touchbase &mdash; Platform + Brief Feedback</span>
+        </div>
+        <span class="granola-meta">Jun 25 &middot; 10:40am &middot; Kira, Sam, Yenteen</span>
+      </div>
+      <div class="granola-tldr">Karen gave live feedback on two briefs and weighed in on platform debate. Group leans <strong>Born to Work</strong> (vocational heritage, more ownable) over &ldquo;Lead from the Front&rdquo; (aspirational but hard to claim now). Briefs must lock <strong>today</strong> &mdash; freelancer briefing is Monday 9am.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Karen&rsquo;s Feedback (Summary)</div>
+          <ul class="granola-list">
+            <li>Yenteen: tighten the tension between problem + insight &mdash; tech adds friction, not ease. Insight needs to be &ldquo;clicky&rdquo;</li>
+            <li>Kira: add emotional layer to the problem (unseen, undervalued). Surface the disconnect in the insight: &ldquo;they know the work deeply&rdquo;</li>
+            <li>Both: deprioritize organizing idea; strategy line is what matters most</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Review updated briefs async when Kira + Yenteen ping &mdash; EOD</li>
+            <li class="kp">[KP] Brief freelancers Monday 9am (contingent on lock today)</li>
+            <li class="kp">[KP] Sync with Alison on hours, timeline, check-in cadence before EOD</li>
+            <li class="others">[Sam] Align with Nick on platform by EOD today</li>
+            <li class="others">[Kira + Yenteen] Refine + send updated briefs for async review</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">[INT] Mack Trucks | Research Readout</span>
+        </div>
+        <span class="granola-meta">Jun 24 &middot; 1:30pm &middot; Grace, Kira, Nick, Alison, Zack, Yenteen, Sam</span>
+      </div>
+      <div class="granola-tldr">Photo elicitation with 6 fleet managers + 6 drivers. Mack has strong vocational equity but a <strong>credibility gap in long haul</strong>: cab comfort is high importance, low Mack delivery. Kenworth and Peterbilt dominate existing relationships. Pioneer is designed for comfort but hasn&rsquo;t shifted perception yet. Key insight: switching requires proving the existing choice is <em>worse</em>, not just that Mack is better.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Key Signals for Briefing</div>
+          <ul class="granola-list">
+            <li>Identity matters as much as function (Le Creuset analogy)</li>
+            <li>Driver-fleet manager tension is real: drivers want to be treated as customers</li>
+            <li>Post-sale partnership framing resonates: driver + fleet mgr + truck + tech</li>
+            <li>Mack avg deal: ~2.8 trucks &mdash; skews smaller fleets, more accessible</li>
+            <li>Get drivers behind the wheel &mdash; demo + trade show stunts as CTA</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Sync with Alison on hours, timeline, check-in before EOD today</li>
+            <li class="others">[Kira] Research Mack/Volvo safety halo + category safety ownership</li>
+            <li class="others">[Kira] Define &ldquo;long haul effectiveness&rdquo; for drivers + fleet managers</li>
+            <li class="others">[Grace] Add post-sale anecdotes + day-to-day driver pressure to research deck</li>
+            <li class="others">[Kira + Alison] Confirm Monday briefing structure; send pre-read at 10am Monday</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">[INT] Comcast RFP Strat/Prod Scoping Jam</span>
+        </div>
+        <span class="granola-meta">Jun 25 &middot; 12:30pm &middot; Marti, Adam, Pia, Stephen</span>
+      </div>
+      <div class="granola-tldr">Aligned on two-phase scope: heavier Q1 project phase (onboarding + brand visual ID + tone of voice, ~3 months) followed by always-on retained team. Mirrors AT&amp;T structure. Budget ~$1M; leadership (JJ, Triff) may offer discounted rate card to close the gap.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Retained Team (hrs/wk)</div>
+          <ul class="granola-list">
+            <li>Strategy Director: 10 hrs &middot; AD Strategy: 5 hrs &middot; Director Brand Strategy: 5 hrs</li>
+            <li>Creative Director: 2 hrs (stays warm) &middot; Brand Intelligence Director: 10 hrs</li>
+            <li>Senior Producer (project mgmt, replaces EP)</li>
+            <li>Brand Intelligence: likely pulled to project-based strikes, not always-on</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Share JPMC activities list as retained team framework (async to Pia/Marti/Adam)</li>
+            <li class="others">[Pia] Reorganize budget sheet into phased structure &mdash; ping KP + Marti when ready</li>
+            <li class="others">[Marti] Pull a recent vis ID scope for Q1 benchmarking (~8 weeks, Franklin Templeton as reference)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">Matthieu / Karen &mdash; Abbott RFP + Novartis Opportunity</span>
+        </div>
+        <span class="granola-meta">Jun 25 &middot; 8:30am &middot; Matthieu Mingasson</span>
+      </div>
+      <div class="granola-tldr">Matthieu is on board for Abbott healthcare RFP (due July 20) as strategy lead. Abbott: preferred agency roster, two assignments (diabetes diagnosis + core diagnostics digital/demand gen). Evaluation heavily weighted toward innovation + AI. Matthieu&rsquo;s strong conviction: AI must be central, not a bolt-on. Bonus: Novartis opportunity for C&amp;T&rsquo;s agentic persona practice &mdash; Karen needs to make an intro.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Abbott Context</div>
+          <ul class="granola-list">
+            <li>Two tracks: diabetes diagnosis (adults 0&ndash;90 days post type 2) + core diagnostics digital</li>
+            <li>Hannah Dow: experience lead. Matthieu: strategy + pitch direction</li>
+            <li>Carl (finishing Novartis Tuesday) flagged as ideal designer; Abbott Slack channel not set up yet</li>
+            <li>Novartis reference model: fully agentic platform, 2 prototypes built in ~3 days</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Inform Pat: Matthieu is on board for Abbott (today)</li>
+            <li class="kp">[KP] Connect Matthieu with John Whaley + Grace re: agentic persona practice</li>
+            <li class="others">[Matthieu] Reach out to Hannah re: Abbott team + Carl&rsquo;s availability post-Tuesday</li>
+            <li class="others">[Matthieu] Review full Abbott RFP + Karen&rsquo;s prep doc</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">KP / Pat 2x Weekly &mdash; Resourcing + Grayscale + Org</span>
+        </div>
+        <span class="granola-meta">Jun 24 &middot; 11:00am &middot; Pat McQueen</span>
+      </div>
+      <div class="granola-tldr">Wide-ranging session: resourcing across all active pitches/clients, the Grayscale Alex situation, the Bleacher Report process failure, Abbott staffing problem, and portfolio restructure update. Larry gave Karen strong unsolicited praise via Pat. Julian being quietly added to Grayscale for oversight &mdash; do not communicate externally.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Key Items</div>
+          <ul class="granola-list">
+            <li><strong>Grayscale:</strong> Alex protected by Hannah (blind spot). Client Ramona rejected invoices. Karen&rsquo;s email to Truff/Julianne escalated; Truff shut it down. Julian being added quietly.</li>
+            <li><strong>Abbott:</strong> Best option = Matthieu (pharma expertise, just finished Novartis). Pat to scope via RFP skills assessment. Lindsay Black + Hannah Conway supporting.</li>
+            <li><strong>Audible:</strong> Lindsay at half-time, July 6 start pending client approval.</li>
+            <li><strong>Pfizer Merchant Web:</strong> Likely kicking off soon &mdash; needs Director Brand Strategy + Editorial Strategy lead.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Keep Grayscale Julian addition confidential &mdash; do NOT tell Melissa or the Grayscale team</li>
+            <li class="others">[Pat] Scope Abbott via RFP skills assessment; confirm Matthieu as lead</li>
+            <li class="others">[Pat] Update Karen&rsquo;s logged Bleacher Report hours (not done yet)</li>
+            <li class="others">[Pat] Follow up with Will on Molly&rsquo;s social support backfill (Julie St. Felix likely)</li>
+          </ul>
+          <div class="granola-sub" style="margin-top:10px">Larry Feedback (FYI)</div>
+          <ul class="granola-list">
+            <li>Called Karen &ldquo;cold and calculated&rdquo; in a way he admires: focused on business, not sensitive. One of the only people he can have real business conversations with.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="granola-card">
+      <div class="granola-card-header">
+        <div>
+          <span class="badge b-int">Internal</span>
+          <span class="granola-title">Video Interview &mdash; Jo Hayes | Head of Brand Intelligence</span>
+        </div>
+        <span class="granola-meta">Jun 24 &middot; 8:30am &middot; Alyssa, Maya, Pat</span>
+      </div>
+      <div class="granola-tldr">Jo Hayes is a very strong candidate. She said &ldquo;if I could start tomorrow I would,&rdquo; praised the team as &ldquo;really sharp,&rdquo; and has a clear, original philosophy: brand intelligence as &ldquo;modern social sciences.&rdquo; Wants to define what the discipline means broadly AND what it means specifically at C&amp;T.</div>
+      <div class="granola-cols">
+        <div>
+          <div class="granola-sub">Strong Signals</div>
+          <ul class="granola-list">
+            <li>Triangulates multiple data sources; embedded team model moving toward consultancy</li>
+            <li>Consumer electronics example shows lateral thinking: study watches &rarr; apply to phones CX/BX</li>
+            <li>Wants thought leadership + commercial thinking (incremental revenue); John Whaley as model</li>
+            <li>Builds in independent discovery stream (stakeholder interviews) even when client provides research</li>
+          </ul>
+        </div>
+        <div>
+          <div class="granola-sub">Action Items</div>
+          <ul class="granola-list">
+            <li class="kp">[KP] Confirm next steps on Jo Hayes &mdash; is she advancing? Who has final say?</li>
+            <li class="others">[Jo via Maya] Invited to send follow-up questions by email</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Project Flags &mdash; Red RYG</span>
+    <span class="section-sublabel">Week of 06/22/26</span>
+  </div>
+  <div class="section-body">
+
+    <div class="ryg-card">
+      <div class="ryg-stripe"></div>
+      <div class="ryg-body">
+        <div class="ryg-title">Grayscale Investments &mdash; Red</div>
+        <div class="ryg-detail">Lead: Vince Quilici, Melissa Ranalli, Ailish Ryder. Client Ramona already rejected invoices over work quality. Alex is the common denominator but is protected by Hannah (personal relationship, identified blind spot). Karen escalated to Truff + Julianne; Truff shut the thread. <strong>Julian being quietly added for oversight &mdash; do NOT communicate to Melissa or the team.</strong> Website redesign for grayscale.com and Labs (Institutions) sites.</div>
+      </div>
+    </div>
+
+    <div class="ryg-card">
+      <div class="ryg-stripe"></div>
+      <div class="ryg-body">
+        <div class="ryg-title">Sixth Street Partners &mdash; Red</div>
+        <div class="ryg-detail">Lead: Karen Fong, Chris Arcari, Sowjanya Sakhamuri. Website transformation investment project. Review the status narrative for current blockers &mdash; no detail surfaced in this briefing beyond the RYG flag itself.</div>
+      </div>
+    </div>
+
+    <div class="ryg-card">
+      <div class="ryg-stripe"></div>
+      <div class="ryg-body">
+        <div class="ryg-title">All Things Clover &amp; Fiserv &mdash; Red</div>
+        <div class="ryg-detail">Lead: Chris Arcari, Amit Tiwari, Shelby Rognholt, Amanda Sweis. Professional Services Product and Design. Design and development in progress. Review status narrative for current blockers.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="footer">
+  Briefing generated June 26, 2026 &nbsp;&middot;&nbsp; 24 tasks written to <code>briefing/pending-tasks.json</code> &nbsp;&middot;&nbsp; Sources: Google Calendar &middot; Gmail &middot; Granola<br>
+  Slack public search returned no results &mdash; check Slack directly for DMs and @mentions since June 24.
+</div>
+
+</body>
+</html>
