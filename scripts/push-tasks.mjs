@@ -1,17 +1,13 @@
 /**
- * Push extracted tasks from the daily briefing into karenban via direct DB write.
+ * Push extracted tasks from the daily briefing into karenban via API.
  *
- * Usage (called by the briefing routine):
+ * Usage:
  *   node scripts/push-tasks.mjs '[{"title":"...","priority":"high","client":"Acme"}]'
  *
- * Required env var:
- *   DATABASE_URL  — Neon connection string (set in personal-tools env vars)
- *
- * Schema matches karenban's tasks table:
- *   id, title, priority, status, columnId, notes, dueDate, client, tags, createdAt, updatedAt
+ * Required env vars:
+ *   KARENBAN_URL     e.g. https://karenban.vercel.app
+ *   KARENBAN_API_KEY the BRIEFING_API_KEY set in Vercel
  */
-
-import { neon } from '@neondatabase/serverless'
 
 const [,, tasksJson] = process.argv
 
@@ -20,41 +16,33 @@ if (!tasksJson) {
   process.exit(1)
 }
 
-const { DATABASE_URL } = process.env
-if (!DATABASE_URL) {
-  console.error('Missing DATABASE_URL env var')
+const { KARENBAN_URL, KARENBAN_API_KEY } = process.env
+if (!KARENBAN_URL || !KARENBAN_API_KEY) {
+  console.error('Missing KARENBAN_URL or KARENBAN_API_KEY env vars')
   process.exit(1)
 }
 
 const tasks = JSON.parse(tasksJson)
-const db = neon(DATABASE_URL)
-const now = new Date().toISOString()
-
-let added = 0, skipped = 0
+let added = 0, failed = 0
 
 for (const t of tasks) {
-  const id = `briefing-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
-  const priority = t.priority ?? 'medium'
-  const title = t.title
+  const res = await fetch(`${KARENBAN_URL}/api/tasks`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': KARENBAN_API_KEY,
+    },
+    body: JSON.stringify(t),
+  })
 
-  // Skip if a task with the same title already exists (dedup)
-  const existing = await db`SELECT id FROM tasks WHERE title = ${title} AND status != 'done' LIMIT 1`
-  if (existing.length > 0) {
-    console.log(`Skipping duplicate: "${title}"`)
-    skipped++
-    continue
+  if (res.ok) {
+    console.log(`Added: "${t.title}"`)
+    added++
+  } else {
+    const err = await res.text()
+    console.error(`Failed "${t.title}": ${res.status} ${err}`)
+    failed++
   }
-
-  await db`
-    INSERT INTO tasks (id, title, priority, status, "columnId", notes, "dueDate", client, tags, "createdAt", "updatedAt")
-    VALUES (
-      ${id}, ${title}, ${priority}, 'todo', 'col-uncategorized',
-      ${t.notes ?? null}, ${t.dueDate ?? null}, ${t.client ?? null},
-      ${t.tags ?? []}, ${now}, ${now}
-    )
-  `
-  console.log(`Added: "${title}"`)
-  added++
 }
 
-console.log(`Done: ${added} added, ${skipped} skipped (duplicates)`)
+console.log(`\nDone: ${added} added, ${failed} failed`)
