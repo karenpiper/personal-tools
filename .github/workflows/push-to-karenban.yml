@@ -31,11 +31,3 @@ jobs:
           fi
           node scripts/push-tasks.mjs "$TASKS"
 
-      - name: Clear pending tasks
-        run: |
-          echo '[]' > briefing/pending-tasks.json
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"
-          git add briefing/pending-tasks.json
-          git diff --staged --quiet || git commit -m "Clear pending tasks after push to Karenban"
-          git push
