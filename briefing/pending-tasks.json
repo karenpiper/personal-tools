@@ -1,13 +1,149 @@
 [
-  {"title":"Prep for Comcast Strategy Midpoint (Mon 7:15am) — client-facing","priority":"urgent","client":"Comcast","notes":"Clients: melissa_lapp, erika_fiest, julia_murphy @comcast.com. Full team + C&T leads attending.","tags":["briefing","comcast","prep","monday"]},
-  {"title":"Lock Mack briefs today — needed for Monday immersion/briefing session","priority":"urgent","client":"Mack Trucks","notes":"Mack Trucks pitch immersion & briefing is Monday 9am. Freelancers being briefed. Born to Work platform direction.","tags":["briefing","mack","prep","today"]},
-  {"title":"Review Yenteen's updated Mack brief (Google Doc in Slack DM)","priority":"urgent","client":"Mack Trucks","notes":"Yenteen messaged: brief is done, updated black box per feedback, ends on page 5. Needs KP eyes before Monday.","tags":["briefing","mack","review"]},
-  {"title":"Prep for MS NOW Creative Review (Mon 10:30am) — assets to share with client","priority":"high","client":"MS NOW","notes":"Lisa Simon organized. Going over creative assets to share with client today/Monday. Team: Cassandra, Jenny, Kira, Nick, Caro, Yvette.","tags":["briefing","msnow","prep","monday"]},
-  {"title":"Prep for Virtual Meet with Mack Dealer (Mon 10am)","priority":"high","client":"Mack Trucks","notes":"Grace, Nick, Zack, Karen attending. Context on dealer perspective ahead of pitch.","tags":["briefing","mack","prep","monday"]},
-  {"title":"Respond to Bleacher Report R2 Figma comments from Will Leivenberg","priority":"high","client":"Bleacher Report","notes":"4 mentions: VO sports moment reference, 'unfiltered emotion' pillar note from Alex's original, single-game framing question, sponsorship angle question. @Nick Francis also tagged.","tags":["briefing","bleacher","email","figma"]},
-  {"title":"Respond to Head of Brand Intelligence applicant — alingala91@gmail.com","priority":"medium","client":null,"notes":"Reached out after LinkedIn post. Applied online a few weeks ago. Needs a reply.","tags":["briefing","hiring","email"]},
-  {"title":"Review Grayscale RYG Red — weekly project update","priority":"medium","client":"Grayscale","notes":"Flagged Red in week of 06/22 status report. Vince Quilici + Melissa Ranalli leads.","tags":["briefing","grayscale","ryg"]},
-  {"title":"Review Sixth Street RYG Red — weekly project update","priority":"medium","client":"Sixth Street","notes":"Flagged Red in week of 06/22 status report.","tags":["briefing","sixthstreet","ryg"]},
-  {"title":"Review Adobe Firefly RYG Red — weekly project update","priority":"medium","client":"Adobe","notes":"Firefly Brand Playbook & Evergreen Image Library. Flagged Red in week of 06/22 status report.","tags":["briefing","adobe","ryg"]},
-  {"title":"Follow up with Kira on MS NOW strategy resourcing for batch 2 and 3","priority":"medium","client":"MS NOW","notes":"Kira flagged over-complicating in batch 2; Cass sending docs to decipher that creatives can interpret themselves. Batch 3 still waiting on info from client.","tags":["briefing","msnow","slack"]}
+  {
+    "title": "Respond to Will Leivenberg's 5 Figma @mentions in Bleacher Report R2 deck",
+    "priority": "urgent",
+    "client": "Bleacher Report",
+    "notes": "5 open questions in the live deck: (1) VO reference line — 'I remember where I was when Kevin Durant got traded'; (2) 'What was the line before Unquantifiable?'; (3) Alex's original 'unfiltered emotion' pillar not sitting right with client; (4) Is this framed around a single game or broader?; (5) Sponsorship angle — should we lean in? Deck is due today.",
+    "tags": ["reply", "today", "briefing", "client", "email"]
+  },
+  {
+    "title": "Finalize and lock Bleacher Report R2 pitch deck — due today",
+    "priority": "urgent",
+    "client": "Bleacher Report",
+    "notes": "$800K and $500K budget options both needed. Staffing plan must also be locked so Amanda can finalize scope. No producer on this — Karen + Nick are the team. If it doesn't go out today it misses the window entirely.",
+    "tags": ["sign-off", "today", "creative-review", "client"]
+  },
+  {
+    "title": "Confirm with Sam Eisen: did he lock platform direction (Born to Work) with Nick by EOD yesterday?",
+    "priority": "urgent",
+    "client": "Mack Trucks",
+    "notes": "Sam committed to aligning with Nick on platform by EOD Jun 25. Born to Work is the preferred direction — more ownable, Mack has vocational heritage. Briefs cannot lock until Nick and Sam are aligned. This is the first step in the chain to Monday's freelancer immersion.",
+    "tags": ["follow-up", "today", "slack"]
+  },
+  {
+    "title": "Check with Kira Feinstein + Yenteen Hu: are revised Mack briefs ready for async review?",
+    "priority": "urgent",
+    "client": "Mack Trucks",
+    "notes": "Kira to refine Pioneer brief (emotional layer on problem, tighter insight arc, tie prop to emotional reality). Yenteen to sharpen Fleet Manager/Driver brief (tighten problem/insight tension, insight language needs to be 'clicky'). These must be done today — Monday 10am freelancer immersion is the hard deadline.",
+    "tags": ["follow-up", "today", "team-meeting"]
+  },
+  {
+    "title": "Review revised Mack briefs and give final sign-off",
+    "priority": "urgent",
+    "client": "Mack Trucks",
+    "notes": "Async review once Kira + Yenteen send updates. Give final notes and approve. Must be done today — feeds Monday 10am freelancer immersion. Hard stop at 2:45pm PDT (Movies w/ P).",
+    "tags": ["sign-off", "review", "today", "this-week"]
+  },
+  {
+    "title": "Sync with Alison Ng on Mack hours, timeline, and check-in cadence",
+    "priority": "urgent",
+    "client": "Mack Trucks",
+    "notes": "Before EOD today. Freelancers start Monday — need hours and timeline confirmed so Alison can manage. Part of the chain: Alison needs this locked before she can confirm capacity for Monday.",
+    "tags": ["follow-up", "today", "team-meeting"]
+  },
+  {
+    "title": "Confirm Monday Mack briefing structure and send pre-read to freelancers",
+    "priority": "urgent",
+    "client": "Mack Trucks",
+    "notes": "Two 30-min sessions at 10am Monday. Pre-read: immersion doc + brand videos. Freelancers need materials in advance. This is contingent on briefs locking today.",
+    "tags": ["briefing", "today", "calendar", "this-week"]
+  },
+  {
+    "title": "Prep for Monday Comcast Strategy Midpoint — client-facing 7:15am",
+    "priority": "urgent",
+    "client": "Comcast",
+    "notes": "Client-facing meeting Monday at 7:15am. Deck narrative needs reordering. Budget sheet must be phased (check if Pia has done this). Karen is the client-facing lead — Adam cannot be. JJ/Triff may offer discounted rate to close gap to $1M.",
+    "tags": ["briefing", "this-week", "client", "calendar"]
+  },
+  {
+    "title": "Approve RTO: Julie St Felix — 1 day vacation Jul 10",
+    "priority": "urgent",
+    "client": "others",
+    "notes": "RTO045653. Submitted Mon Jun 22 — 3 days pending. Login at rto.codeandtheory.net.",
+    "tags": ["reply", "today", "email"]
+  },
+  {
+    "title": "Approve RTO: Jim Nowierski — 1 day vacation Jul 2 / holiday travel",
+    "priority": "urgent",
+    "client": "others",
+    "notes": "RTO045698. Submitted Tue Jun 23. Also a third pending RTO request from Jun 25 reminder email. All 3 approvals are overdue. Login at rto.codeandtheory.net.",
+    "tags": ["reply", "today", "email"]
+  },
+  {
+    "title": "Tell Pat McQueen: Matthieu Mingasson is on board as Abbott strategy lead",
+    "priority": "high",
+    "client": "Abbott",
+    "notes": "Abbott RFP is a full brand strategy pitch due July 20. Matthieu confirmed in the Jun 25 1:1 that he wants this. Pat needs to know so she can run the skills assessment to confirm and stop pursuing other options. Two assignments: diabetes diagnosis ecosystem + core diagnostics digital/demand gen.",
+    "tags": ["follow-up", "today", "1:1", "client"]
+  },
+  {
+    "title": "Connect Matthieu Mingasson with John Whaley + Grace Zec re: Novartis agentic persona practice",
+    "priority": "high",
+    "client": "Abbott",
+    "notes": "Matthieu wants to show Novartis the agentic persona practice and examples before building a proposal. John Whaley is at today's 10am 1:1 — good moment to set this up. Grace Zec also needs to be in the loop.",
+    "tags": ["follow-up", "today", "1:1", "strategy"]
+  },
+  {
+    "title": "Follow up with Jo Hayes re: billable vs. new business scope split",
+    "priority": "high",
+    "client": "others",
+    "notes": "Jo's outstanding open question before she decides on the Head of Brand Intelligence role. Two rounds of interviews done — she's a strong candidate (ex-RGA, built data + strategy practice at Barbarian, called C&T 'beautifully unfinished'). This question is blocking her decision.",
+    "tags": ["follow-up", "hiring", "this-week"]
+  },
+  {
+    "title": "Review and reply to Anu's direct application for Head of Brand Intelligence",
+    "priority": "high",
+    "client": "others",
+    "notes": "Anu (alingala91@gmail.com) — 12 years cultural intelligence, trend forecasting, brand strategy. Substack 5K+ subscribers (Anthropic, Netflix, Snap execs). Cited in WSJ and Business of Fashion. Built internal cultural intelligence practices from scratch. Saw LinkedIn post. Route to Maya/Alyssa with a note, or reply personally to schedule a conversation.",
+    "tags": ["reply", "hiring", "email", "this-week"]
+  },
+  {
+    "title": "Check if Pia Rizzo-Wittlin has reorganized Comcast budget sheet into phased structure",
+    "priority": "high",
+    "client": "Comcast",
+    "notes": "Pia committed in Jun 25 scoping jam to reorganize budget sheet into phased structure (always-on retained + Q1 brand visual ID). Karen and Marti should be pinged when ready. Needed before Monday 7:15am midpoint.",
+    "tags": ["follow-up", "today", "client"]
+  },
+  {
+    "title": "Check Ivan Pinto Bravo's Figma mention in Broadridge Ideas",
+    "priority": "high",
+    "client": "others",
+    "notes": "Ivan mentioned Karen in Broadridge Ideas on Jun 25 ~3pm. Unclear what the ask is — likely needs input or a creative direction decision.",
+    "tags": ["reply", "email", "this-week"]
+  },
+  {
+    "title": "Prep agenda for Brand Strat leads weekly — Monday 12pm",
+    "priority": "high",
+    "client": "others",
+    "notes": "Karen is the organizer. Recurring weekly. Relevant topics: AI Charter 'What We Believe' doc, Abbott staffing update, Comcast midpoint recap, Bleacher Report outcome, Claude Enterprise access for Julian's team.",
+    "tags": ["agenda", "this-week", "team-meeting", "calendar"]
+  },
+  {
+    "title": "Prep for Monday Mack freelancer briefing — two 30-min sessions at 10am",
+    "priority": "high",
+    "client": "Mack Trucks",
+    "notes": "Immersion doc + brand videos as pre-read. Two separate briefing sessions. Karen leads. Contingent on briefs locking today.",
+    "tags": ["briefing", "this-week", "team-meeting"]
+  },
+  {
+    "title": "Create 'What We Believe' doc for team edits on AI Charter",
+    "priority": "medium",
+    "client": "others",
+    "notes": "Share with Adam, Anne, Julian, James for collaborative edits. Karen has final say. Good to bring up in today's Adam + Karen 1:1 (10:45am). Came up in Jun 22 Brand Strat leads meeting.",
+    "tags": ["review", "strategy", "this-week", "1:1"]
+  },
+  {
+    "title": "Talk to Josh about winding down Workfront dashboard involvement",
+    "priority": "medium",
+    "client": "others",
+    "notes": "20hrs/week added without capacity clearance or conversation. This is unsustainable. Came up in resourcing context — Karen needs to set a boundary here.",
+    "tags": ["follow-up", "this-week", "team-meeting"]
+  },
+  {
+    "title": "Ask Pat to reduce Karen's logged hours on Bleacher Report",
+    "priority": "medium",
+    "client": "Bleacher Report",
+    "notes": "Pat flagged in Jun 24 1:1 that Karen's logged hours on Bleacher Report haven't been updated. Needs to be corrected in the resourcing system.",
+    "tags": ["follow-up", "this-week"]
+  }
 ]

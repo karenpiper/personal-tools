@@ -1,0 +1,1020 @@
+
+<title>Daily Briefing — Karen Piper | June 26</title>
+<meta name="description" content="Daily operating system for Karen Piper — schedule, actions, meeting intelligence. Friday, June 26, 2026.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #18181B;
+    --body: #3F3F46;
+    --muted: #71717A;
+    --ground: #F5F5F2;
+    --surface: #FFFFFF;
+    --border: #E4E4DE;
+    --accent: #1D4ED8;
+    --urgent: #C81E1E;
+    --urgent-bg: #FEF2F2;
+    --urgent-border: #FCA5A5;
+    --high: #B45309;
+    --high-bg: #FFFBEB;
+    --high-border: #FCD34D;
+    --low-bg: #F0FDF4;
+    --low: #15803D;
+    --external: #065F46;
+    --external-bg: #ECFDF5;
+    --conflict: #6D28D9;
+    --conflict-bg: #F5F3FF;
+    --mono: "SF Mono", "Fira Code", "Cascadia Mono", "Roboto Mono", monospace;
+  }
+
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--ground);
+    color: var(--body);
+    line-height: 1.6;
+    padding-bottom: 5rem;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────────── */
+  .page-header {
+    background: var(--ink);
+    padding: 1.5rem 2rem 1.25rem;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .header-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6B7280;
+    margin-bottom: 0.3rem;
+  }
+
+  .header-date {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .header-sub {
+    font-size: 0.78rem;
+    color: #9CA3AF;
+    margin-top: 0.2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .header-badge {
+    background: var(--accent);
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ─── MAIN ────────────────────────────────────────────────── */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section { margin-top: 2.5rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .section-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── SCHEDULE TIMELINE ───────────────────────────────────── */
+  .timeline { position: relative; }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 0.875rem;
+    margin-bottom: 0;
+  }
+
+  .tl-time {
+    font-size: 0.7rem;
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    padding-top: 0.55rem;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .tl-rule {
+    position: relative;
+    border-left: 2px solid var(--border);
+    padding: 0.45rem 0 0.45rem 0.875rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .tl-rule::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0.65rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--ground);
+  }
+
+  .tl-rule.external { border-left-color: #059669; }
+  .tl-rule.external::before { background: #059669; }
+  .tl-rule.one-on-one { border-left-color: #7C3AED; }
+  .tl-rule.one-on-one::before { background: #7C3AED; }
+  .tl-rule.organizer { border-left-color: #D97706; }
+  .tl-rule.organizer::before { background: #D97706; }
+  .tl-rule.personal { border-left-color: #9CA3AF; }
+  .tl-rule.personal::before { background: #9CA3AF; }
+  .tl-rule.conflict { border-left-color: var(--conflict); }
+  .tl-rule.conflict::before { background: var(--conflict); }
+
+  .tl-name {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .tl-detail {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+    line-height: 1.45;
+  }
+
+  .tl-prep {
+    font-size: 0.72rem;
+    color: var(--high);
+    background: var(--high-bg);
+    border-left: 2px solid var(--high-border);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0 4px 4px 0;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  .conflict-note {
+    font-size: 0.68rem;
+    color: var(--conflict);
+    font-weight: 600;
+    margin-top: 0.2rem;
+    background: var(--conflict-bg);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  /* ─── TAGS ────────────────────────────────────────────────── */
+  .tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+  }
+
+  .tag-external { background: var(--external-bg); color: var(--external); }
+  .tag-internal { background: #EFF6FF; color: #1D4ED8; }
+  .tag-organizer { background: #FEF3C7; color: #92400E; }
+  .tag-conflict { background: var(--conflict-bg); color: var(--conflict); }
+  .tag-1on1 { background: #F5F3FF; color: #6D28D9; }
+  .tag-personal { background: #F3F4F6; color: #6B7280; }
+
+  /* ─── WEEK GRID ───────────────────────────────────────────── */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+
+  .week-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.65rem;
+  }
+
+  .week-day-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .week-date-num {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0.05rem 0 0.2rem;
+  }
+
+  .load-pill {
+    display: inline-block;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    margin-bottom: 0.35rem;
+  }
+
+  .load-heavy { background: var(--urgent-bg); color: var(--urgent); }
+  .load-moderate { background: var(--high-bg); color: var(--high); }
+  .load-light { background: var(--low-bg); color: var(--low); }
+
+  .week-meetings {
+    font-size: 0.68rem;
+    color: var(--body);
+    line-height: 1.55;
+  }
+
+  .week-flag {
+    font-size: 0.65rem;
+    color: var(--urgent);
+    font-weight: 600;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  /* ─── ACTION ITEMS ────────────────────────────────────────── */
+  .sub-heading {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.75rem 0 0.35rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+
+  .action-list { display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .action-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 0 5px 5px 0;
+    padding: 0.6rem 0.875rem;
+  }
+
+  .action-item.urgency-urgent { border-left-color: var(--urgent); }
+  .action-item.urgency-high { border-left-color: #F59E0B; }
+  .action-item.urgency-watch { border-left-color: #9CA3AF; }
+
+  .action-who {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.05rem;
+  }
+
+  .action-subject {
+    font-size: 0.79rem;
+    color: var(--body);
+    margin-bottom: 0.1rem;
+    line-height: 1.4;
+  }
+
+  .action-need {
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .action-need b { color: var(--ink); font-weight: 600; }
+
+  .priority-label {
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 0.3rem;
+  }
+
+  .pl-urgent { background: var(--urgent-bg); color: var(--urgent); }
+  .pl-high { background: var(--high-bg); color: var(--high); }
+  .pl-watch { background: #F3F4F6; color: #6B7280; }
+
+  /* ─── GRANOLA CARDS ───────────────────────────────────────── */
+  .meeting-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.875rem;
+    overflow: hidden;
+  }
+
+  .mc-header {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .mc-title {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .mc-meta {
+    font-size: 0.65rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    white-space: nowrap;
+  }
+
+  .mc-body {
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .mc-section { margin-bottom: 0.55rem; }
+
+  .mc-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .mc-text { color: var(--body); }
+
+  .mc-actions {
+    list-style: none;
+    margin-top: 0.15rem;
+  }
+
+  .mc-actions li {
+    position: relative;
+    padding-left: 1.1rem;
+    padding-bottom: 0.2rem;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .mc-actions li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.85em;
+  }
+
+  .mc-actions.others li::before {
+    color: var(--muted);
+    content: "◦";
+    font-size: 1.1em;
+    top: 0;
+  }
+
+  /* ─── PROJECT FLAGS ───────────────────────────────────────── */
+  .flag-card {
+    background: var(--urgent-bg);
+    border: 1px solid var(--urgent-border);
+    border-left: 3px solid var(--urgent);
+    border-radius: 0 6px 6px 0;
+    padding: 0.6rem 0.875rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .flag-name {
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .flag-detail { color: var(--body); }
+
+  /* ─── FOOTER ──────────────────────────────────────────────── */
+  .page-footer {
+    background: var(--ink);
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.67rem;
+    color: #6B7280;
+    letter-spacing: 0.04em;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .page-header, .main { padding-left: 1rem; padding-right: 1rem; }
+    .week-grid { grid-template-columns: repeat(2, 1fr); }
+    .tl-item { grid-template-columns: 60px 1fr; }
+    .header-date { font-size: 1.25rem; }
+  }
+</style>
+
+<!-- ─── PAGE HEADER ────────────────────────────────────────── -->
+<div class="page-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Daily Briefing · Karen Piper</div>
+      <div class="header-date">Friday, June 26, 2026</div>
+      <div class="header-sub">Summer Friday · 3 active deliverables today · Mack briefs must lock</div>
+    </div>
+    <div class="header-badge">21 tasks extracted</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ─── TODAY ────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Today</span>
+      <span class="section-title">Friday, June 26 — Schedule</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-time">7:30a</div>
+        <div class="tl-rule external">
+          <div class="tl-name">
+            <span class="tag tag-external">External · Client</span>
+            Code and Theory × Pretium Brand Work
+          </div>
+          <div class="tl-detail">30 min · Zoom (Pretium link) · Liz Bowyer organizer (Pretium) · Vince Quilici (C&T) · Devin Kelly &amp; Brent Karp (Pretium)</div>
+          <div class="tl-prep">Brand work strategy meeting — go in knowing the Pretium relationship context.</div>
+          <div class="conflict-note">⚠ Overlaps by 15 min with Comcast Standups at 7:45a — plan to transition.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">7:45a</div>
+        <div class="tl-rule">
+          <div class="tl-name">
+            <span class="tag tag-internal">Internal</span>
+            Comcast Standups
+          </div>
+          <div class="tl-detail">75 min · 13 attendees (Marti, Adam, Pia, Diana, Zack, Anne, Karina, Stephen, Katherine, Obrey, Leo, Victoria, Lucy)</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">8:00a</div>
+        <div class="tl-rule">
+          <div class="tl-name">
+            <span class="tag tag-internal">Internal</span>
+            [INT] MS NOW · Internal Review &amp; Check In
+          </div>
+          <div class="tl-detail">1 hr · Cassandra Hyde organizer · ~10 attendees incl. Kira, Nick, Jenny, Caro, Lisa Simon · Karen is optional. Purpose: review creative progress and any client updates before today.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:00a</div>
+        <div class="tl-rule one-on-one">
+          <div class="tl-name">
+            <span class="tag tag-1on1">1:1</span>
+            Karen ‖ John Monthly
+          </div>
+          <div class="tl-detail">25 min · John Whaley (User Intelligence) + john.whaley@instrument.com · John Whaley organizer</div>
+          <div class="tl-prep">Prep: Connect Matthieu with John + Grace re: Novartis agentic persona pitch is a live topic — good moment to bring it up.</div>
+          <div class="conflict-note">⚠ Conflicts with Open Labs (also 10:00–10:30a) — decide which to attend.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:00a</div>
+        <div class="tl-rule conflict">
+          <div class="tl-name">
+            <span class="tag tag-conflict">Conflict</span>
+            🦾 Open Labs ✨
+          </div>
+          <div class="tl-detail">30 min · Peter Steiner organizer · "See what's cooking in Creative Labs" · Karen has not responded to this invite.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:30a</div>
+        <div class="tl-rule organizer">
+          <div class="tl-name">
+            <span class="tag tag-organizer">You're the Organizer</span>
+            Summer Friday Toast
+          </div>
+          <div class="tl-detail">30 min · Brand Intelligence + Brand Strategy groups · Multiple acceptances from Deedy, Julian, Benaelle, Sarah, Molly, others</div>
+          <div class="conflict-note">⚠ Overlaps with Adam + Karen (10:45–11:15a).</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">10:45a</div>
+        <div class="tl-rule one-on-one">
+          <div class="tl-name">
+            <span class="tag tag-1on1">1:1</span>
+            Adam + Karen
+          </div>
+          <div class="tl-detail">30 min · Adam Kauder organizer · Recurring weekly</div>
+          <div class="tl-prep">Topics to bring: AI Charter "What We Believe" doc for group edits. Portfolio model update. Mack + Comcast status.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">12:30p</div>
+        <div class="tl-rule personal">
+          <div class="tl-name">
+            <span class="tag tag-personal">Private</span>
+            MindRX
+          </div>
+          <div class="tl-detail">30 min</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">2:45p</div>
+        <div class="tl-rule personal">
+          <div class="tl-name">
+            <span class="tag tag-personal">Personal</span>
+            Movies w/ P
+          </div>
+          <div class="tl-detail">Through 5:00p. Hard stop. Bleacher Report and Mack briefs must be wrapped before this.</div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+
+  <!-- ─── NEXT WEEK ─────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Ahead</span>
+      <span class="section-title">Next Week at a Glance — June 29 – July 3</span>
+    </div>
+
+    <div class="week-grid">
+      <div class="week-card">
+        <div class="week-day-label">Monday</div>
+        <div class="week-date-num">29</div>
+        <div class="load-pill load-heavy">Heavy</div>
+        <div class="week-meetings">
+          7:15a Comcast client midpoint<br>
+          8:45a MS NOW Daily Jam<br>
+          9:30a MAD Standup<br>
+          10:00a Mack freelancer briefing<br>
+          10:30a MS NOW Creative Review<br>
+          10:30a Karen / Jim 1:1<br>
+          11:00a Julian + Karen<br>
+          12:00p Brand Strat leads
+        </div>
+        <div class="week-flag">⚠ Comcast client-facing 7:15a — prep this weekend. Mack freelancers start — briefs must lock today.</div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-day-label">Tuesday</div>
+        <div class="week-date-num">30</div>
+        <div class="load-pill load-moderate">Moderate</div>
+        <div class="week-meetings">
+          10:00a Karen / Laura<br>
+          11:00a Karen &amp; Pam 1:1<br>
+          11:30a Karen + Linds<br>
+          12:00p Therapy<br>
+          1:00p Karen / Hannah<br>
+          1:30p Devorne × Karen<br>
+          10:30a Talking Heads (organizer)
+        </div>
+        <div class="week-flag">You're the organizer for Talking Heads — agenda needed.</div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-day-label">Wednesday</div>
+        <div class="week-date-num">Jul 1</div>
+        <div class="load-pill load-moderate">Moderate</div>
+        <div class="week-meetings">
+          9:30a MAD Standup<br>
+          10:00a BI Resourcing<br>
+          11:00a Karen / Marti<br>
+          12:00p Flex: Karen/Lucy
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-day-label">Thursday</div>
+        <div class="week-date-num">Jul 2</div>
+        <div class="load-pill load-heavy">Heavy</div>
+        <div class="week-meetings">
+          9:00a Brand Strat Full Team (organizer)<br>
+          9:30a MAD Standup<br>
+          10:00a KP / Stef Monthly<br>
+          11:30a Monthly Social Update
+        </div>
+        <div class="week-flag">Jim Nowierski out (holiday travel, if approved). Agenda for Full Team needed.</div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-day-label">Friday</div>
+        <div class="week-date-num">Jul 3</div>
+        <div class="load-pill load-light">Light</div>
+        <div class="week-meetings">
+          7:00a New Biz Sync
+        </div>
+        <div class="week-meetings" style="color:#9CA3AF; margin-top:0.3rem;">Jul 4 holiday week — expect reduced attendance.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EMAILS ─────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Inbox</span>
+      <span class="section-title">Emails Requiring Action</span>
+    </div>
+
+    <div class="sub-heading">Reply Today</div>
+    <div class="action-list">
+      <div class="action-item urgency-urgent">
+        <div class="action-who"><span class="priority-label pl-urgent">Urgent</span>Will Leivenberg · Figma (Bleacher Report R2)</div>
+        <div class="action-subject">5 @mentions overnight in the live deck — questions requiring your input</div>
+        <div class="action-need">
+          <b>What he asked:</b> (1) VO reference line — "I remember where I was when Kevin Durant got traded" (2) "What was the line before Unquantifiable?" (3) Note on Alex's original "unfiltered emotion" pillar not sitting right with the client (4) Is this framed around a single game or broader? (5) Sponsorship angle — should we lean in?<br>
+          <b>Action:</b> Open the Figma deck and respond in-thread to each comment. Deck is due today.
+        </div>
+      </div>
+
+      <div class="action-item urgency-urgent">
+        <div class="action-who"><span class="priority-label pl-urgent">Urgent</span>RTO System — 3 approvals pending since Mon/Tue</div>
+        <div class="action-subject">[RTO Reminder] 3 requests awaiting your approval decision</div>
+        <div class="action-need">
+          <b>Julie St Felix</b> — 1 day vacation, Fri Jul 10 (submitted Mon Jun 22, 3 days pending)<br>
+          <b>Jim Nowierski</b> — 1 day vacation, Thu Jul 2 / holiday travel (submitted Tue Jun 23)<br>
+          <b>Third request</b> — 1 additional pending (Jun 25 reminder email). Action: approve via rto.codeandtheory.net.
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Reply This Week</div>
+    <div class="action-list">
+      <div class="action-item urgency-high">
+        <div class="action-who"><span class="priority-label pl-high">High</span>Anu (alingala91@gmail.com) — Direct outreach</div>
+        <div class="action-subject">Re: Head of Brand Intelligence — strong candidate, CV attached</div>
+        <div class="action-need">
+          12 years cultural intelligence, trend forecasting, brand strategy — agencies and in-house. Substack newsletter 5K+ subscribers (Anthropic, Netflix, Snap execs). Cited in WSJ and Business of Fashion. Built internal cultural intelligence practices from scratch. Saw your LinkedIn post and applied online.<br>
+          <b>Action:</b> This is a serious candidate — route to Maya/Alyssa with a note, or reply personally to schedule a conversation.
+        </div>
+      </div>
+
+      <div class="action-item urgency-high">
+        <div class="action-who"><span class="priority-label pl-high">High</span>Ivan Pinto Bravo — Figma (Broadridge Ideas)</div>
+        <div class="action-subject">Ivan mentioned you in Broadridge Ideas — Jun 25 ~3pm</div>
+        <div class="action-need"><b>Action:</b> Check the Figma comment — unclear what the ask is, likely needs input or a decision on creative direction.</div>
+      </div>
+    </div>
+
+    <div class="sub-heading">Watch</div>
+    <div class="action-list">
+      <div class="action-item urgency-watch">
+        <div class="action-who"><span class="priority-label pl-watch">Watch</span>Lisa Simon — [INT] MS NOW Calendar Updates</div>
+        <div class="action-subject">Monday: Creative Review added 10:30am (conflicts with Jim 1:1), Daily Jam moved to 8:45am</div>
+        <div class="action-need"><b>Note:</b> MS NOW Creative Review (Mon 10:30am) conflicts with Karen/Jim 1:1 (also 10:30am). Resolve before Monday.</div>
+      </div>
+
+      <div class="action-item urgency-watch">
+        <div class="action-who"><span class="priority-label pl-watch">Watch</span>Dave Evans — Updated Dave × Karen weekly</div>
+        <div class="action-subject">Rescheduled to Tue Jul 21 — time change only, no action required</div>
+        <div class="action-need">No reply needed. Just note the date shift.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLACK ──────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Slack</span>
+      <span class="section-title">Needs Response</span>
+    </div>
+
+    <div class="action-list">
+      <div class="action-item urgency-urgent">
+        <div class="action-who"><span class="priority-label pl-urgent">Urgent</span>Amanda Huelse · #ct-rfp-bleacher-report</div>
+        <div class="action-subject">@Karen — strategy staffing mix: is this right? Do we need Data Analyst?</div>
+        <div class="action-need">You responded (recommended no D&A, keep AD at 20hrs for first 3 weeks then drop to 10, keep AD at 2–5 hpw after strategy phase if budget allows). But the staffing plan still needs Nick's input on creative team structure. Budget options needed: <b>$800K and $500K</b>. Harris confirmed: scope fee only, don't bother with licensing costs yet.<br>
+        <b>Action:</b> Check that the staffing plan tab is locked before EOD so Amanda can finalize scope.</div>
+      </div>
+
+      <div class="action-item urgency-watch">
+        <div class="action-who"><span class="priority-label pl-watch">Watch</span>#ct-rfp-bleacher-report — channel now active with Obrey, Will, Nick, Harris, Alex Foster</div>
+        <div class="action-subject">Figma deck link shared. UGC vs. broadcast sourcing questions ongoing between Will and Amanda.</div>
+        <div class="action-need">You're engaged in the channel. Keep an eye through EOD — the deck and staffing plan both need final sign-off before the pitch goes out.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── GRANOLA ────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Granola</span>
+      <span class="section-title">Meeting Summaries — Jun 22–25</span>
+    </div>
+
+    <!-- MACK BRIEFS TOUCHBASE -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-internal">Internal</span>
+          <span class="mc-title">Mack Briefs Touchbase!</span>
+        </div>
+        <div class="mc-meta">Jun 25 · 10:40a · Kira, Sam, Yenteen</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Reviewed two platform options (Born to Work vs. Lead from the Front) and gave live feedback on both creative briefs. Group leans toward Born to Work as more ownable; Sam was to catch Nick up after 4pm and lock platform by EOD. Briefs need to lock today for Monday's freelancer immersion.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Decisions</div>
+          <div class="mc-text">Born to Work is the preferred platform — more ownable, Mack has the vocational heritage to claim it. Two separate territories risks spinning too long given tight timeline.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[KP] Action Items</div>
+          <ul class="mc-actions">
+            <li>Brief freelancers Monday (contingent on briefs locking today)</li>
+            <li>Async review of revised briefs once Kira + Yenteen send updates — give final notes</li>
+          </ul>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[Others] Commitments to Track</div>
+          <ul class="mc-actions others">
+            <li><b>Sam Eisen:</b> align with Nick on platform by EOD Jun 25 — was this done?</li>
+            <li><b>Kira Feinstein:</b> refine Pioneer brief — emotional layer on problem, tighter insight arc, tie prop to emotional reality</li>
+            <li><b>Yenteen Hu:</b> sharpen Fleet Manager/Driver brief — tighten problem/insight tension, insight language needs to be "clicky"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMCAST RFP SCOPING -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-internal">Internal</span>
+          <span class="mc-title">[INT] Comcast RFP Strat/Prod Scoping Jam</span>
+        </div>
+        <div class="mc-meta">Jun 25 · 12:30p · Marti, Adam, Pia, Stephen</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Aligned on a two-phase scope: always-on retained team + front-loaded Q1 brand visual ID and tone of voice project (~8 weeks). Budget lands ~$1M. Monday is the client midpoint — the deck narrative and budget sheet need to be ready.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Key Scope Decisions</div>
+          <div class="mc-text">Brand Intelligence Director relabeled for client materials. Strategy Director at 10hrs/week. Creative Director at 2hrs/week retained (low-presence), plussed up during Q1. Senior Producer replaces EP. JJ/Triff may offer discounted rate to close gap to $1M.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[KP] Action Items</div>
+          <ul class="mc-actions">
+            <li>Share JPMC activities list as retained team activity framework (quarterly planning, analytics reporting, brand oversight, agency partnership, opportunity ID)</li>
+            <li>Review Pia's reorganized budget sheet once ready (ping Karen + Marti)</li>
+          </ul>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[Others] Commitments to Track</div>
+          <ul class="mc-actions others">
+            <li><b>Pia Rizzo-Wittlin:</b> reorganize budget sheet into phased structure — check this today</li>
+            <li><b>Marti Rosenberger:</b> pull recent vis ID scope to benchmark hours/cost for Q1 workstream</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATTHIEU / KAREN -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-1on1">1:1</span>
+          <span class="mc-title">Matthieu / Karen</span>
+        </div>
+        <div class="mc-meta">Jun 25 · 8:30a · Matthieu Mingasson</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Abbott RFP is a full brand strategy pitch due July 20. Matthieu leads strategy narrative; AI must be central, not a bolt-on (Novartis pitch is the reference). Karen shared prep doc. Also discussed Novartis agentic persona opportunity — Karen should connect Matthieu with John Whaley + Grace.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Key Points</div>
+          <div class="mc-text">Two assignments: diabetes diagnosis ecosystem (type 2, first 0–90 days) and core diagnostics digital/demand gen (lab directors, clinical stakeholders). Heavily weighted toward innovation + AI. Matthieu wants Carl (finishing Novartis Tuesday) on Abbott given subject overlap.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[KP] Action Items</div>
+          <ul class="mc-actions">
+            <li>Inform Pat McQueen that Matthieu is on board for Abbott strategy lead</li>
+            <li>Connect Matthieu with John Whaley + Grace Zec re: Novartis agentic persona practice (Matthieu will show Novartis the practice and examples before building a proposal)</li>
+          </ul>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[Others] Commitments to Track</div>
+          <ul class="mc-actions others">
+            <li><b>Matthieu:</b> review full Abbott RFP + Karen's prep doc, reach out to Hannah re: team + Carl availability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- NICK x KAREN BLEACHER -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-internal">Internal</span>
+          <span class="mc-title">Nick × Karen — Bleacher Report Strategy</span>
+        </div>
+        <div class="mc-meta">Jun 24 · 9:30a</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Agreed on "the fan factor" as the core territory — the unquantifiable, unpredictable element of sports that no one can index or predict. Bleacher Report's unique claim: the last place sports hasn't been fully correlated or predicted. Deck structure: idea up front, expressions, then ecosystem/launch.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Creative Direction</div>
+          <div class="mc-text">Sports terminology (sixth man, front office) mapped to unquantifiable fan moments. Launch moment: NBA tip-off night (Knicks ring ceremony, TNT, New York energy). Ecosystem: at the game / social / broadcast / transit / cities. "Nobody owns the fan" as setup to BR's brand line. Potential strategy line riff: "Without fans it's not sports. Without unpredictability, there's neither."</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Context</div>
+          <div class="mc-text">Brief came in wrong channel (to Alex Foster/video, not strategy+creative). Team is stretched across Mack and Comcast. No freelancers approved. Friday is the realistic target; weekend not feasible.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KP / PAT -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-1on1">1:1</span>
+          <span class="mc-title">KP / Pat 2x Weekly — Resourcing &amp; Ops</span>
+        </div>
+        <div class="mc-meta">Jun 24 · 11:00a · Pat McQueen</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Comprehensive resourcing review across all active pitches and projects. Abbott staffing is the biggest open problem — Matthieu is the best path. Grayscale Alex situation still unresolved. Karen sending a strong message through a direct email to Truff and Julianne didn't fully land.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Current Active Portfolio</div>
+          <div class="mc-text">
+            <b>Bleacher Report:</b> Karen + Nick running the pitch, no producer, due today<br>
+            <b>Abbott:</b> Matthieu likely lead, Pat scoping to confirm — July 20 deadline<br>
+            <b>Comcast:</b> Karen is client-facing lead (Adam can't be)<br>
+            <b>Mack:</b> staffed<br>
+            <b>Audible:</b> Lindsay half-time, start Jul 6 pending client approval<br>
+            <b>Pfizer Merchant Web:</b> likely kickoff soon, needs Director Brand Strategy + Editorial Strategy lead<br>
+            <b>Molly's departure:</b> Will needs 5hrs/week social support — Julie is right person but getting booked
+          </div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Grayscale / Alex</div>
+          <div class="mc-text">Broad consensus Alex is not working; Hannah remains a blocker (personal relationship). Julian being added to provide oversight — not confirmed, sensitivity around it, do not communicate externally yet.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[KP] Action Items</div>
+          <ul class="mc-actions">
+            <li>Reduce Karen's logged Bleacher Report hours (Pat flagged this hasn't been updated)</li>
+          </ul>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[Others] Commitments to Track</div>
+          <ul class="mc-actions others">
+            <li><b>Pat:</b> scope Abbott pitch work + confirm Matthieu as lead via RFP skills assessment</li>
+            <li><b>Pat:</b> follow up with Will on Molly's social support backfill (Julie likely)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- JO HAYES -->
+    <div class="meeting-card">
+      <div class="mc-header">
+        <div>
+          <span class="tag tag-internal">Hiring</span>
+          <span class="mc-title">Jo Hayes Interviews — Head of Brand Intelligence</span>
+        </div>
+        <div class="mc-meta">Jun 22 workshare + Jun 24 video interview</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-section">
+          <div class="mc-label">TL;DR</div>
+          <div class="mc-text">Two rounds done. Jo is a strong candidate: ex-RGA (Verizon, Uber), built and led data + strategy practice at Barbarian. Frames the discipline through "three traps" (too close to work / can't drive adoption / can't make it sellable) and stages intelligence evolution (Expertise → Embedded → Engine). Genuinely excited — "if I could start tomorrow I would." Called C&T "beautifully unfinished."</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">Open Question</div>
+          <div class="mc-text">Jo wants to understand the split between billable scope and new business scope before making a decision.</div>
+        </div>
+        <div class="mc-section">
+          <div class="mc-label">[KP] Action Item</div>
+          <ul class="mc-actions">
+            <li>Follow up with Jo on billable vs. new business scope question — this is her outstanding open question before deciding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── PROJECT FLAGS ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Watch</span>
+      <span class="section-title">Project Flags</span>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-name">🔴 Bleacher Report — Process Failure Risk</div>
+      <div class="flag-detail">Brief came in through wrong channel (to Alex/video, not strategy+creative). Round 2 feedback sat 1.5 weeks before Karen was looped in. Karen + Nick are rescuing it with the pitch due today. If this doesn't go out today, it misses the window entirely. No producer on it. Staffing plan ($800K/$500K options) still in progress as of yesterday afternoon.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-name">🔴 Abbott — Staffing Not Confirmed, July 20 Deadline</div>
+      <div class="flag-detail">Full brand strategy pitch with measurement frameworks, behavior change, HCP/consumer experience. Matthieu is the best candidate for strategy lead but not confirmed — Pat is running a skills assessment. Every earlier suggestion was rejected. July 20 is immovable. Conflicts with Comcast and Mack in the same window.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-name">🟡 Grayscale — Alex Situation Unresolved</div>
+      <div class="flag-detail">Alex has been underperforming for years; client (Ramona) has already rejected invoices over quality. Hannah remains the blocker (personal relationship). Karen escalated to Truff and Julianne — Truff shut the thread down. Julian being added for oversight; not confirmed, keep sensitive. Do not communicate externally.</div>
+    </div>
+
+    <div class="flag-card">
+      <div class="flag-name">🟡 Claude Enterprise Access — Julian's Team Blocked</div>
+      <div class="flag-detail">Enterprise rollout still broken for new users. Paul has no ETA. Julian's team can't be onboarded two weeks into a live project. From Jun 22 Brand Strat leads: Julian to escalate to dcam framing it as live project revenue risk, not an IT issue.</div>
+    </div>
+
+  </div>
+
+</div><!-- /main -->
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<div class="page-footer">
+  21 tasks extracted to briefing/pending-tasks.json &nbsp;·&nbsp;
+  Sources: Google Calendar · Gmail · Slack · Granola &nbsp;·&nbsp;
+  Generated Friday, June 26, 2026
+</div>
