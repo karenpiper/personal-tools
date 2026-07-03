@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karen's Daily Briefing — Friday, July 3, 2026</title>
+<style>
+  :root {
+    --bg: #fafafa; --card: #ffffff; --ink: #17181c; --muted: #5b5f6b;
+    --line: #e4e4e8; --accent: #2451ff; --lime: #b6ff3b; --coral: #ff5c5c;
+    --orange: #ff8a3d; --yellow: #ffcf3d; --urgent: #d6284a; --high: #ff8a3d;
+    --medium: #2451ff; --low: #8a8f9c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#111217; --card:#181a21; --ink:#f0f1f5; --muted:#a2a6b3; --line:#2a2c36; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 840px; margin: 0 auto; padding: 32px 20px 80px; }
+  header.top { margin-bottom: 32px; }
+  header.top h1 { font-size: 1.7rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header.top .sub { color: var(--muted); font-size: 0.95rem; }
+  .pill-row { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.78rem;
+    font-weight: 600; background: var(--card); border: 1px solid var(--line); color: var(--muted);
+  }
+  section { margin-bottom: 36px; }
+  h2 {
+    font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted); border-bottom: 2px solid var(--line); padding-bottom: 8px; margin-bottom: 16px;
+  }
+  h3.sub-h { font-size: 1rem; margin: 18px 0 8px; color: var(--ink); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 10px;
+  }
+  .meeting-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meeting-time { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 108px; }
+  .meeting-title { font-weight: 600; flex: 1; }
+  .meeting-meta { color: var(--muted); font-size: 0.85rem; }
+  .tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 5px; margin-left: 6px; letter-spacing: 0.03em;
+  }
+  .tag.ext { background: rgba(255,92,92,0.15); color: var(--coral); }
+  .tag.int { background: rgba(36,81,255,0.12); color: var(--accent); }
+  .tag.org { background: rgba(255,207,61,0.25); color: #8a6d00; }
+  @media (prefers-color-scheme: dark) { .tag.org { color: var(--yellow); } }
+  .prep-note { margin-top: 6px; font-size: 0.86rem; color: var(--orange); font-weight: 600; }
+  .flag {
+    background: rgba(255,92,92,0.08); border-left: 3px solid var(--coral);
+    padding: 10px 14px; border-radius: 6px; margin: 10px 0; font-size: 0.92rem;
+  }
+  .callout {
+    background: rgba(36,81,255,0.06); border: 1px solid rgba(36,81,255,0.25);
+    border-radius: 12px; padding: 18px 20px; margin-bottom: 14px;
+  }
+  .callout h3 { margin-top: 0; }
+  .day-block { margin-bottom: 14px; }
+  .day-block .day-label { font-weight: 700; font-size: 0.95rem; }
+  .day-block .load { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-left: 8px; padding: 2px 8px; border-radius: 999px; }
+  .load.heavy { background: rgba(214,40,74,0.15); color: var(--urgent); }
+  .load.moderate { background: rgba(255,138,61,0.15); color: var(--orange); }
+  .load.light { background: rgba(182,255,59,0.25); color: #4c7a00; }
+  @media (prefers-color-scheme: dark) { .load.light { color: var(--lime); } }
+  ul.tight { margin: 6px 0 0 0; padding-left: 20px; }
+  ul.tight li { margin-bottom: 4px; }
+  .email-group h3.sub-h { display: flex; align-items: center; gap: 8px; }
+  .email-item { border-bottom: 1px solid var(--line); padding: 10px 0; }
+  .email-item:last-child { border-bottom: none; }
+  .email-item .from { font-weight: 700; }
+  .email-item .subj { color: var(--muted); font-size: 0.88rem; }
+  .email-item .action { font-size: 0.88rem; margin-top: 4px; }
+  .action-label { font-weight: 700; color: var(--accent); }
+  details.meeting {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    margin-bottom: 10px; padding: 12px 16px;
+  }
+  details.meeting summary {
+    cursor: pointer; font-weight: 700; list-style: none; display: flex;
+    justify-content: space-between; align-items: center; gap: 10px;
+  }
+  details.meeting summary::-webkit-details-marker { display: none; }
+  details.meeting summary .arrow { transition: transform 0.15s; color: var(--muted); }
+  details.meeting[open] summary .arrow { transform: rotate(90deg); }
+  details.meeting .body { margin-top: 12px; font-size: 0.92rem; }
+  details.meeting .body h4 { margin: 12px 0 4px; font-size: 0.82rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.03em; }
+  details.meeting .body ul { margin: 4px 0; padding-left: 20px; }
+  .project-card { border-left: 4px solid var(--coral); }
+  .project-card .name { font-weight: 700; font-size: 1rem; }
+  .project-card .meta { color: var(--muted); font-size: 0.85rem; margin: 4px 0 8px; }
+  footer.done {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 0.85rem; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Good morning, Karen ☀️</h1>
+  <div class="sub">Friday, July 3, 2026 · Pulled from Calendar, Gmail, Slack, and Granola</div>
+  <div class="pill-row">
+    <span class="pill">Parenting Week (Jun 29–Jul 5)</span>
+    <span class="pill">July 4th holiday tomorrow</span>
+    <span class="pill">Comcast final pitch Wed 7/8 — Philly</span>
+  </div>
+</header>
+
+<section>
+  <h2>Today — Friday, July 3</h2>
+  <div class="card">
+    <div class="meeting-row">
+      <span class="meeting-time">9:30–10:00am</span>
+      <span class="meeting-title">[INT] MAD Daily Standup <span class="tag int">Internal</span></span>
+    </div>
+    <div class="meeting-meta">Organizer: Josh Currie · 10 attendees</div>
+  </div>
+  <div class="flag">A genuinely light day — this is your window before the holiday and Monday's crunch. Worth using it (or tonight) to clear the Comcast Figma comment queue below before the deck ships.</div>
+</section>
+
+<section>
+  <h2>Tomorrow — Saturday, July 4</h2>
+  <div class="card">No meetings. Independence Day holiday.</div>
+</section>
+
+<section>
+  <h2>This Week at a Glance</h2>
+  <div class="day-block"><span class="day-label">Sat 7/4</span><span class="load light">Light</span> — Holiday, no meetings.</div>
+  <div class="day-block"><span class="day-label">Sun 7/5</span><span class="load light">Light</span> — Dad FT, 9–10am (personal).</div>
+</section>
+
+<section>
+  <h2>Looking Ahead — Comcast Pitch Week (Jul 6–9)</h2>
+  <div class="callout">
+    <h3>Why this matters</h3>
+    <p>The Comcast AOR final is Wednesday in Philly — reported internally as a million-dollar strategy AOR win (would displace the AT&amp;T relationship model). This weekend is effectively your last prep window. A few things need attention before Monday morning:</p>
+  </div>
+
+  <div class="day-block"><span class="day-label">Mon 7/6</span><span class="load heavy">Heavy</span> — back-to-back, 8am–5pm, essentially zero breathing room.
+    <ul class="tight">
+      <li>Mini Monday, AWS Full Team Prep <span class="tag ext">External</span>, KP/Pat, Jim 1:1, Brand Strat Leads Weekly, Bleacher Report connect, UFCU R2 Creative Final CR, SXSW Ideas Walkthrough, <strong>Comcast B2B Pitch Clickthrough</strong>, Julian + Karen Weekly, Karen/Lucy weekly, plus a "busy" hold 4–5pm.</li>
+    </ul>
+    <div class="prep-note">⚠ No gaps in this day — anything that slips gets pushed into Tuesday's travel morning.</div>
+  </div>
+
+  <div class="day-block"><span class="day-label">Tue 7/7</span><span class="load heavy">Heavy + Travel</span>
+    <ul class="tight">
+      <li>Flight to Philly, 7:00am–1:30pm PT — <strong>overlaps 5 scheduled meetings</strong>: Comcast B2B Pitch Rehearsal (8–9am), Mack Trucks Twice Weekly, Anne/Karen bi-weekly, MAD Daily Standup, Karen/Laura weekly, Brand Intelligence Weekly Status.</li>
+      <li>Therapy, 1–2pm — right at landing, likely also needs to move.</li>
+      <li>HOLD: AWS Creative RFP Presentation, 3–3:45pm.</li>
+    </ul>
+    <div class="prep-note">⚠ Get coverage or reschedule the overlapping meetings before Monday EOD — see tasks below.</div>
+  </div>
+
+  <div class="day-block"><span class="day-label">Wed 7/8</span><span class="load heavy">The Pitch</span>
+    <ul class="tight">
+      <li><strong>HOLD: Comcast Final Presentation — IN PERSON IN PHILLY, 8:30–10:00am.</strong> Overlaps MS NOW Daily Jam, MAD Daily Standup, and KP/Pat 2x weekly.</li>
+      <li>Train to New York, 12:38–1:55pm, immediately after — then User &amp; Brand Intelligence Weekly Resourcing, Brand Strategy Resourcing, Strategy Monthly Hot + Happening, and Dave x Karen weekly, all same day.</li>
+    </ul>
+    <div class="prep-note">Per Slack/Granola: NY stay has been extended through July 16 (was the 14th) for Shelby's leaving do.</div>
+  </div>
+
+  <div class="flag">🔎 <strong>Calendar oddity:</strong> an all-day <strong>"Piper in London"</strong> block runs 7/7–7/27 — directly overlapping the confirmed Philly and New York travel above. Likely a stale placeholder worth double-checking.</div>
+</section>
+
+<section>
+  <h2>Emails Requiring Action</h2>
+
+  <div class="email-group">
+    <h3 class="sub-h">Reply Today</h3>
+    <div class="card">
+      <div class="email-item">
+        <div class="from">Figma comments (Marti Rosenberger, Katherine Joiner, Karina Pino, Adam Kauder, Anne Sachs)</div>
+        <div class="subj">15+ unread notifications since 6/30 — "Comcast B2B_Brand Strategy AOR_RFP Response"</div>
+        <div class="action"><span class="action-label">Action:</span> Final sign-off sweep before the deck ships tonight/tomorrow AM — several comments directly ask for your call (color/font swap, footnote vs. bold terms, quote placement).</div>
+      </div>
+      <div class="email-item">
+        <div class="from">Vercel notifications</div>
+        <div class="subj">4× "Failed production deployment" — project "comcast-threat"</div>
+        <div class="action"><span class="action-label">Action:</span> Quick status check — if this is the interactive threat-report prototype for the pitch, it needs to be live before Wednesday.</div>
+      </div>
+      <div class="email-item">
+        <div class="from">Ivan Pinto Bravo (via Google Docs)</div>
+        <div class="subj">Assigned/mentioned you in an action item — Broadridge_Master_Creative_Spec_Sheet</div>
+        <div class="action"><span class="action-label">Action:</span> Open since 6/29, now 4+ days — needs a response.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-group">
+    <h3 class="sub-h">Reply This Week</h3>
+    <div class="card">
+      <div class="email-item">
+        <div class="from">Anne Sachs (via Google Docs)</div>
+        <div class="subj">Mentioned you re: GEO Training Tips for Prototype Build — Comcast Business Creative Brief</div>
+        <div class="action"><span class="action-label">Action:</span> Review — feeds the interactive prototype demo for 7/8.</div>
+      </div>
+      <div class="email-item">
+        <div class="from">Mireya, Shorty Awards</div>
+        <div class="subj">11th Shorty Impact Awards Jury kickoff</div>
+        <div class="action"><span class="action-label">Action:</span> You committed to judging — confirm your timeline for engaging with submissions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-group">
+    <h3 class="sub-h">Watch</h3>
+    <div class="card">
+      <div class="email-item">
+        <div class="from">Supabase</div>
+        <div class="subj">"Action required: security vulnerabilities detected in your projects"</div>
+        <div class="action">Likely a personal/dev project — not urgent for client work, but don't let it sit indefinitely.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Slack — Needs Response</h2>
+  <div class="card">
+    <div class="email-item">
+      <div class="from">Craig Elimeliah <span class="meeting-meta">(Group DM w/ Nick Francis) — today, 4:27am</span></div>
+      <div class="action">Extensive written feedback on the 5 Mack creative territories — wants a stronger POV per idea, more specific/real details, less "universal truth" language. Wants to walk through them "next week." <span class="action-label">Blocking:</span> team's direction heading into Monday's Mack sync.</div>
+    </div>
+    <div class="email-item">
+      <div class="from">Emily Richards <span class="meeting-meta">(Group DM w/ Pat McQueen, Tara Bennett) — 7/2</span></div>
+      <div class="action">Instrument wants to keep Hannah on Punt.com for continuity, but Instrument is closed Monday 7/6 (holiday) — only 4 hours of her time available that day. <span class="action-label">Time-sensitive:</span> ties directly to the Red-flagged Punt.com account.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Granola — Meeting Summaries</h2>
+  <p style="color:var(--muted); font-size:0.88rem; margin-top:-8px;">Click any meeting to expand. Covers Jul 1–2 (most recent business days; nothing recorded yet today).</p>
+
+  <details class="meeting" open>
+    <summary>Comcast RFP EOD Regroup on Final Deck <span class="tag ext">External-facing deliverable</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Final pre-ship review of the Comcast RFP deck, Excel, and interactive prototype. Deck is ~95% done; a handful of specific fixes remain before it goes out tonight or tomorrow morning.</p>
+      <h4>Decisions</h4>
+      <ul><li>Hide the Xerox slide (17); relabel slide 65 "consistent team" → "executive leadership."</li><li>No need to rush shipping tonight — tomorrow morning is fine if the deck isn't ready.</li></ul>
+      <h4>Open / Unresolved</h4>
+      <ul><li>"Brand IQ" language still needs a full sweep and removal.</li><li>Project plan section, bios, and timeline slides still in progress.</li></ul>
+      <h4>[KP] Action Items</h4>
+      <ul><li>Write a two-sentence prototype description for the outbound email.</li><li>Notify the team within 30 minutes if more time is needed before shipping.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Marty &amp; Adam — fixing page numbers front-to-back and back-to-front.</li><li>Obrey — adding Excel references, confirming rate cards, shipping the deck once ready.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Comcast — narrative &amp; positioning working session <span class="tag ext">External-facing deliverable</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Deep edit pass on the Comcast narrative — positioning Comcast Business as the "technologically advanced, human-centered change maker," restructuring the threat-report section so it reads as strategic POV rather than a website pitch, and repositioning the KPI and rollout (Galvanize/Deploy/Amplify) slides.</p>
+      <h4>Decisions</h4>
+      <ul><li>Reduce the "shifts" slide from 7 to fewer; cut "website-centric" and "content marketing."</li><li>Simplify the Marcus persona journey to 3 stages, reframed as audience questions.</li></ul>
+      <h4>Open / Unresolved</h4>
+      <ul><li>Whether "Built for business" collides with AT&amp;T's own positioning — needs verification.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Cackey — verify the "Built for business" line against AT&amp;T positioning.</li><li>Adam — add creative asset examples to the Deploy slide.</li><li>Marty &amp; Cackey — leading the 2:30pm AOR section review (Karen not present).</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>[INT] Comcast RFP AOR Planning <span class="tag int">Internal</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Aligned the AOR project-plan slide with the progressive-delivery brand strategy model — cadence should repeat monthly, not map one phase per quarter, and Q1 gets reframed as foundation-setting rather than "onboarding/immersion" (trigger words for Trev).</p>
+      <h4>Decisions</h4>
+      <ul><li>Rename "always on program timeline" → "progressive brand delivery."</li><li>Add a comms-AOR reference to the ways-of-working slide.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Adam — add the foundational Q1 slide to the AOR section.</li>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Mack truck campaign creative — 5 territories reviewed <span class="tag ext">Pitch prep</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Reviewed five Mack Trucks creative territories (Built to Shoulder the Load, Like a Mac, Feel It in a Pioneer, Shift the Status Quo, It's What's on the Inside). Key unlock: stop treating the TTSP line as a monolith — dig into individual products.</p>
+      <h4>Decisions</h4>
+      <ul><li>Karen's read: "Shift the Status Quo" is the most emotional/strongest identity play; "Built to Shoulder the Load" is most directly on-strategy; leans toward "Feel It in a Pioneer" over "Feel It in a Mac" for the headline.</li></ul>
+      <h4>Open / Unresolved</h4>
+      <ul><li>Manifesto lines overlap between two Pioneer territories — need to be teased apart.</li><li>"It's What's on the Inside" is weakest as presented — driver is absent from visuals.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Team — sending an abridged 3-direction decklet to Craig over the weekend.</li><li>Reconnect with Karen Monday after Craig responds. (Craig's feedback has since landed via Slack — see above.)</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Mack TB — Pioneer brief insight refinement <span class="tag int">Internal</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Reworked the core insight for the Mack Pioneer brief from a category framing ("trucks give too little") to a human one ("drivers get too little in return"). Landed on the "Get In" creative direction built around secondhand opinions of the brand. Also surfaced heavier org/morale context — 30 headcount cuts, portfolio-model resourcing concerns, and frustration that leadership doesn't understand what brand strategy does.</p>
+      <h4>[KP] Action Items</h4>
+      <ul><li>Plug into the Comcast narrative with Antine before flying to NY on the 8th.</li></ul>
+      <h4>Open / Unresolved</h4>
+      <ul><li>Craig felt the "Get In" direction was over-explained in the room — team needs a clearer through-line to run with.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Karen / Kenan — Brand Intelligence leadership <span class="tag int">1:1 / Hiring</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Pitched Kenan as the person to lead Brand Intelligence following Johnny's departure — needs a visionary, not another practitioner. Discussed priorities: partnering Brand Intelligence with Brand Strategy earlier, productized offerings (AEO/GEO scoring), and protecting research's value against "just use Claude" pressure.</p>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Kenan — review the capabilities deck over the weekend, come back Monday with his read on approach and fit.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>DTC Creative Update: Exec Review 3 <span class="tag ext">Client (Versant Media)</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Reviewed Rachel's promo script (well-received, but the "Save 50%" end card feels off-brand next to her) and reworked the election-coverage script's tone to honor the weight of the midterms rather than sound cavalier. Landed several reusable lines ("Context, not just content"; "Don't watch everything. Just watch us.").</p>
+      <h4>Open / Unresolved</h4>
+      <ul><li>"Access," "discourse," and several other terms flagged for replacement across executions.</li><li>July 15th shoot date still being confirmed around talent availability.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Laura — bring back revised end-card options within 24 hours; part-two deck (full copy/images) due within the week.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Weekly | New Biz Sync <span class="tag int">Internal — Pipeline</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Win rate on sub-$1.5M sites has collapsed (2 of ~10 YTD, down from ~90%) — pricing and delivery model need rethinking. Comcast, Bleacher Report, Abbott, NYT, and several other active pitches reviewed; a rogue-BD process (Premiam) flagged for lacking go/no-go review.</p>
+      <h4>Decisions</h4>
+      <ul><li>Any engagement beyond an initial credentials call now requires executive approval before resources are committed.</li><li>Comcast: no discounts offered as a starting position.</li></ul>
+      <h4>[KP] Action Items</h4>
+      <ul><li>Reach out to Sara Marie to fix the Alpha Compute landing-page budget ($1.6M is off) before the proposal ships.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Harris — sync with Matthew on the Abbott creative solve.</li><li>Julia — convene NYT delivery-approach session, target $750K internal budget.</li><li>Team — send the Bleacher Report follow-up proposal (under $1M, with Adobe Sports Content OS case-study rights as leverage).</li><li>Zack — book Comcast rehearsals early next week; develop an EA touch plan through August.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Brand Strategy Resourcing (weekly) <span class="tag int">Internal — Staffing</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Staffing check-in across active pitches (Comcast, Mack, Abbott, Firefly) and named accounts. Kira flagged as the only team member without confirmed upcoming work.</p>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Confirm Julian's Punt hours increase to 30/week (pending Julia's approval).</li><li>Add Khaki to the Visa SOW and kickoff deck.</li><li>Find pipeline work for Kira — Microsoft the most likely option.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Connect on AWS Preso for Next Tuesday <span class="tag ext">External-facing deliverable</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Structured the AWS Creative RFP deck around a "three-legged stool" differentiator (services, proprietary tech/Machine, forward-deployed teams), with Qualcomm and Amazon Ads as the two deep-dive case studies.</p>
+      <h4>Open / Unresolved</h4>
+      <ul><li>Machine metrics slide is a risk — AWS will ask for performance data and the current numbers have heavy caveats.</li></ul>
+      <h4>[KP] Action Items</h4>
+      <ul><li>Karen owns the case-study vignettes section.</li></ul>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Craig — build the three-legged-stool slide.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>KP / Pat 2x weekly <span class="tag int">1:1</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Karen raised feeling cut out of the IBM win narrative after five weeks of solo strategy work, plus broader frustration that leadership doesn't understand or advocate for brand strategy's role. Also covered JJ/Andrea tension on Grayscale and confirmed the NY trip extension to July 16.</p>
+      <h4>[Others] Commitments</h4>
+      <ul><li>Pat — update Karen on any Yakpo/Jeff progress.</li></ul>
+    </div>
+  </details>
+
+  <details class="meeting">
+    <summary>Headcount and compensation strategy — Kannon, Jacopo, Johnny <span class="tag int">Internal — Sensitive</span> <span class="arrow">▸</span></summary>
+    <div class="body">
+      <p><strong>TL;DR:</strong> Worked through Brand Intelligence backfill options and Jacopo's comp negotiation. Landed on meeting Jacopo in the middle at $260–265K; Johnny's role backfills as Brand Strategy only (no Brand Intelligence refill).</p>
+      <h4>[KP] Action Items</h4>
+      <ul><li>Slack Traf to request a 5-minute call to close on Jacopo's comp and the Johnny backfill plan.</li></ul>
+    </div>
+  </details>
+
+</section>
+
+<section>
+  <h2>Project Flags — RYG Red</h2>
+
+  <div class="card project-card">
+    <div class="name">Punt.com — Brand Identity &amp; Product Design</div>
+    <div class="meta">Producer: Kelsie Spilman · Days to completion: 83</div>
+    <p>Client escalated concerns about team casting and expertise straight to C&amp;T's exec team after the Research Readout. Matty, JJ, Pat, and Julian jumped on a call same-day. Underlying project work is actually moving well (interviews wrapping, research readout shared, product team onboarded) — this is a sentiment/staffing risk, not a delivery risk.</p>
+    <p><strong>Needs Karen:</strong> Instrument/Hannah staffing decision before Monday (see Slack section and tasks).</p>
+  </div>
+
+  <div class="card project-card">
+    <div class="name">Sixth Street — Site Redesign, Email Templates, Brand Toolkit</div>
+    <div class="meta">Lead: Jessica Volodarsky · Producer: Karen Fong · Days to completion: -20 (overdue)</div>
+    <p>SOW remains expired with no signed change order — team has been resourcing without a written agreement. Agreement/CO execution expected week of 7/6; leadership visibility requested.</p>
+  </div>
+
+  <div class="card project-card">
+    <div class="name">Grayscale Investments — Website Redesign</div>
+    <div class="meta">Lead: Ailish Ryder, Alex Mamorsky · Producer: Melissa Ranalli · Days to completion: 63</div>
+    <p>Client requested a refund on cancelled interim-release work; feedback has been inconsistent, slowing momentum. A US-based PM vacancy is being filled next week. Client review this week was "heading in the right direction," though not effusive.</p>
+  </div>
+
+  <div class="card project-card">
+    <div class="name">Adobe — Firefly Brand Playbook &amp; Evergreen Image Library</div>
+    <div class="meta">Lead: João Mestre · Producer: Sarah Marie Glass · Days to completion: 17</div>
+    <p>Paused since 6/22 by Adobe finance pending signed SOW and issued PO — expected ~2-week pause, unrelated to the quality of the work itself.</p>
+  </div>
+</section>
+
+<footer class="done">
+  23 tasks extracted and pushed to Karenban · Generated Friday, July 3, 2026
+</footer>
+
+</div>
+</body>
+</html>
