@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Briefing — Thu Jul 9, 2026</title>
+<style>
+  :root{
+    --paper:#F6F3EC; --surface:#FFFFFF; --ink:#221F1A; --muted:#7A7266; --line:#E2DBCB;
+    --accent:#2C4870; --accent-soft:#DCE6F2;
+    --urgent:#A63D2F; --urgent-soft:#F3E1DC;
+    --high:#B8792E; --high-soft:#F5E7D2;
+    --medium:#3E6E8E; --medium-soft:#DEEAF0;
+    --low:#8B8578; --low-soft:#EBE7DE;
+    --ryg-red:#A63D2F; --ryg-yellow:#B8792E; --ryg-green:#3F7A54;
+    --conflict:#A63D2F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#17181A; --surface:#1D1F22; --ink:#ECE7DB; --muted:#9C9488; --line:#33352F;
+      --accent:#8FB0D6; --accent-soft:#22344A;
+      --urgent:#D97C68; --urgent-soft:#3A2420;
+      --high:#D9A257; --high-soft:#3A2E18;
+      --medium:#8FC1DF; --medium-soft:#1E2E38;
+      --low:#A6A090; --low-soft:#2A2B26;
+      --ryg-red:#D97C68; --ryg-yellow:#D9A257; --ryg-green:#7FBE94;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17181A; --surface:#1D1F22; --ink:#ECE7DB; --muted:#9C9488; --line:#33352F;
+    --accent:#8FB0D6; --accent-soft:#22344A;
+    --urgent:#D97C68; --urgent-soft:#3A2420;
+    --high:#D9A257; --high-soft:#3A2E18;
+    --medium:#8FC1DF; --medium-soft:#1E2E38;
+    --low:#A6A090; --low-soft:#2A2B26;
+    --ryg-red:#D97C68; --ryg-yellow:#D9A257; --ryg-green:#7FBE94;
+  }
+  :root[data-theme="light"]{
+    --paper:#F6F3EC; --surface:#FFFFFF; --ink:#221F1A; --muted:#7A7266; --line:#E2DBCB;
+    --accent:#2C4870; --accent-soft:#DCE6F2;
+    --urgent:#A63D2F; --urgent-soft:#F3E1DC;
+    --high:#B8792E; --high-soft:#F5E7D2;
+    --medium:#3E6E8E; --medium-soft:#DEEAF0;
+    --low:#8B8578; --low-soft:#EBE7DE;
+    --ryg-red:#A63D2F; --ryg-yellow:#B8792E; --ryg-green:#3F7A54;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    line-height:1.5; margin:0; padding:2.5rem 1.25rem 5rem;
+  }
+  .sheet{ max-width:740px; margin:0 auto; }
+
+  .masthead{ display:flex; justify-content:space-between; align-items:flex-end; gap:1rem;
+    border-bottom:2px solid var(--ink); padding-bottom:1rem; margin-bottom:0.4rem; flex-wrap:wrap; }
+  .masthead h1{ font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif; font-weight:600;
+    font-size:2rem; margin:0; text-wrap:balance; letter-spacing:-0.01em; }
+  .masthead .sub{ font-size:0.85rem; color:var(--muted); margin-top:0.35rem; }
+  .masthead .date{ font-family:Georgia,serif; font-style:italic; font-size:1rem; color:var(--muted); text-align:right; }
+
+  .stat-row{ display:flex; gap:0.6rem; margin:1rem 0 2.2rem; flex-wrap:wrap; }
+  .stat{ background:var(--surface); border:1px solid var(--line); border-radius:3px;
+    padding:0.5rem 0.85rem; font-size:0.78rem; color:var(--muted); }
+  .stat b{ color:var(--ink); font-size:0.95rem; font-variant-numeric:tabular-nums; }
+
+  section{ margin-bottom:2.6rem; }
+  h2{ font-family:Georgia,"Iowan Old Style",serif; font-size:1.05rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.07em; color:var(--ink);
+    border-bottom:1px solid var(--line); padding-bottom:0.5rem; margin:0 0 1rem; }
+
+  .note{ font-size:0.85rem; color:var(--muted); margin:-0.4rem 0 1rem; }
+  .note.warn{ color:var(--urgent); }
+
+  .agenda-row{ display:flex; gap:0.9rem; padding:0.65rem 0; border-bottom:1px solid var(--line); align-items:flex-start; }
+  .agenda-row:last-child{ border-bottom:none; }
+  .time{ flex:0 0 92px; font-size:0.8rem; color:var(--muted); font-variant-numeric:tabular-nums; padding-top:0.15rem; }
+  .agenda-main{ flex:1; min-width:0; }
+  .agenda-title{ font-size:0.95rem; font-weight:600; margin:0 0 0.2rem; text-wrap:balance; }
+  .agenda-meta{ font-size:0.8rem; color:var(--muted); }
+  .pills{ display:flex; gap:0.35rem; margin-top:0.35rem; flex-wrap:wrap; }
+  .pill{ font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:600;
+    padding:0.15rem 0.5rem; border-radius:100px; white-space:nowrap; }
+  .pill.ext{ background:var(--medium-soft); color:var(--medium); }
+  .pill.int{ background:var(--low-soft); color:var(--muted); }
+  .pill.prep{ background:var(--high-soft); color:var(--high); }
+  .pill.agenda-needed{ background:var(--accent-soft); color:var(--accent); }
+  .pill.conflict{ background:var(--urgent-soft); color:var(--urgent); }
+
+  .week-grid{ display:flex; flex-direction:column; gap:0.6rem; }
+  .week-row{ display:flex; gap:1rem; align-items:baseline; padding:0.55rem 0.75rem; background:var(--surface);
+    border:1px solid var(--line); border-radius:4px; }
+  .week-day{ flex:0 0 150px; font-weight:600; font-size:0.88rem; }
+  .week-day span{ display:block; font-size:0.72rem; font-weight:400; color:var(--muted); margin-top:0.1rem; }
+  .load{ flex:0 0 74px; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700;
+    padding:0.2rem 0; text-align:center; border-radius:100px; }
+  .load.light{ background:var(--ryg-green); color:var(--surface); opacity:0.85; }
+  .load.moderate{ background:var(--ryg-yellow); color:var(--surface); opacity:0.9; }
+  .load.heavy{ background:var(--ryg-red); color:var(--surface); opacity:0.9; }
+  .week-detail{ flex:1; font-size:0.83rem; color:var(--muted); }
+
+  .task-card{ display:flex; gap:0.85rem; padding:0.85rem 0; border-bottom:1px solid var(--line); }
+  .task-card:last-child{ border-bottom:none; }
+  .prio-bar{ flex:0 0 4px; border-radius:2px; }
+  .prio-bar.urgent{ background:var(--urgent); }
+  .prio-bar.high{ background:var(--high); }
+  .prio-bar.medium{ background:var(--medium); }
+  .task-body{ flex:1; min-width:0; }
+  .task-head{ display:flex; justify-content:space-between; gap:0.6rem; align-items:baseline; }
+  .task-title{ font-weight:600; font-size:0.92rem; text-wrap:balance; }
+  .task-from{ font-size:0.78rem; color:var(--muted); margin-top:0.15rem; }
+  .task-action{ font-size:0.85rem; margin-top:0.35rem; }
+  .action-label{ font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; color:var(--muted); }
+
+  .group-label{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;
+    color:var(--muted); margin:1.1rem 0 0.3rem; }
+  .group-label:first-child{ margin-top:0; }
+
+  .meeting{ background:var(--surface); border:1px solid var(--line); border-radius:5px; padding:1rem 1.15rem; margin-bottom:0.9rem; }
+  .meeting-head{ display:flex; justify-content:space-between; align-items:baseline; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.5rem;}
+  .meeting-title{ font-weight:600; font-size:0.98rem; }
+  .meeting-date{ font-size:0.76rem; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .tag-client{ display:inline-block; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700;
+    padding:0.12rem 0.5rem; border-radius:100px; margin-bottom:0.5rem; }
+  .tag-client.external{ background:var(--medium-soft); color:var(--medium); }
+  .tag-client.internal{ background:var(--low-soft); color:var(--muted); }
+  .meeting p{ margin:0.3rem 0; font-size:0.88rem; }
+  .meeting .field{ margin-top:0.55rem; }
+  .field-label{ font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; color:var(--muted); display:block; margin-bottom:0.2rem;}
+  .field ul{ margin:0.2rem 0 0; padding-left:1.1rem; font-size:0.87rem; }
+  .field li{ margin-bottom:0.2rem; }
+  .kp{ color:var(--accent); font-weight:600; }
+
+  .flag-card{ display:flex; gap:0.85rem; padding:0.8rem 0; border-bottom:1px solid var(--line); }
+  .flag-card:last-child{ border-bottom:none; }
+  .ryg-dot{ flex:0 0 12px; height:12px; border-radius:50%; margin-top:0.25rem; background:var(--ryg-red); }
+  .flag-title{ font-weight:600; font-size:0.92rem; }
+  .flag-meta{ font-size:0.82rem; color:var(--muted); margin-top:0.2rem; }
+
+  footer{ margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line); font-size:0.75rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div>
+      <h1>Daily Briefing</h1>
+      <div class="sub">For Karen Piper — Code and Theory</div>
+    </div>
+    <div class="date">Thursday, July 9, 2026</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><b>13</b> tasks pushed to karenban</div>
+    <div class="stat"><b>2</b> calendar double-bookings flagged</div>
+    <div class="stat"><b>2</b> projects Red this week</div>
+  </div>
+
+  <section>
+    <h2>Today — Thursday, July 9</h2>
+    <p class="note warn">10:00am–2:30pm is essentially back-to-back, and 11:30am is double-booked. See conflict flagged below.</p>
+
+    <div class="agenda-row">
+      <div class="time">10:00–10:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Flex: Karen / Lucy weekly</div>
+        <div class="agenda-meta">Organizer: Lucy Ye</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">10:30–11:00</div>
+      <div class="agenda-main">
+        <div class="agenda-title">mack IRL deck narrative regroup</div>
+        <div class="agenda-meta">Organizer: Yenteen Hu · with Kira Feinstein</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill prep">Prep needed</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">11:00–11:15</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen / Harris — quick OpenTable Media chat</div>
+        <div class="agenda-meta">Organizer: Harris Baum</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">11:30–12:00</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Chat through new Equinix Opp</div>
+        <div class="agenda-meta">Organizer: Harris Baum · 8 attendees</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill conflict">Conflicts below</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">11:30–12:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">[INT] MS NOW | Creative Review</div>
+        <div class="agenda-meta">Organizer: Cassandra Hyde · 12 attendees</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill prep">Prep needed</span><span class="pill conflict">Double-booked w/ Equinix</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">12:30–1:00</div>
+      <div class="agenda-main">
+        <div class="agenda-title">[INT] MAD Daily Standup <span style="color:var(--muted); font-weight:400;">— declined</span></div>
+        <div class="agenda-meta">Organizer: Josh Currie</div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">1:00–1:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen x Yenteen: biweekly</div>
+        <div class="agenda-meta">Organizer: Yenteen Hu</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">1:30–2:00</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen / Marti</div>
+        <div class="agenda-meta">Organizer: Marti Rosenberger</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">2:00–2:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen + Linds Monthly Hang!</div>
+        <div class="agenda-meta">Organizer: Lindsey Black</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">3:00–3:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen / Devorne 1:1</div>
+        <div class="agenda-meta">Organizer: Devorne Hormeku (Rhythm Agency)</div>
+        <div class="pills"><span class="pill ext">External · 1:1</span><span class="pill prep">Prep needed</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">4:00–4:15</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen + Amanda | Meet &amp; Greet!</div>
+        <div class="agenda-meta">Organizer: Amanda Merlino</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">5:00–5:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">[INT] Anne/Karen bi-weekly</div>
+        <div class="agenda-meta">Organizer: Anne Sachs</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">5:45–7:15</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Lamtumirë! Shihemi më vonë! Shelby (farewell)</div>
+        <div class="agenda-meta">Organizer: Arjun Kalyanpur · Weather Up → Monk McGinns</div>
+        <div class="pills"><span class="pill int">Social</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">6:30–7:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Kim dinner</div>
+        <div class="agenda-meta">Personal · Brooklyn</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tomorrow — Friday, July 10</h2>
+    <p class="note">1:00pm is double-booked; nothing else needs prep today beyond the usual.</p>
+
+    <div class="agenda-row">
+      <div class="time">10:00–10:45</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Weekly | New Biz Sync</div>
+        <div class="agenda-meta">Organizer: Kaydia Ramsey · 9 attendees</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill prep">Prep needed</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">11:45–12:05</div>
+      <div class="agenda-main">
+        <div class="agenda-title">[INT] MS NOW | Daily Jam</div>
+        <div class="agenda-meta">Organizer: Cassandra Hyde</div>
+        <div class="pills"><span class="pill int">Internal</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">1:00–1:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Intelligence Leads Weekly</div>
+        <div class="agenda-meta">Organizer: Lucy Ye · 8 attendees</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill conflict">Double-booked w/ Open Labs</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">1:00–1:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">🦾 Open Labs</div>
+        <div class="agenda-meta">Organizer: Peter Steiner</div>
+        <div class="pills"><span class="pill int">Internal</span><span class="pill conflict">Conflicts above</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">1:45–2:15</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Adam + Karen</div>
+        <div class="agenda-meta">Organizer: Adam Kauder</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">3:00–3:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">Karen | Jim 1:1 <span style="color:var(--muted); font-weight:400;">— not yet RSVP'd</span></div>
+        <div class="agenda-meta">Organizer: James Nowierski</div>
+        <div class="pills"><span class="pill int">Internal · 1:1</span></div>
+      </div>
+    </div>
+
+    <div class="agenda-row">
+      <div class="time">3:30–5:30</div>
+      <div class="agenda-main">
+        <div class="agenda-title">drinks with kp!</div>
+        <div class="agenda-meta">Organizer: Millie Tunnell · Bar Pisellino</div>
+        <div class="pills"><span class="pill int">Social</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>This Week at a Glance</h2>
+    <p class="note">Calendar also shows an all-day "Piper in London" block through 7/26 — Slack and meeting notes this week place Karen in NYC instead, so that entry may be stale.</p>
+    <div class="week-grid">
+      <div class="week-row">
+        <div class="week-day">Fri 7/10 <span>tomorrow</span></div>
+        <div class="load moderate">Moderate</div>
+        <div class="week-detail">New Biz Sync, MS NOW Jam, double-booked 1pm (Intelligence Leads / Open Labs), drinks with KP</div>
+      </div>
+      <div class="week-row">
+        <div class="week-day">Sat 7/11</div>
+        <div class="load light">Light</div>
+        <div class="week-detail">Nothing on calendar</div>
+      </div>
+      <div class="week-row">
+        <div class="week-day">Sun 7/12</div>
+        <div class="load light">Light</div>
+        <div class="week-detail">Dad FT (personal)</div>
+      </div>
+      <div class="week-row">
+        <div class="week-day">Mon 7/13</div>
+        <div class="load heavy">Heavy</div>
+        <div class="week-detail">9 meetings, 10am–6pm: Visa Creative KO, MS NOW Jam, Mini Monday (Karen organizes), MAD Standup, Bose demo hold, Jim 1:1, Mack Trucks Sr Leadership Check-In, Brand Strat Leads Weekly (Karen organizes), Punt Exec Sponsors Check-In</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Emails Requiring Action</h2>
+
+    <div class="group-label">Reply today</div>
+    <div class="task-card">
+      <div class="prio-bar urgent"></div>
+      <div class="task-body">
+        <div class="task-head">
+          <div class="task-title">RTO approvals — 4 requests pending</div>
+        </div>
+        <div class="task-from">rto.notifications@codeandtheory.com · 3 separate reminder emails today</div>
+        <div class="task-action"><span class="action-label">Action: </span>Approve or comment on 4 outstanding time-off requests; they're blocking employee confirmations.</div>
+      </div>
+    </div>
+
+    <div class="group-label">Watch</div>
+    <div class="task-card">
+      <div class="prio-bar medium"></div>
+      <div class="task-body">
+        <div class="task-head"><div class="task-title">Pretium — "Thank you (and deck)"</div></div>
+        <div class="task-from">Vince Quilici → Brenna Karp (Pretium), Karen cc'd · last activity 7/1</div>
+        <div class="task-action"><span class="action-label">Status: </span>Revised deck sent with logo/copy fixes; Pretium said they'd review and send final notes. Nothing to do until they respond.</div>
+      </div>
+    </div>
+    <div class="task-card">
+      <div class="prio-bar medium"></div>
+      <div class="task-body">
+        <div class="task-head"><div class="task-title">Grayscale Investments — RYG: Red</div></div>
+        <div class="task-from">projectupdates@codeandtheory.com · week of 7/6</div>
+        <div class="task-action"><span class="action-label">Status: </span>See Project Flags below.</div>
+      </div>
+    </div>
+    <div class="task-card">
+      <div class="prio-bar medium"></div>
+      <div class="task-body">
+        <div class="task-head"><div class="task-title">Adobe — Firefly — RYG: Red</div></div>
+        <div class="task-from">projectupdates@codeandtheory.com · week of 7/6</div>
+        <div class="task-action"><span class="action-label">Status: </span>See Project Flags below.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Granola — Meeting Summaries</h2>
+
+    <div class="meeting">
+      <span class="tag-client external">External / Client</span>
+      <div class="meeting-head">
+        <div class="meeting-title">HOLD: AWS Creative RFP Presentation</div>
+        <div class="meeting-date">Jul 7, 6:00pm</div>
+      </div>
+      <p>C&amp;T and sister agency Instrument presented the AWS Creative RFP: agency overview, the Qualcomm and Amazon Ads case studies, and "the Machine" AI operating system. AWS's content team (Nora, Pilar) responded well to the Machine as a potential "brand brain," and surfaced real pain points — siloed business units, under-baked briefs, newsroom-speed expectations.</p>
+      <div class="field">
+        <span class="field-label">Open / unresolved</span>
+        <ul><li>AWS wants a deeper follow-up on how the Machine unifies their story across IDPs and the IDC.</li></ul>
+      </div>
+      <div class="field">
+        <span class="field-label"><span class="kp">[KP]</span> Action items</span>
+        <ul>
+          <li>Confirm Nora &amp; Pilar received the Seller Speedway video.</li>
+          <li>Schedule the Machine demo follow-up they asked for.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="meeting">
+      <span class="tag-client internal">Internal</span>
+      <div class="meeting-head">
+        <div class="meeting-title">AWS Full Team Prep</div>
+        <div class="meeting-date">Jul 6, 12:00pm</div>
+      </div>
+      <p>Final rehearsal ahead of the AWS presentation — presenter lineup tightened to 45 minutes, case studies reordered (Qualcomm first, Amazon Ads as closer), Machine section trimmed with one new slide added. Deck and rates due by 6pm same day.</p>
+      <div class="field">
+        <span class="field-label">Decisions made</span>
+        <ul><li>Instrument's Anna Meyer added to the team slide with a client pre-wire note.</li></ul>
+      </div>
+      <div class="field">
+        <span class="field-label"><span class="kp">[Others]</span> Commitments</span>
+        <ul><li>Harris sent Arjun the revised efficiency-claims slide; Arjun built the new Machine slide and trimmed the section — both completed ahead of the 7/7 presentation.</li></ul>
+      </div>
+    </div>
+
+    <div class="meeting">
+      <span class="tag-client internal">Internal</span>
+      <div class="meeting-head">
+        <div class="meeting-title">Comcast B2B Pitch Clickthrough</div>
+        <div class="meeting-date">Jul 6, 4:30pm</div>
+      </div>
+      <p>Full clickthrough of slide ownership and content fixes for the Comcast B2B pitch. Deck is currently too long and dense for the room — needs to shed roughly 10 slides — with the prototype demo expected to be the centerpiece of the room conversation.</p>
+      <div class="field">
+        <span class="field-label">Decisions made</span>
+        <ul>
+          <li>Hide slides 38–41 and fold those points into the live prototype talk track instead.</li>
+          <li>Fix "Xfinity platform" → "Xfinity mobile" on the work-history slide.</li>
+          <li>Replace dense Marcus copy with the 11 Labs persona; strip stats from slides 13–18.</li>
+        </ul>
+      </div>
+      <div class="field">
+        <span class="field-label">Open / unresolved</span>
+        <ul><li>Exact pitch date isn't in the notes — confirm with Marti or Treff.</li></ul>
+      </div>
+      <div class="field">
+        <span class="field-label"><span class="kp">[KP]</span> Action items</span>
+        <ul>
+          <li>Build the prototype talk track covering the hidden slides (rollout, AEO/GEO/human distribution).</li>
+          <li>Send Marti a full feature rundown so she can hand off cleanly at slide 32.</li>
+        </ul>
+      </div>
+      <div class="field">
+        <span class="field-label">[Others] Commitments</span>
+        <ul><li>Lucy to practice slides 41–42 (partnership framework); Anne to practice the partnerships section; Treff owns the final trimmed deck.</li></ul>
+      </div>
+    </div>
+
+    <div class="meeting">
+      <span class="tag-client internal">Internal</span>
+      <div class="meeting-head">
+        <div class="meeting-title">Girls Who Code — content brief &amp; workshop facilitation</div>
+        <div class="meeting-date">Jul 5, 3:17pm</div>
+      </div>
+      <p>Karen scoped two workstreams for Girls Who Code: a content brief built against existing materials, and an in-person workshop to get candid answers straight from the client. Friday 7/10 — tomorrow — was floated as the workshop date.</p>
+      <div class="field">
+        <span class="field-label">[Others] Commitments</span>
+        <ul><li>Collaborator to review Lauren's brief and the client-presented work, then confirm capacity and whether Friday works.</li></ul>
+      </div>
+      <div class="field">
+        <span class="field-label"><span class="kp">[KP]</span> Action items</span>
+        <ul><li>Follow up today — the floated workshop date is tomorrow and confirmation is still outstanding.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Project Flags</h2>
+    <div class="flag-card">
+      <div class="ryg-dot"></div>
+      <div>
+        <div class="flag-title">Grayscale Investments — Website Redesign Retainer</div>
+        <div class="flag-meta">Leads: Vince Quilici, Melissa Ranalli · flagged Red in the week-of-7/6 status report · check in on the blocker</div>
+      </div>
+    </div>
+    <div class="flag-card">
+      <div class="ryg-dot"></div>
+      <div>
+        <div class="flag-title">Adobe — Firefly Brand Playbook &amp; Evergreen Image Library</div>
+        <div class="flag-meta">Contacts: Stefany Toro, Sarah Marie Glass · flagged Red in the week-of-7/6 status report</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Generated from Google Calendar, Gmail, Slack, and Granola · 13 tasks written to briefing/pending-tasks.json</footer>
+
+</div>
+</body>
+</html>
