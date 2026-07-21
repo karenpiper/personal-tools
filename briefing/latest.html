@@ -1,0 +1,673 @@
+<title>Daily Briefing — Tue Jul 21, 2026</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --surface: #ffffff;
+    --ink: #1c1e24;
+    --muted: #6b6f76;
+    --faint: #93979d;
+    --accent: #2b4c7e;
+    --accent-soft: #e4ebf4;
+    --rule: #e4e0d7;
+    --urgent: #b23b26;
+    --urgent-soft: #f9e7e2;
+    --high: #96660a;
+    --high-soft: #f5ecd9;
+    --medium: #4c5b6b;
+    --medium-soft: #e9edf1;
+    --low: #7c8086;
+    --low-soft: #eeeeec;
+    --green: #3d7a4f;
+    --green-soft: #e5f0e7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --surface: #1b1e24;
+      --ink: #ece9e2;
+      --muted: #a3a8b0;
+      --faint: #7b7f87;
+      --accent: #8fb0dd;
+      --accent-soft: #22344a;
+      --rule: #2c2f36;
+      --urgent: #e2705a;
+      --urgent-soft: #3a2320;
+      --high: #d9ab4e;
+      --high-soft: #3a2f18;
+      --medium: #a8b6c4;
+      --medium-soft: #232830;
+      --low: #8b8f96;
+      --low-soft: #23252a;
+      --green: #7bc290;
+      --green-soft: #1e2e22;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a; --surface: #1b1e24; --ink: #ece9e2; --muted: #a3a8b0; --faint: #7b7f87;
+    --accent: #8fb0dd; --accent-soft: #22344a; --rule: #2c2f36;
+    --urgent: #e2705a; --urgent-soft: #3a2320; --high: #d9ab4e; --high-soft: #3a2f18;
+    --medium: #a8b6c4; --medium-soft: #232830; --low: #8b8f96; --low-soft: #23252a;
+    --green: #7bc290; --green-soft: #1e2e22;
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f4ef; --surface: #ffffff; --ink: #1c1e24; --muted: #6b6f76; --faint: #93979d;
+    --accent: #2b4c7e; --accent-soft: #e4ebf4; --rule: #e4e0d7;
+    --urgent: #b23b26; --urgent-soft: #f9e7e2; --high: #96660a; --high-soft: #f5ecd9;
+    --medium: #4c5b6b; --medium-soft: #e9edf1; --low: #7c8086; --low-soft: #eeeeec;
+    --green: #3d7a4f; --green-soft: #e5f0e7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .masthead h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .masthead .sub {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 22px;
+    text-align: right;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat .num {
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .stat .lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .stat.urgent .num { color: var(--urgent); }
+
+  section { margin-bottom: 40px; }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  h3.day-flag {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--muted);
+  }
+
+  .callout {
+    background: var(--urgent-soft);
+    border: 1px solid color-mix(in srgb, var(--urgent) 35%, transparent);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 14.5px;
+  }
+  .callout strong { color: var(--urgent); }
+
+  .agenda { display: flex; flex-direction: column; gap: 2px; }
+  .row {
+    display: grid;
+    grid-template-columns: 92px 1fr auto;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .time {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .row .meeting-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .row .meta {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .row .prep {
+    font-size: 12.5px;
+    color: var(--high);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .row .conflict {
+    font-size: 12.5px;
+    color: var(--urgent);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 3px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge.ext { background: var(--urgent-soft); color: var(--urgent); }
+  .badge.int { background: var(--medium-soft); color: var(--medium); }
+  .badge.org { background: var(--accent-soft); color: var(--accent); }
+
+  .week-list { display: flex; flex-direction: column; gap: 10px; }
+  .week-row {
+    display: grid;
+    grid-template-columns: 150px 90px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    font-size: 14px;
+    padding: 4px 0;
+  }
+  .week-row .wday { font-weight: 700; }
+  .week-row .wdate { color: var(--faint); font-size: 12.5px; }
+  .load {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+  .load.heavy { background: var(--urgent-soft); color: var(--urgent); }
+  .load.moderate { background: var(--high-soft); color: var(--high); }
+  .load.light { background: var(--green-soft); color: var(--green); }
+  .week-row .desc { color: var(--muted); }
+
+  .email-group { margin-bottom: 18px; }
+  .email-group h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  .item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .item:last-child { border-bottom: none; }
+  .item .who { font-weight: 700; font-size: 14.5px; }
+  .item .what { font-size: 14px; margin-top: 2px; }
+  .item .action {
+    font-size: 13px;
+    color: var(--accent);
+    margin-top: 3px;
+    font-weight: 600;
+  }
+
+  .meeting-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--medium);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .meeting-card.external { border-left-color: var(--urgent); }
+  .meeting-card h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag-inline {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--medium-soft);
+    color: var(--medium);
+  }
+  .meeting-card.external .tag-inline { background: var(--urgent-soft); color: var(--urgent); }
+  .meeting-card p { margin: 0 0 10px; font-size: 14.5px; }
+  .meeting-card .block-label {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--faint);
+    font-weight: 700;
+    margin: 12px 0 5px;
+  }
+  .meeting-card ul { margin: 0 0 4px; padding-left: 20px; font-size: 14px; }
+  .meeting-card li { margin-bottom: 4px; }
+  .kp { color: var(--accent); font-weight: 700; }
+  .oth { color: var(--muted); font-weight: 700; }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .project-card:last-child { border-bottom: none; }
+  .ryg-pill {
+    height: fit-content;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--urgent-soft);
+    color: var(--urgent);
+    padding: 4px 9px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .project-card h4 { margin: 0 0 4px; font-size: 15px; }
+  .project-card .lead { font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+  .project-card .issue { font-size: 14px; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer strong { color: var(--ink); }
+</style>
+
+<div class="page">
+
+  <div class="masthead">
+    <div>
+      <h1>Karen Piper — Daily Briefing</h1>
+      <div class="sub">Tuesday, July 21, 2026 · sources: Calendar · Gmail · Slack · Granola</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat urgent"><div class="num">5</div><div class="lbl">Urgent today</div></div>
+      <div class="stat"><div class="num">21</div><div class="lbl">Tasks pushed</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Red projects</div></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Today — Tuesday, Jul 21</h2>
+    <div class="callout">
+      <strong>No breathing room:</strong> triple-booked at 11am (Visa prep + Ascent + internal hold) and again at 1pm (Brand Intelligence status + two overlapping Visa/Stagwell sessions). PODS Onsite runs 9–5 underneath all of it. Treat anything not Visa or Abbott as droppable today.
+    </div>
+    <div class="agenda">
+      <div class="row">
+        <div class="time">9:00–5:00</div>
+        <div><div class="meeting-title">PODS Onsite Day 2</div><div class="meta">575 Broadway · 22 attendees · organizer JJ Schmuckler</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">10:00</div>
+        <div><div class="meeting-title">All Agency Meeting — FDX / Broadridge Platform / Campaign</div><div class="meta">Agency-wide broadcast</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">11:00</div>
+        <div><div class="meeting-title">Visa B2B Internal Team Final Prep</div><div class="meta">11 attendees incl. Stagwell, Harris Poll, Anomaly</div><div class="prep">Prep needed — client-facing, final casting still open</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">11:00</div>
+        <div><div class="meeting-title">Visa prep <span style="font-weight:400;color:var(--faint)">(personal block)</span> / Ascent</div><div class="meta">Overlaps directly with the meeting above</div></div>
+        <div class="badges"></div>
+      </div>
+      <div class="row">
+        <div class="time">11:45</div>
+        <div><div class="meeting-title">[INT] MS NOW | Daily Jam</div><div class="meta">15 attendees</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">1:00</div>
+        <div><div class="meeting-title">Brand Intelligence Weekly Status</div><div class="meta">9 attendees · organizer Lucy Ye</div><div class="prep">Prep needed — status review</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">1:00–3:00</div>
+        <div><div class="meeting-title">Visa + Stagwell B2B Inspiration Session</div><div class="meta">Stagwell HQ, 65th floor · Visa, Harris Poll, Anomaly in the room</div><div class="prep">Prep needed — Karen co-presents Code and Theory section</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">1:30</div>
+        <div><div class="meeting-title">Talking Heads</div><div class="meta">4 attendees</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">3:00</div>
+        <div><div class="meeting-title">Abbott Final Pitch Rehearsal</div><div class="meta">10 attendees · organizer Zack Botos</div><div class="prep">Prep needed — last rehearsal before tomorrow's client presentation</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:00</div>
+        <div><div class="meeting-title">Karen / Hannah 1:1</div></div>
+        <div class="badges"><span class="badge int">1:1</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:00</div>
+        <div><div class="meeting-title">Therapy</div></div>
+        <div class="badges"></div>
+      </div>
+      <div class="row">
+        <div class="time">4:30</div>
+        <div><div class="meeting-title">Devorne x Karen 1:1</div><div class="meta">External contact — currentagency.com</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:30</div>
+        <div><div class="meeting-title">Internal Tailored Brands Next Steps Chat</div><div class="meta">7 attendees — overlaps with the 1:1 above</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">5:00</div>
+        <div><div class="meeting-title">Karen | Jim 1:1</div></div>
+        <div class="badges"><span class="badge int">1:1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tomorrow — Wednesday, Jul 22</h2>
+    <div class="callout">
+      <strong>Collision at 3–5pm:</strong> Abbott Final Presentation (the actual client pitch) is scheduled directly against KP/Pat 1:1, a tentative Pretium hold, and a HOLD for MSFT Ads x Machine Session. Separately — a Seattle MSFT meeting sits at 7:15pm ET, but Slack suggests it moved to Thu 7/30. Worth 10 minutes this afternoon to untangle before it becomes a live scramble tomorrow.
+    </div>
+    <div class="agenda">
+      <div class="row">
+        <div class="time">10:00</div>
+        <div><div class="meeting-title">C&T x Swayable — UFCU Campaign Extension Test Readout</div><div class="meta">Client readout · Swayable attendees</div><div class="prep">Prep needed — client-facing</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">11:00</div>
+        <div><div class="meeting-title">Karen / Laura weekly</div></div>
+        <div class="badges"><span class="badge int">1:1</span></div>
+      </div>
+      <div class="row">
+        <div class="time">12:00</div>
+        <div><div class="meeting-title">[Internal] Visa B2B Brand Expression Full Team Sync — Part 2</div><div class="meta">12 attendees</div><div class="prep">Prep needed</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">1:00</div>
+        <div><div class="meeting-title">User & Brand Intelligence Weekly Resourcing</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">2:30</div>
+        <div><div class="meeting-title">Brand Strategy Resourcing (weekly)</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">3:00</div>
+        <div><div class="meeting-title">Flex: Karen / Lucy weekly</div></div>
+        <div class="badges"><span class="badge int">1:1</span></div>
+      </div>
+      <div class="row">
+        <div class="time">3:00–4:30</div>
+        <div><div class="meeting-title">[HOLD] Abbott Final Presentation</div><div class="meta">Client pitch — 10 attendees</div><div class="conflict">Conflicts with KP/Pat, Pretium hold, MSFT Ads session below</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">3:30</div>
+        <div><div class="meeting-title">KP / Pat 2x weekly</div></div>
+        <div class="badges"><span class="badge int">1:1</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:00</div>
+        <div><div class="meeting-title">Tentative Pretium hold</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:00</div>
+        <div><div class="meeting-title">HOLD | MSFT Ads x Machine Session</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">4:15</div>
+        <div><div class="meeting-title">Strategy Monthly Hot + Happening</div><div class="meta">17 attendees</div></div>
+        <div class="badges"><span class="badge int">Internal</span></div>
+      </div>
+      <div class="row">
+        <div class="time">7:15pm</div>
+        <div><div class="meeting-title">Microsoft x Code and Theory | Seattle Meeting</div><div class="meta">Redmond, WA — status unconfirmed, see task list</div></div>
+        <div class="badges"><span class="badge ext">External</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>This Week at a Glance</h2>
+    <div class="week-list">
+      <div class="week-row">
+        <div class="wday">Wednesday <span class="wdate">Jul 22</span></div>
+        <div class="load heavy">Heavy</div>
+        <div class="desc">Abbott Final Presentation, Visa full-team sync, unresolved Seattle MSFT status</div>
+      </div>
+      <div class="week-row">
+        <div class="wday">Thursday <span class="wdate">Jul 23</span></div>
+        <div class="load moderate">Moderate</div>
+        <div class="desc">Karen organizes Weekly Brand Strategy (22 people) + six back-to-back 1:1s; Visa Final Looks sync</div>
+      </div>
+      <div class="week-row">
+        <div class="wday">Friday <span class="wdate">Jul 24</span></div>
+        <div class="load light">Light</div>
+        <div class="desc">Morning open; 4 meetings, done by 2pm — good day to bank OpenTable Gantt work</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Emails Requiring Action</h2>
+    <div class="email-group">
+      <h4>Reply Today</h4>
+      <div class="item">
+        <div class="who">Kaydia Ramsey — Slack, not email, cross-referenced here for urgency</div>
+        <div class="what">Asked this morning whether the hotel was alerted about a late arrival.</div>
+        <div class="action">→ Quick confirm needed</div>
+      </div>
+    </div>
+    <div class="email-group">
+      <h4>Reply This Week</h4>
+      <div class="item">
+        <div class="who">RTO Reminders — rto.notifications@codeandtheory.com</div>
+        <div class="what">Two separate batches (3 requests, then 2 requests) addressed directly to Karen, still awaiting approval decision.</div>
+        <div class="action">→ Approve or comment on each</div>
+      </div>
+    </div>
+    <div class="email-group">
+      <h4>Watch</h4>
+      <div class="item">
+        <div class="who">Jonah / Jennifer Bas (Mobian) &amp; Pat McQueen</div>
+        <div class="what">Intro thread for a potential Mobian meeting — Pat asked Rosie to schedule Karen within Mobian's availability window.</div>
+        <div class="action">→ Confirm it landed on the calendar; no action if Rosie has it</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Slack — Needs Response</h2>
+    <div class="item">
+      <div class="who">Kaydia Ramsey <span style="font-weight:400;color:var(--faint);font-size:12.5px">· group DM w/ Rosierey Buen · 5:12am</span></div>
+      <div class="what">Checking whether Karen called the hotel about a late check-in.</div>
+      <div class="action">→ Time-sensitive, quick reply</div>
+    </div>
+    <div class="item">
+      <div class="who">Jessie Cooper <span style="font-weight:400;color:var(--faint);font-size:12.5px">· Visa group DM · 5:20am</span></div>
+      <div class="what">"Let me know if there's anything you want me to change" on her Visa slides.</div>
+      <div class="action">→ Low-effort reply</div>
+    </div>
+    <div class="item">
+      <div class="who">Ben Muldrew <span style="font-weight:400;color:var(--faint);font-size:12.5px">· MSFT trip group DM · Mon evening</span></div>
+      <div class="what">Flights to Seattle cancelled; thread converges on shifting Toby/Kelly's meeting to Thu 7/30 instead of this week.</div>
+      <div class="action">→ Confirm final call — calendar hasn't been updated to match</div>
+    </div>
+    <div class="item">
+      <div class="who">Jasmine Isaac <span style="font-weight:400;color:var(--faint);font-size:12.5px">· DM · Mon 3:40pm</span></div>
+      <div class="what">Asked if the MSFT trip is this week or next; offered a drink and pitch support.</div>
+      <div class="action">→ Can wait, easy reply</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Granola — Meeting Summaries</h2>
+
+    <div class="meeting-card">
+      <h4>Abbott narrative feedback and team communication <span class="tag-inline">Internal</span></h4>
+      <p><strong>TL;DR:</strong> Post-mortem on a chaotic Abbott handoff — the narrative was rushed, marked "C minus," and Karen stepped in to tighten it without full context. The bigger thread underneath: resourcing dysfunction (Matthew bypassing Julian), a junior-to-senior indirect-feedback pattern, and Julian's capacity being maxed at 70-hour weeks.</p>
+      <div class="block-label">Decisions</div>
+      <ul>
+        <li>Pods transition proceeds: Julian, Adam, Laura each take accounts + project work</li>
+        <li>Karen escalated to Pat that Julian shouldn't run pitches under these conditions</li>
+      </ul>
+      <div class="block-label">Open / Unresolved</div>
+      <ul>
+        <li>Whether the AI-feedback comment gets addressed directly between Adam and Julian</li>
+      </ul>
+      <div class="block-label"><span class="kp">[KP]</span> Action Items</div>
+      <ul>
+        <li>Address direct-feedback culture at the next leads meeting</li>
+        <li>Check in on Julian's workload — offered air cover if she needs time off</li>
+      </ul>
+      <div class="block-label"><span class="oth">[Others]</span> Commitments</div>
+      <ul>
+        <li>Julian to talk to Khaki about giving upward feedback, and to Adam directly re: the AI comment</li>
+      </ul>
+    </div>
+
+    <div class="meeting-card external">
+      <h4>Connect on OpenTable Ask <span class="tag-inline">External / New Business</span></h4>
+      <p><strong>TL;DR:</strong> Scoping call for OpenTable's two-sided marketplace ask — positioning for both advertisers and restaurants, plus a productization track to arm OpenTable's own sales team. Stagwell wants an integrated project plan by end of week.</p>
+      <div class="block-label">Decisions</div>
+      <ul>
+        <li>Three tracks confirmed: audience/data (Gale), brand positioning (both sides), productization (advertiser side, unlocks after positioning)</li>
+      </ul>
+      <div class="block-label">Open / Unresolved</div>
+      <ul>
+        <li>No owner yet for Track 3 productization — Jim could advise a few hours but can't run it</li>
+      </ul>
+      <div class="block-label"><span class="kp">[KP]</span> Action Items</div>
+      <ul>
+        <li>Finalize project plan + Gantt for Friday client share</li>
+        <li>Pull Discord and Machine budget sheets, plus Laura's progressive delivery doc, as scope reference</li>
+        <li>Explore Jim's availability to advise on Track 3</li>
+      </ul>
+      <div class="block-label"><span class="oth">[Others]</span> Commitments</div>
+      <ul>
+        <li>Harris: send questions to Tailored Brands contact; talk to Lance tonight about that opportunity</li>
+      </ul>
+    </div>
+
+    <div class="meeting-card external">
+      <h4>Visa Prep <span class="tag-inline">External / Client</span></h4>
+      <p><strong>TL;DR:</strong> Full run-through of the Visa B2B pitch deck structure with Stagwell, Harris Poll, and Anomaly — slide reorder agreed, content gaps flagged, casting still being finalized for tomorrow's in-room team.</p>
+      <div class="block-label">Decisions</div>
+      <ul>
+        <li>Slides 14–21 move later as proof points after capabilities; "IT decision maker" language softened toward Visa relevance</li>
+        <li>Karen joining virtually (flight cancelled) — needs to be added to the invite</li>
+      </ul>
+      <div class="block-label"><span class="kp">[KP]</span> Action Items</div>
+      <ul>
+        <li>Share the Visa B2B positioning deck + one-pager with the group ("Multiplier for Ambition")</li>
+        <li>Find 30 minutes with Kyle to get briefed on the full scope of Harris Poll's Visa relationship</li>
+      </ul>
+      <div class="block-label"><span class="oth">[Others]</span> Commitments</div>
+      <ul>
+        <li>Alexis: finalize and send the updated deck to the client today; confirm final casting</li>
+        <li>Jess: send The Machine demo to Slavi for final review</li>
+      </ul>
+    </div>
+
+    <div class="meeting-card">
+      <h4>Mini Monday <span class="tag-inline">Internal / Team Roundup</span></h4>
+      <p><strong>TL;DR:</strong> Weekly pipeline and account roundup. Abbott and Mack both wrap this week; new-business pipeline is heavy (OpenTable, Tailored Brands, Pretium, Visa, Microsoft, Abu Dhabi Tourism); Comcast conversation trending positive.</p>
+      <div class="block-label">Decisions</div>
+      <ul><li>Mack officially wrapped — Kira led it home</li></ul>
+      <div class="block-label"><span class="kp">[KP]</span> Action Items</div>
+      <ul><li>Share Abbott + Mack final-lock confirmation in the channel once each is locked</li></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Project Flags — RYG Red</h2>
+    <div class="project-card">
+      <div class="ryg-pill">Red</div>
+      <div>
+        <h4>Adobe — Firefly Brand Playbook</h4>
+        <div class="lead">Lead: João Mestre · Producer: Sarah Marie Glass</div>
+        <div class="issue">Paused by Adobe finance since 6/22 pending a signed SOW + PO. True-up SOW sent 7/15 — still waiting on the client. Freelance Factory team at risk of being re-staffed elsewhere.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="ryg-pill">Red</div>
+      <div>
+        <h4>Sixth Street — Website Transformation</h4>
+        <div class="lead">Lead: Jessica Volodarsky · Producer: Chris Arcari</div>
+        <div class="issue">30 days past the original completion date, but trending positive: client is flying to NY for an executive working session to reset the partnership and scope a new SOW.</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="ryg-pill">Red</div>
+      <div>
+        <h4>Grayscale — Retainer / Website Redesign</h4>
+        <div class="lead">Lead: Ailish Ryder · Producer: Melissa Ranalli</div>
+        <div class="issue">Client disputing April/May invoices and requesting a refund on cancelled interim-release work. Counter-proposal being finalized with JJ and Julia this week.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div><strong>21 tasks</strong> extracted and pushed to Karenban.</div>
+    <div>Generated from Calendar, Gmail, Slack &amp; Granola as of Jul 21, 2026.</div>
+  </footer>
+
+</div>
