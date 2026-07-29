@@ -1,13 +1,170 @@
 [
-  {"title":"Prep for Comcast Strategy Midpoint (Mon 7:15am) — client-facing","priority":"urgent","client":"Comcast","notes":"Clients: melissa_lapp, erika_fiest, julia_murphy @comcast.com. Full team + C&T leads attending.","tags":["briefing","comcast","prep","monday"]},
-  {"title":"Lock Mack briefs today — needed for Monday immersion/briefing session","priority":"urgent","client":"Mack Trucks","notes":"Mack Trucks pitch immersion & briefing is Monday 9am. Freelancers being briefed. Born to Work platform direction.","tags":["briefing","mack","prep","today"]},
-  {"title":"Review Yenteen's updated Mack brief (Google Doc in Slack DM)","priority":"urgent","client":"Mack Trucks","notes":"Yenteen messaged: brief is done, updated black box per feedback, ends on page 5. Needs KP eyes before Monday.","tags":["briefing","mack","review"]},
-  {"title":"Prep for MS NOW Creative Review (Mon 10:30am) — assets to share with client","priority":"high","client":"MS NOW","notes":"Lisa Simon organized. Going over creative assets to share with client today/Monday. Team: Cassandra, Jenny, Kira, Nick, Caro, Yvette.","tags":["briefing","msnow","prep","monday"]},
-  {"title":"Prep for Virtual Meet with Mack Dealer (Mon 10am)","priority":"high","client":"Mack Trucks","notes":"Grace, Nick, Zack, Karen attending. Context on dealer perspective ahead of pitch.","tags":["briefing","mack","prep","monday"]},
-  {"title":"Respond to Bleacher Report R2 Figma comments from Will Leivenberg","priority":"high","client":"Bleacher Report","notes":"4 mentions: VO sports moment reference, 'unfiltered emotion' pillar note from Alex's original, single-game framing question, sponsorship angle question. @Nick Francis also tagged.","tags":["briefing","bleacher","email","figma"]},
-  {"title":"Respond to Head of Brand Intelligence applicant — alingala91@gmail.com","priority":"medium","client":null,"notes":"Reached out after LinkedIn post. Applied online a few weeks ago. Needs a reply.","tags":["briefing","hiring","email"]},
-  {"title":"Review Grayscale RYG Red — weekly project update","priority":"medium","client":"Grayscale","notes":"Flagged Red in week of 06/22 status report. Vince Quilici + Melissa Ranalli leads.","tags":["briefing","grayscale","ryg"]},
-  {"title":"Review Sixth Street RYG Red — weekly project update","priority":"medium","client":"Sixth Street","notes":"Flagged Red in week of 06/22 status report.","tags":["briefing","sixthstreet","ryg"]},
-  {"title":"Review Adobe Firefly RYG Red — weekly project update","priority":"medium","client":"Adobe","notes":"Firefly Brand Playbook & Evergreen Image Library. Flagged Red in week of 06/22 status report.","tags":["briefing","adobe","ryg"]},
-  {"title":"Follow up with Kira on MS NOW strategy resourcing for batch 2 and 3","priority":"medium","client":"MS NOW","notes":"Kira flagged over-complicating in batch 2; Cass sending docs to decipher that creatives can interpret themselves. Batch 3 still waiting on info from client.","tags":["briefing","msnow","slack"]}
+  {
+    "title": "Resolve today's 10am triple-booking: KP/Pat, Brand Intelligence Weekly Resourcing, 3M Operating Model Worksession",
+    "priority": "urgent",
+    "client": null,
+    "notes": "All three land at 10am PT today. The 3M Operating Model Worksession is the one Karen is supposed to lead (op model must be locked by tomorrow per IAT kickoff timeline) — likely the one to keep. Decide who covers KP/Pat and Brand Intelligence Resourcing.",
+    "tags": ["calendar", "today", "3m", "blocked"]
+  },
+  {
+    "title": "Resolve today's 9am double-booking: JJ 1:1 vs Karen/Kira Monthly",
+    "priority": "high",
+    "client": null,
+    "notes": "Both scheduled 9-9:30am PT today. Kira's is marked tentative on Karen's calendar — likely the one to move.",
+    "tags": ["calendar", "today"]
+  },
+  {
+    "title": "Lock 3M operating model in today's worksession",
+    "priority": "urgent",
+    "client": "3M",
+    "notes": "Karen owns leading the op-model worksession (10am PT today); IAT kickoff timeline requires it locked by Thursday 7/30 so B2B/B2C creative briefs can issue on schedule.",
+    "tags": ["3m", "today", "briefing", "team-meeting"]
+  },
+  {
+    "title": "Confirm/schedule the internal OpenTable prep session (was pegged for Wednesday afternoon)",
+    "priority": "urgent",
+    "client": "OpenTable",
+    "notes": "Tuesday's Open Table Proposal Regroup called for an internal prep session Wednesday afternoon (today) ahead of Friday 1pm PT client walkthrough — it's not on Karen's calendar. Get it booked with Harris/Alexis/Gale team today.",
+    "tags": ["opentable", "today", "prep", "client", "blocked"]
+  },
+  {
+    "title": "Prep for Stagwell<>OpenTable Media Proposal walkthrough (Fri 1pm PT)",
+    "priority": "high",
+    "client": "OpenTable",
+    "notes": "Client-facing (OpenTable + Gale + Stagwell). Karen's own action item from Tuesday's regroup: flag any AI-generated deck sections needing cleanup before the Friday walkthrough.",
+    "tags": ["opentable", "client", "prep", "this-week"]
+  },
+  {
+    "title": "Prep for Microsoft x Code and Theory Seattle Meeting (Thu 10:10am PT)",
+    "priority": "high",
+    "client": "Microsoft",
+    "notes": "External/client-facing, 7 attendees. Today's 8:30am 'Redmond Trip final deck tap-through' feeds directly into this — use it to finalize the deck.",
+    "tags": ["microsoft", "client", "prep", "today"]
+  },
+  {
+    "title": "Send agenda for [INT] Weekly Brand Strategy Full Team Meeting (Thu 9am PT)",
+    "priority": "medium",
+    "client": null,
+    "notes": "Karen is organizer, 24 attendees. No agenda circulated yet.",
+    "tags": ["agenda", "team-meeting", "this-week"]
+  },
+  {
+    "title": "Prep for Andrea x Karen Bi-Weekly Sync (Thu 10am PT)",
+    "priority": "high",
+    "client": null,
+    "notes": "From Tuesday's 1:1 with Pam: Andrea has been telling others Karen has bandwidth, which isn't true — Karen flagged she needs to correct this directly with Andrea and hasn't yet. This sync is the moment to do it.",
+    "tags": ["1:1", "prep", "this-week"]
+  },
+  {
+    "title": "Prep for Karen / Devorne 1:1 (Thu 12pm PT)",
+    "priority": "medium",
+    "client": null,
+    "notes": "External attendee (rhythmagency.us domain).",
+    "tags": ["1:1", "prep", "this-week"]
+  },
+  {
+    "title": "Follow up with Lindsey: status on 3M B2B brief outline",
+    "priority": "high",
+    "client": "3M",
+    "notes": "Lindsey was asked to immerse in 3M hub materials and sketch a rough brief shape using Claude ahead of tomorrow's Chris sync. Brief needs to go to Fig/Drayer's team by Thursday 7/30.",
+    "tags": ["3m", "follow-up", "briefing"]
+  },
+  {
+    "title": "Schedule 1:1 with Lindsey this week on 3M B2B audience journeys",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Karen said she's available all week except Thursday's Microsoft meeting. Need to divide-and-conquer key audiences/journey mapping.",
+    "tags": ["3m", "1:1", "follow-up"]
+  },
+  {
+    "title": "Draft and send formal Pretium proposal ($250-300K)",
+    "priority": "urgent",
+    "client": "Pretium",
+    "notes": "Chain from Tuesday's client call + Vince's Slack recap: budget aligned with client, Karen already built a first-pass budget sheet. Needs a producer assigned to formally scope approach/deliverables/team/timing/cost. Client is briefing their president and expects to move quickly.",
+    "tags": ["pretium", "follow-up", "client"]
+  },
+  {
+    "title": "Confirm producer assigned to scope Pretium proposal",
+    "priority": "high",
+    "client": "Pretium",
+    "notes": "Blocking the formal proposal above. Vince flagged JJ is generally on board and wants the 5 workstream categories written up for Harris/JJ approval — likely coming from Torie Baker's group.",
+    "tags": ["pretium", "blocked", "follow-up"]
+  },
+  {
+    "title": "Schedule Punt account coverage meeting (Karen, Julian, Pat, Juan, Arjun)",
+    "priority": "high",
+    "client": "Punt",
+    "notes": "Julian's mother has surgery Friday and he'll likely need ~2 weeks of leave starting next week. Need to game-plan coverage before he's out — Juan leading, Arjun potentially involved.",
+    "tags": ["punt", "follow-up", "1:1"]
+  },
+  {
+    "title": "Get Pat's read on the Punt growth opportunity before deciding to pursue new work",
+    "priority": "medium",
+    "client": "Punt",
+    "notes": "Julian sees ~$4M upside and a wedge into other gambling-adjacent clients, but the founder's misogyny is burning Julian/Kelsey's hours and creating real staffing risk (client responds only to a 'masculine voice'). Karen wants this folded into the coverage conversation, not decided in isolation.",
+    "tags": ["punt", "follow-up"]
+  },
+  {
+    "title": "Address direct-feedback culture at next leads meeting",
+    "priority": "medium",
+    "client": null,
+    "notes": "Pattern across two conversations this week (Julian 1:1, Pam 1:1): people are routing interpersonal issues through Karen instead of going direct. Karen wants to name this explicitly and build the muscle, including training juniors. This week's leads meeting was canceled — needs to land at the next one.",
+    "tags": ["team-meeting", "follow-up"]
+  },
+  {
+    "title": "Confirm two additional Tira coaching sessions were formally approved",
+    "priority": "medium",
+    "client": null,
+    "notes": "Pam gave provisional approval in Tuesday's 1:1 and was going to confirm with Tira. Karen should verify it actually landed.",
+    "tags": ["1:1", "follow-up"]
+  },
+  {
+    "title": "Talk to Pat about the BAU headcount/salary-cap analysis",
+    "priority": "medium",
+    "client": null,
+    "notes": "Pat holds the department-level breakdown Karen needs to make informed calls on team structure, including the Intelligence team sunset and production design reduction under review.",
+    "tags": ["follow-up"]
+  },
+  {
+    "title": "Review KPMG project — RYG Red",
+    "priority": "high",
+    "client": "KPMG",
+    "notes": "Lead: SJ Singh; Producer: Chris Arcari. Client-side review/approval delays are jeopardizing release dates; first executive steerco demo is this week (week of 7/27). Escalated to KPMG already.",
+    "tags": ["ryg", "review"]
+  },
+  {
+    "title": "Review Grayscale project — RYG Red",
+    "priority": "high",
+    "client": "Grayscale",
+    "notes": "Leads: Ailish Ryder, Alex Mamorsky; Producer: Melissa Ranalli. Client is disputing April/May invoices and proposed a partial payment; team (with JJ and Julia) is drafting a counter-proposal. Also a standing watch on inconsistent client feedback patterns.",
+    "tags": ["ryg", "review"]
+  },
+  {
+    "title": "Reply to Liz Giel / Colle McVoy team re: Harris Poll for 3M pitch",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Liz asked whether 3M already works with Harris Poll, whether they have Questbrand data, and if Harris can do quick-turn qual. Karen replied same night suggesting AI personas + real-people pre-testing — confirm that closes it out or if a fuller answer is still owed.",
+    "tags": ["3m", "email", "reply"]
+  },
+  {
+    "title": "Renew or release GitHub personal access token 'friction-portal'",
+    "priority": "medium",
+    "client": null,
+    "notes": "Classic PAT with repo scope expires in 7 days. Confirm whether it's still in use before it lapses.",
+    "tags": ["email", "reply"]
+  },
+  {
+    "title": "Close the loop with Anu (alingala91@gmail.com) on Head of Brand Intelligence",
+    "priority": "low",
+    "client": null,
+    "notes": "Karen already told her the role is paused; Anu followed up flagging she's freelancing and available again Aug 5. Low-priority courtesy reply, no urgency since role isn't reopening imminently.",
+    "tags": ["hiring", "email", "reply"]
+  },
+  {
+    "title": "Follow up with Harris on NY trip logistics for EOW next week",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Core leads (JJ, DCP, Stagwell) want in-person for 3M — likely Thu/Fri. Karen can attend if Code covers her daughter's flights; Harris was going to check with JJ. Ball is in Harris's court — check back if no answer by Thursday.",
+    "tags": ["3m", "slack", "follow-up"]
+  }
 ]
