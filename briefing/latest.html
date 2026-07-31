@@ -1,1 +1,566 @@
-PLACEHOLDER
+<title>Karen's Briefing — Fri, Jul 31, 2026</title>
+<style>
+  :root{
+    --bg:#faf9f7; --panel:#ffffff; --ink:#1c1b1e; --ink-soft:#57545c; --line:#e7e3dd;
+    --accent:#4b3f8f; --accent-soft:#eeeaf9;
+    --urgent:#c2372c; --urgent-bg:#fbeae8;
+    --high:#b8722a; --high-bg:#fbf0e2;
+    --medium:#3c6e91; --medium-bg:#e9f1f6;
+    --low:#767286; --low-bg:#f1eff5;
+    --green:#3f8a5c; --green-bg:#e9f5ee;
+    --yellow:#b8952a; --yellow-bg:#fbf5e1;
+    --red:#c2372c; --red-bg:#fbeae8;
+    --ext:#4b3f8f;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#18161c; --panel:#221f27; --ink:#f1eee8; --ink-soft:#b4afc0; --line:#39353f;
+      --accent:#a89bff; --accent-soft:#2c2740;
+      --urgent:#ff8f83; --urgent-bg:#3a2220;
+      --high:#f0b169; --high-bg:#3a2c19;
+      --medium:#89c1e8; --medium-bg:#1e2e39;
+      --low:#a7a2b8; --low-bg:#2a2733;
+      --green:#7fd1a0; --green-bg:#1c3226;
+      --yellow:#e8c96b; --yellow-bg:#332b16;
+      --red:#ff8f83; --red-bg:#3a2220;
+      --ext:#a89bff;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#18161c; --panel:#221f27; --ink:#f1eee8; --ink-soft:#b4afc0; --line:#39353f;
+    --accent:#a89bff; --accent-soft:#2c2740;
+    --urgent:#ff8f83; --urgent-bg:#3a2220;
+    --high:#f0b169; --high-bg:#3a2c19;
+    --medium:#89c1e8; --medium-bg:#1e2e39;
+    --low:#a7a2b8; --low-bg:#2a2733;
+    --green:#7fd1a0; --green-bg:#1c3226;
+    --yellow:#e8c96b; --yellow-bg:#332b16;
+    --red:#ff8f83; --red-bg:#3a2220;
+    --ext:#a89bff;
+  }
+  :root[data-theme="light"]{
+    --bg:#faf9f7; --panel:#ffffff; --ink:#1c1b1e; --ink-soft:#57545c; --line:#e7e3dd;
+    --accent:#4b3f8f; --accent-soft:#eeeaf9;
+    --urgent:#c2372c; --urgent-bg:#fbeae8;
+    --high:#b8722a; --high-bg:#fbf0e2;
+    --medium:#3c6e91; --medium-bg:#e9f1f6;
+    --low:#767286; --low-bg:#f1eff5;
+    --green:#3f8a5c; --green-bg:#e9f5ee;
+    --yellow:#b8952a; --yellow-bg:#fbf5e1;
+    --red:#c2372c; --red-bg:#fbeae8;
+    --ext:#4b3f8f;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.5; padding:0 0 5rem;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 1.25rem;}
+
+  header.top{
+    padding:2.5rem 1.25rem 1.75rem; border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  header.top .inner{max-width:760px; margin:0 auto;}
+  .eyebrow{
+    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); font-weight:700; margin:0 0 .5rem;
+  }
+  h1{
+    font-size:1.9rem; font-weight:800; letter-spacing:-.01em; margin:0 0 .4rem;
+    text-wrap:balance;
+  }
+  .sub{color:var(--ink-soft); font-size:.95rem; margin:0;}
+
+  .flag-bar{
+    margin-top:1.25rem; border:1px solid var(--urgent); background:var(--urgent-bg);
+    border-radius:10px; padding:.9rem 1rem; display:flex; gap:.7rem; align-items:flex-start;
+  }
+  .flag-bar .dot{
+    flex:0 0 auto; width:.55rem; height:.55rem; border-radius:50%; background:var(--urgent);
+    margin-top:.4rem;
+  }
+  .flag-bar p{margin:0; font-size:.9rem; color:var(--ink);}
+  .flag-bar strong{color:var(--urgent);}
+
+  nav.jump{
+    display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.25rem;
+  }
+  nav.jump a{
+    font-size:.78rem; color:var(--ink-soft); text-decoration:none; border:1px solid var(--line);
+    border-radius:999px; padding:.3rem .7rem; background:var(--panel);
+  }
+  nav.jump a:hover, nav.jump a:focus-visible{border-color:var(--accent); color:var(--accent);}
+
+  main{max-width:760px; margin:0 auto; padding:0 1.25rem;}
+  section{padding:2rem 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-size:1.05rem; font-weight:800; margin:0 0 1rem; letter-spacing:-.01em;
+    display:flex; align-items:center; gap:.5rem;
+  }
+  h2 .count{
+    font-size:.72rem; font-weight:700; color:var(--ink-soft); background:var(--low-bg);
+    border-radius:999px; padding:.15rem .55rem;
+  }
+  h3.day{font-size:.95rem; font-weight:700; margin:1.5rem 0 .6rem;}
+  h3.day:first-child{margin-top:0;}
+
+  .meeting{
+    display:flex; gap:.8rem; padding:.6rem 0; border-top:1px solid var(--line);
+  }
+  .meeting:first-of-type{border-top:none;}
+  .meeting .time{
+    flex:0 0 5.2rem; font-size:.82rem; color:var(--ink-soft); font-variant-numeric:tabular-nums;
+    padding-top:.15rem;
+  }
+  .meeting .stripe{flex:0 0 3px; border-radius:2px; align-self:stretch;}
+  .meeting.ext .stripe{background:var(--ext);}
+  .meeting.int .stripe{background:var(--line);}
+  .meeting .body{flex:1;}
+  .meeting .title{font-weight:600; font-size:.92rem;}
+  .meeting .meta{font-size:.8rem; color:var(--ink-soft); margin-top:.15rem;}
+  .chip{
+    display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.03em;
+    text-transform:uppercase; border-radius:5px; padding:.1rem .4rem; margin-left:.4rem;
+    vertical-align:middle;
+  }
+  .chip.ext{background:var(--accent-soft); color:var(--accent);}
+  .chip.conflict{background:var(--urgent-bg); color:var(--urgent);}
+  .prep{font-size:.8rem; color:var(--high); margin-top:.25rem; font-weight:600;}
+
+  .week-row{
+    display:flex; gap:.8rem; padding:.65rem 0; border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .week-row:first-of-type{border-top:none;}
+  .week-row .date{flex:0 0 7.5rem; font-weight:700; font-size:.88rem;}
+  .load{
+    flex:0 0 5.5rem; font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    border-radius:5px; padding:.15rem .45rem; text-align:center; align-self:flex-start;
+  }
+  .load.heavy{background:var(--urgent-bg); color:var(--urgent);}
+  .load.moderate{background:var(--high-bg); color:var(--high);}
+  .load.light{background:var(--green-bg); color:var(--green);}
+  .week-row .desc{flex:1; font-size:.85rem; color:var(--ink-soft);}
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:1.1rem 1.2rem; margin-bottom:.9rem;
+  }
+  .card .top-row{display:flex; justify-content:space-between; gap:.6rem; align-items:flex-start;}
+  .card .from{font-weight:700; font-size:.92rem;}
+  .card .subj{font-size:.87rem; color:var(--ink-soft); margin-top:.1rem;}
+  .card .action{font-size:.85rem; margin-top:.55rem; padding-top:.55rem; border-top:1px dashed var(--line);}
+  .card .action b{color:var(--accent);}
+  .badge{
+    flex:0 0 auto; font-size:.68rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    border-radius:5px; padding:.2rem .5rem; white-space:nowrap;
+  }
+  .badge.urgent{background:var(--urgent-bg); color:var(--urgent);}
+  .badge.high{background:var(--high-bg); color:var(--high);}
+  .badge.medium{background:var(--medium-bg); color:var(--medium);}
+  .badge.low{background:var(--low-bg); color:var(--low);}
+
+  h4.group{
+    font-size:.75rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); margin:1.6rem 0 .7rem;
+  }
+  h4.group:first-child{margin-top:0;}
+
+  .meeting-block{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.2rem;
+    margin-bottom:1rem;
+  }
+  .meeting-block .mtitle{font-weight:700; font-size:.98rem; display:flex; gap:.5rem; align-items:baseline; flex-wrap:wrap;}
+  .meeting-block .mdate{font-size:.78rem; color:var(--ink-soft); font-weight:500;}
+  .meeting-block h5{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); margin:.9rem 0 .35rem;}
+  .meeting-block h5:first-of-type{margin-top:.9rem;}
+  .meeting-block p, .meeting-block li{font-size:.87rem; color:var(--ink);}
+  .meeting-block ul{margin:.2rem 0 0; padding-left:1.1rem;}
+  .kp-item{color:var(--accent); font-weight:600;}
+  .other-item{color:var(--ink-soft);}
+
+  .ryg-row{display:flex; gap:.7rem; align-items:flex-start; padding:.75rem 0; border-top:1px solid var(--line);}
+  .ryg-row:first-of-type{border-top:none;}
+  .ryg-dot{flex:0 0 auto; width:.65rem; height:.65rem; border-radius:50%; background:var(--red); margin-top:.35rem;}
+  .ryg-row .rtitle{font-weight:700; font-size:.92rem;}
+  .ryg-row .rmeta{font-size:.82rem; color:var(--ink-soft); margin-top:.15rem;}
+
+  footer.note{
+    max-width:760px; margin:0 auto; padding:1.5rem 1.25rem 0; font-size:.78rem; color:var(--ink-soft);
+  }
+  a{color:var(--accent);}
+</style>
+
+<header class="top">
+  <div class="inner">
+    <p class="eyebrow">Daily briefing · Code and Theory</p>
+    <h1>Friday, July 31, 2026</h1>
+    <p class="sub">Karen Piper — Head of Brand Strategy · times shown in Pacific</p>
+
+    <div class="flag-bar">
+      <span class="dot"></span>
+      <p><strong>Heads up:</strong> you told Pat McQueen last night you'd be OOO today — but your calendar has <strong>12 meetings back-to-back from 6:30am to 12:15pm</strong>, including a <strong>3-way overlap at 10:30–11:00am</strong> (MARCOM Ops Weekly / 3M B2B Audience &amp; Journey Sync / ServiceNow Code Internal Daily). Worth deciding now what drops.</p>
+    </div>
+
+    <nav class="jump">
+      <a href="#today">Today</a>
+      <a href="#week">This week</a>
+      <a href="#email">Email</a>
+      <a href="#slack">Slack</a>
+      <a href="#granola">Meetings</a>
+      <a href="#projects">Project flags</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="today">
+    <h2>Today <span class="count">12 meetings</span></h2>
+
+    <div class="meeting ext">
+      <div class="stripe"></div>
+      <div class="time">6:30–7:00a</div>
+      <div class="body">
+        <div class="title">3M | Adobe &amp; Martech Transformation Pitch connect<span class="chip ext">External</span></div>
+        <div class="meta">Organizer: Harris Baum · 11 attendees (Colle McVoy, Assembly, Allison Worldwide)</div>
+        <div class="prep">Prep needed — external, 11 attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">7:30–8:00a</div>
+      <div class="body">
+        <div class="title">EOW Visa touchbase!</div>
+        <div class="meta">Organizer: Yenteen Hu · 2 attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">8:00–8:30a</div>
+      <div class="body">
+        <div class="title">(INT) Brandweek Working Sesh</div>
+        <div class="meta">Organizer: Jessica Moore · 4 attendees</div>
+        <div class="prep">Prep needed — 4+ attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">9:00–9:30a</div>
+      <div class="body">
+        <div class="title">Flex: Karen / Lucy weekly <span class="chip ext" style="background:var(--low-bg);color:var(--low)">1:1</span></div>
+        <div class="meta">2 attendees</div>
+      </div>
+    </div>
+    <div class="meeting ext">
+      <div class="stripe"></div>
+      <div class="time">9:30–9:55a</div>
+      <div class="body">
+        <div class="title">Karen || John Monthly<span class="chip ext">External</span></div>
+        <div class="meta">Organizer: John Whaley · 3 attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">10:00–10:30a</div>
+      <div class="body">
+        <div class="title">Intelligence Leads Weekly</div>
+        <div class="meta">Organizer: Lucy Ye · 7 attendees</div>
+        <div class="prep">Prep needed — 4+ attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">10:30–11:00a</div>
+      <div class="body">
+        <div class="title">MARCOM Ops-Weekly<span class="chip conflict">Triple-booked</span></div>
+        <div class="meta">Organizer: Nick Francis · 5 attendees</div>
+      </div>
+    </div>
+    <div class="meeting ext">
+      <div class="stripe"></div>
+      <div class="time">10:30–11:00a</div>
+      <div class="body">
+        <div class="title">3M B2B Audience &amp; Journey Sync<span class="chip conflict">Triple-booked</span><span class="chip ext">External</span></div>
+        <div class="meta">Organizer: Karina Pino · 8 attendees</div>
+        <div class="prep">Prep needed — external, 4+ attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">10:45–11:00a</div>
+      <div class="body">
+        <div class="title">ServiceNow | Code Internal Daily<span class="chip conflict">Triple-booked</span></div>
+        <div class="meta">Organizer: Harris Baum · 9 attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">11:00–11:30a</div>
+      <div class="body">
+        <div class="title">Tailored Brands SOW Development KO</div>
+        <div class="meta">Organizer: Harris Baum · 7 attendees</div>
+        <div class="prep">Prep needed — new-business kickoff, 4+ attendees</div>
+      </div>
+    </div>
+    <div class="meeting int">
+      <div class="stripe"></div>
+      <div class="time">11:30–11:55a</div>
+      <div class="body">
+        <div class="title">Dave x Karen weekly <span class="chip ext" style="background:var(--low-bg);color:var(--low)">1:1</span></div>
+        <div class="meta">2 attendees</div>
+      </div>
+    </div>
+    <div class="meeting ext">
+      <div class="stripe"></div>
+      <div class="time">12:00–12:15p</div>
+      <div class="body">
+        <div class="title">3M | Core Leads Stand-up<span class="chip ext">External</span></div>
+        <div class="meta">Organizer: Harris Baum · 19 attendees</div>
+        <div class="prep">Prep needed — external, 4+ attendees</div>
+      </div>
+    </div>
+
+    <h3 class="day" style="margin-top:2rem;">Tomorrow — Saturday, Aug 1</h3>
+    <p style="font-size:.87rem;color:var(--ink-soft);margin:0;">Nothing on the calendar. It's Parenting Week (Jul 27–Aug 2) — enjoy the clear day.</p>
+  </section>
+
+  <section id="week">
+    <h2>This week at a glance</h2>
+    <div class="week-row">
+      <div class="date">Fri Jul 31</div>
+      <div class="load heavy">Heavy</div>
+      <div class="desc">Today — see above. 12 meetings, triple-booked at 10:30am.</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Sat Aug 1</div>
+      <div class="load light">Light</div>
+      <div class="desc">Clear.</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Sun Aug 2</div>
+      <div class="load light">Light</div>
+      <div class="desc">Dad FT, 12–1pm. Otherwise clear.</div>
+    </div>
+
+    <h3 class="day">Next week — heads up</h3>
+    <div class="week-row">
+      <div class="date">Mon Aug 3</div>
+      <div class="load heavy">Heavy</div>
+      <div class="desc">12 meetings incl. Mini Monday (16), Brand Strat Leads Weekly (you organize), Stagwell&lt;&gt;OpenTable walkthrough. <strong style="color:var(--urgent)">Double-booked 2:00–2:30pm ET</strong>: MarCom Progressive Campaign Delivery overlaps OpenTable walkthrough.</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Tue Aug 4</div>
+      <div class="load heavy">Heavy</div>
+      <div class="desc">Alexa Amato final interview 8am, 4 back-to-back 1:1s, Brand Intelligence Weekly Status. Therapy (4–5pm) overlaps Devorne 1:1 (4:30–5pm).</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Wed Aug 5</div>
+      <div class="load heavy">Heavy</div>
+      <div class="desc">User &amp; Brand Intelligence Weekly Resourcing (14), Brand Strategy Resourcing, JJ 1:1, Broadridge retro.</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Thu Aug 6</div>
+      <div class="load heavy">Heavy</div>
+      <div class="desc">Weekly Brand Strategy Full Team (24), Talent review, Monthly Social Update (43) — two of your biggest all-hands in one day.</div>
+    </div>
+    <div class="week-row">
+      <div class="date">Fri Aug 7</div>
+      <div class="load moderate">Moderate</div>
+      <div class="desc">Lighter — Brandweek working sesh, Intelligence Leads Weekly, Adam 1:1.</div>
+    </div>
+    <p style="font-size:.82rem;color:var(--ink-soft);margin-top:1rem;">Pattern: <strong>3M Core Leads Stand-up</strong> and <strong>ServiceNow Code Internal Daily</strong> are on your calendar every single day through Aug 7 — worth checking both still need you live daily.</p>
+  </section>
+
+  <section id="email">
+    <h2>Emails requiring action</h2>
+
+    <h4 class="group">Reply today</h4>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Dani Thibodeau</div><div class="subj">Re: A chat! — 2nd follow-up, no reply yet</div></div>
+        <span class="badge urgent">Urgent</span>
+      </div>
+      <div class="action">Pat's intro for a cultural-insights/strategy connection — and per your Jul 29 1:1 with JJ, she's also a candidate for the open strategy hire. She's followed up twice (Jul 23, Jul 30) asking for time. <b>Action:</b> reply and get something on the calendar.</div>
+    </div>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Stef Hoffman (via Figma)</div><div class="subj">Edit request — ServiceNow Pitch Deck v2</div></div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <div class="action"><b>Action:</b> grant or decline access.</div>
+    </div>
+
+    <h4 class="group">Reply this week</h4>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Greg Taylor</div><div class="subj">Great connecting today! — thank-you after BD Lead interview</div></div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <div class="action"><b>Action:</b> quick reply closes the loop courteously.</div>
+    </div>
+
+    <h4 class="group">Watch</h4>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Airtable / Sarah Marie Glass</div><div class="subj">Novo Nordisk — Novocare RM Strategy budget sheet submitted</div></div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <div class="action">Submitted Jul 30, 9:29pm — <b>before</b> Gowri's detailed staffing/rate pushback landed in Slack overnight (see Slack section). The sheet as submitted may not reflect that feedback yet.</div>
+    </div>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">"noreply@account-microsoft365.com"</div><div class="subj">SETTINGS EXPIRE TODAY — password reset</div></div>
+        <span class="badge low">Likely phishing</span>
+      </div>
+      <div class="action">Not a real Microsoft domain. <b>Action:</b> don't click — delete or report to IT.</div>
+    </div>
+  </section>
+
+  <section id="slack">
+    <h2>Slack — needs response</h2>
+
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Gowri Sivaprasad → Novocare group DM</div><div class="subj">Detailed pushback on the Novocare RM budget sheet</div></div>
+        <span class="badge urgent">Urgent</span>
+      </div>
+      <div class="action">Overnight (Jul 30 11pm–Jul 31 3am): questions on staffing logic, rate structure, whether the tech lead needs to be US-based, and whether tape allocations are billable. Sarah wants to ship the proposal to Julia <b>this morning</b>. <b>Blocking</b> — needs your read before it goes out.</div>
+    </div>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Pat McQueen → DM</div><div class="subj">Asked to be looped in on 3M before he's out</div></div>
+        <span class="badge urgent">Urgent</span>
+      </div>
+      <div class="action">You replied you'd write a note last night since you're OOO today. <b>Action:</b> confirm it went out, or send it now.</div>
+    </div>
+    <div class="card">
+      <div class="top-row">
+        <div><div class="from">Sarah Marie Glass → DM</div><div class="subj">Asked for JD / key points for an Omnichannel Campaign Manager role</div></div>
+        <span class="badge medium">Medium</span>
+      </div>
+      <div class="action">You said "sure" twice (Jul 30 evening) — nothing sent yet per the thread.</div>
+    </div>
+  </section>
+
+  <section id="granola">
+    <h2>Meetings — yesterday's recap (Jul 30)</h2>
+
+    <div class="meeting-block">
+      <div class="mtitle">3M | Model Lock Readout <span class="mdate">7:30am · Internal</span></div>
+      <p>Landed the operating-model framework: three Ms (Mind, Makers, Markets) inside "The Machine" as the orchestration layer; "customer" reframed as "audience" to cover B2B and end-user alike.</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Port the model slides from Figma into the master deck — swap in "Markets" as the third M, make the Machine a surrounding container visual.</li>
+      </ul>
+      <h5>Others' commitments</h5>
+      <ul>
+        <li class="other-item">Andrea to share global-to-local pitch language for the Markets section.</li>
+        <li class="other-item">Craig to develop naming/branding for the overall model.</li>
+      </ul>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">3M | Pre-brief with Craig <span class="mdate">8:30am · Internal</span></div>
+      <p>Brief landed well — no major notes. Craig flagged the campaign line reads as a brand line, not a strapline, and pushed for explicit creative "don'ts" (no adhesive-tech explainers, no feature comparisons).</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Confirm with your dad whether your uncle worked at 3M developing VHB tape in the '80s — potential real-person interview subject if true.</li>
+      </ul>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">Microsoft x Code and Theory | Seattle Meeting <span class="mdate">10:10am · External — Microsoft</span></div>
+      <p>Introductory session with Microsoft's Kelly Soligon and Toby Bowers on Frontier Transformation narrative and AI Tours activation. FY27 Growth Campaign budget still unconfirmed.</p>
+      <h5>Others' commitments</h5>
+      <ul>
+        <li class="other-item">Send the frontier transformation deck with the Morgan Stanley talk track added.</li>
+        <li class="other-item">Follow up with Toby on connecting the AI Tour show-floor concept to the keynote narrative.</li>
+      </ul>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">3M | Core Leads Stand-up <span class="mdate">11:45am · External</span></div>
+      <p>B2B brief ready to go out; B2C brief needs Karen's visibility (not hands-on) to keep both at the same altitude — Gina flagged this alignment risk. Commercials kickoff targeted for Connor's return Monday Aug 3.</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Stay in the B2C brief cadence purely for alignment visibility — no execution needed.</li>
+      </ul>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">[INT] Scoping 2.0 — Review &amp; Approval Workflow <span class="mdate">1:30pm · Internal</span></div>
+      <p>Demoed the new scoping tool on live Pretium and OpenTable examples — inline editing was the unlock, cutting scoping time from ~2 days to 10 minutes for known work types. Landed on comment threading, routing-back-to-submitter logic, and holding back variant creation at launch.</p>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">GM/OnStar pitch with Anomaly <span class="mdate">2:30pm · Internal</span></div>
+      <p>Supporting Anomaly's RFP response as machine + Adobe specialists, not co-pitch/lead creative.</p>
+      <h5>Others' commitments</h5>
+      <ul>
+        <li class="other-item">Team to draft ~10 questions for Anomaly (machine + Adobe tracks), targeting Monday.</li>
+      </ul>
+    </div>
+
+    <div class="meeting-block">
+      <div class="mtitle">ServiceNow | Code Internal Daily <span class="mdate">3:00pm · Internal</span></div>
+      <p>Decided to ask Instrument to draft the B2B brief, leveraging their institutional knowledge — Karen's bandwidth is the constraint. 32-page deck completed, needs a design pass.</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Send the framing note to Laurel today inviting Instrument to draft the brief and kick off Monday with Matty's team.</li>
+        <li class="kp-item">Share the outline with Tref and Laurel tomorrow (today) afternoon.</li>
+      </ul>
+    </div>
+
+    <h3 class="day" style="margin-top:1.8rem;">1:1s worth flagging (this week)</h3>
+    <div class="meeting-block">
+      <div class="mtitle">JJ x Karen 1:1 <span class="mdate">Jul 29 · Weekly</span></div>
+      <p>Rate pressure is real (blended ~$200+, losing pitches on price); case made for a strategy hire to relieve Adam/Julian/Laura. Julian's mother has advanced pancreatic cancer with an operation this week — leave likely.</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Get Julian's leave dates and sort Punt strategy coverage with Pat.</li>
+        <li class="kp-item">Talk to Dave about producers double-booking Adam over blocked time.</li>
+      </ul>
+    </div>
+    <div class="meeting-block">
+      <div class="mtitle">Karen &amp; Pam 1:1 <span class="mdate">Jul 28</span></div>
+      <p>Flagged running near burnout (~75hr weeks) while Workfront under-logs your hours, feeding a narrative that you have spare bandwidth. Also surfaced the Microsoft-trip logistics friction and lingering IBM-pitch mischaracterization.</p>
+      <h5>KP action items</h5>
+      <ul>
+        <li class="kp-item">Have the direct conversation with Andrea about your actual bandwidth — hasn't happened yet.</li>
+      </ul>
+      <h5>Others' commitments</h5>
+      <ul>
+        <li class="other-item">Pam to confirm two additional coaching sessions with Tira.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Project flags — RYG Red</h2>
+    <div class="ryg-row">
+      <span class="ryg-dot"></span>
+      <div>
+        <div class="rtitle">Sixth Street — Website Transformation Investment</div>
+        <div class="rmeta">Red again week of 07/27. Job was split out to isolate investment burn from the main project.</div>
+      </div>
+    </div>
+    <div class="ryg-row">
+      <span class="ryg-dot"></span>
+      <div>
+        <div class="rtitle">Grayscale Investments — Retainer</div>
+        <div class="rmeta">Red for three straight weekly reports (07/20, and again 07/27). Vince Quilici + Melissa Ranalli lead — chronic enough to warrant more than a status check.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="note">
+  <p>Generated automatically · 18 tasks extracted to <code>briefing/pending-tasks.json</code></p>
+</footer>
