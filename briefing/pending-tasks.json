@@ -1,13 +1,240 @@
 [
-  {"title":"Prep for Comcast Strategy Midpoint (Mon 7:15am) — client-facing","priority":"urgent","client":"Comcast","notes":"Clients: melissa_lapp, erika_fiest, julia_murphy @comcast.com. Full team + C&T leads attending.","tags":["briefing","comcast","prep","monday"]},
-  {"title":"Lock Mack briefs today — needed for Monday immersion/briefing session","priority":"urgent","client":"Mack Trucks","notes":"Mack Trucks pitch immersion & briefing is Monday 9am. Freelancers being briefed. Born to Work platform direction.","tags":["briefing","mack","prep","today"]},
-  {"title":"Review Yenteen's updated Mack brief (Google Doc in Slack DM)","priority":"urgent","client":"Mack Trucks","notes":"Yenteen messaged: brief is done, updated black box per feedback, ends on page 5. Needs KP eyes before Monday.","tags":["briefing","mack","review"]},
-  {"title":"Prep for MS NOW Creative Review (Mon 10:30am) — assets to share with client","priority":"high","client":"MS NOW","notes":"Lisa Simon organized. Going over creative assets to share with client today/Monday. Team: Cassandra, Jenny, Kira, Nick, Caro, Yvette.","tags":["briefing","msnow","prep","monday"]},
-  {"title":"Prep for Virtual Meet with Mack Dealer (Mon 10am)","priority":"high","client":"Mack Trucks","notes":"Grace, Nick, Zack, Karen attending. Context on dealer perspective ahead of pitch.","tags":["briefing","mack","prep","monday"]},
-  {"title":"Respond to Bleacher Report R2 Figma comments from Will Leivenberg","priority":"high","client":"Bleacher Report","notes":"4 mentions: VO sports moment reference, 'unfiltered emotion' pillar note from Alex's original, single-game framing question, sponsorship angle question. @Nick Francis also tagged.","tags":["briefing","bleacher","email","figma"]},
-  {"title":"Respond to Head of Brand Intelligence applicant — alingala91@gmail.com","priority":"medium","client":null,"notes":"Reached out after LinkedIn post. Applied online a few weeks ago. Needs a reply.","tags":["briefing","hiring","email"]},
-  {"title":"Review Grayscale RYG Red — weekly project update","priority":"medium","client":"Grayscale","notes":"Flagged Red in week of 06/22 status report. Vince Quilici + Melissa Ranalli leads.","tags":["briefing","grayscale","ryg"]},
-  {"title":"Review Sixth Street RYG Red — weekly project update","priority":"medium","client":"Sixth Street","notes":"Flagged Red in week of 06/22 status report.","tags":["briefing","sixthstreet","ryg"]},
-  {"title":"Review Adobe Firefly RYG Red — weekly project update","priority":"medium","client":"Adobe","notes":"Firefly Brand Playbook & Evergreen Image Library. Flagged Red in week of 06/22 status report.","tags":["briefing","adobe","ryg"]},
-  {"title":"Follow up with Kira on MS NOW strategy resourcing for batch 2 and 3","priority":"medium","client":"MS NOW","notes":"Kira flagged over-complicating in batch 2; Cass sending docs to decipher that creatives can interpret themselves. Batch 3 still waiting on info from client.","tags":["briefing","msnow","slack"]}
+  {
+    "title": "Decide whether to join the JJ/Matthew/Create weekend call on 3M creative strategy",
+    "priority": "urgent",
+    "client": "3M",
+    "notes": "Zack Botos (Slack DM, 8am today): Create rewrote Marty's strategy work without looping her in; JJ trying to get Karen, JJ, and Matthew connected this weekend to decide who's leading. Create has asked for Karen by name. Decision blocks pitch direction ahead of Tuesday Aug 11 RFP submission.",
+    "tags": ["slack", "3m", "decision", "today", "blocked"]
+  },
+  {
+    "title": "Check in with Marty about being sidelined on the Create strategy review",
+    "priority": "high",
+    "client": "3M",
+    "notes": "Karen committed in the 3M NYC Leads EOD Regroup (Aug 6) to join Zack's review of Create's rewritten strategy work with Marty, to make sure her work is represented and credited — she was excluded from both the review and the exec presentation.",
+    "tags": ["granola", "3m", "follow-up", "1:1"]
+  },
+  {
+    "title": "Send the locked \"Command Central\" script to Craig",
+    "priority": "urgent",
+    "client": "3M",
+    "notes": "Name approved by Craig in the Aug 6 EOD regroup; script was due \"by tomorrow\" — that's today. Confirm it's sent.",
+    "tags": ["granola", "3m", "sign-off", "today"]
+  },
+  {
+    "title": "Draft the 3M RFP submission letter",
+    "priority": "high",
+    "client": "3M",
+    "notes": "Opener agreed: \"we saw this RFP and saw our people.\" Carry unfair-advantage language and speed-to-stand-up proof points. Needed before the Tuesday Aug 11 commercial submission.",
+    "tags": ["granola", "3m", "this-week"]
+  },
+  {
+    "title": "Name Council members and account leads by discipline for the 3M op model",
+    "priority": "high",
+    "client": "3M",
+    "notes": "Needed for Tuesday Aug 11 commercial submission; also confirm who's in the room for the Aug 17 presentation.",
+    "tags": ["granola", "3m", "this-week", "decision"]
+  },
+  {
+    "title": "Add Harris Poll to the 3M agency ecosystem slide",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Currently missing from the deck; Harris Poll is an active 3M partner central to their reputation-recovery work.",
+    "tags": ["granola", "3m", "review"]
+  },
+  {
+    "title": "Get the \"companies using 3+ agencies\" slide from Jess at Stagwell",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "High-impact proof point that's in the Stagwell service deck but not yet in the working 3M deck.",
+    "tags": ["granola", "3m", "follow-up"]
+  },
+  {
+    "title": "Explore bringing an Adobe rep into the 3M Aug 17 presentation",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Would validate that \"the machine\" sits on top of 3M's existing Adobe investment — strongest if Adobe endorses Code and Theory specifically over WPP.",
+    "tags": ["granola", "3m", "decision"]
+  },
+  {
+    "title": "Send Helen Ohlsson the 3M operating model slides for a gut-check",
+    "priority": "high",
+    "client": "3M",
+    "notes": "Helen is embedded at 3M on the Adobe/Ignite engagement; asked to flag anything that doesn't ring true in the \"from/to\" framing vs. 3M's actual state.",
+    "tags": ["granola", "3m", "follow-up"]
+  },
+  {
+    "title": "Confirm Deepthi closed the gaps in the 3M Adobe stack doc",
+    "priority": "medium",
+    "client": "3M",
+    "notes": "Flagged incomplete, especially GenStudio and B2B lead management (Eloqua) sections.",
+    "tags": ["granola", "3m", "follow-up"]
+  },
+  {
+    "title": "Confirm Julian's FMLA paperwork actually went out",
+    "priority": "urgent",
+    "client": null,
+    "notes": "Karen committed (Aug 3 weekly) to send FMLA docs \"today\" so Julian could start leave Wednesday Aug 5 — that date has passed. Verify it went out and Julian has what he needs; filing can be backdated if not.",
+    "tags": ["granola", "1:1", "follow-up", "today"]
+  },
+  {
+    "title": "Confirm the 3-way channel with Julian + Adam on brand strategy support happened",
+    "priority": "medium",
+    "client": null,
+    "notes": "Meant to align Adam's hours ahead of Thursday's Brin meeting (Aug 6, already passed). Confirm it happened and check how that meeting went.",
+    "tags": ["granola", "1:1", "follow-up"]
+  },
+  {
+    "title": "Watch: did Julian share the founders' positive feedback recording with the team?",
+    "priority": "low",
+    "client": null,
+    "notes": "Morale boost after a strong stakeholder call on a hard account — make sure it landed with the team, including Pat.",
+    "tags": ["granola", "1:1", "watch", "others"]
+  },
+  {
+    "title": "Confirm your Visa creative direction rankings reached Craig",
+    "priority": "high",
+    "client": "Visa",
+    "notes": "Karen's read: Idea 1 (Ambition, Uncompromised) strongest, Idea 3 weakest/most generic. R2 client review was Thursday Aug 6 — confirm this reached Craig in time.",
+    "tags": ["granola", "visa", "follow-up"]
+  },
+  {
+    "title": "Follow up on how the Visa R2 client review landed",
+    "priority": "medium",
+    "client": "Visa",
+    "notes": "Three directions went to the client Thursday morning; one was expected to get cut before R2. Close the loop on the outcome.",
+    "tags": ["granola", "visa", "watch"]
+  },
+  {
+    "title": "Build the consolidated hiring plan (2 brand directors + product ideas) for Arjun and Pat",
+    "priority": "high",
+    "client": null,
+    "notes": "From the Talent Review (Aug 6) — needed to push the research-team restructuring through. Target before Labor Day, sooner preferred given the volume of open promotion/pay conversations.",
+    "tags": ["granola", "hiring", "this-week"]
+  },
+  {
+    "title": "Resolve the Harris (research vendor) relationship — renegotiate or replace",
+    "priority": "high",
+    "client": null,
+    "notes": "Currently too expensive and rarely used. Key question: can they turn qualitative work in 2 days for pitch situations? If not, find an alternative before the next pitch crunch.",
+    "tags": ["granola", "this-week", "decision"]
+  },
+  {
+    "title": "Talk to Adam and Arjun about being looped into team-structure decisions",
+    "priority": "medium",
+    "client": null,
+    "notes": "Multiple instances this week of hiring/staffing moves happening without Karen looped in (Adam to Arjun on a director hire, JJ/Tref routing directly to Adam, Rebecca/Harrison on 3M reviews). The ask is awareness, not sign-off.",
+    "tags": ["granola", "1:1", "follow-up"]
+  },
+  {
+    "title": "Stay looped into IBM account health per Millie's request",
+    "priority": "medium",
+    "client": "IBM",
+    "notes": "Millie has no one else flagging issues upward; Karen has committed to step in as needed but has no visibility beyond what Millie surfaces directly.",
+    "tags": ["granola", "ibm", "watch", "others"]
+  },
+  {
+    "title": "Consider a 1:1 with Kane (IBM/Anomaly counterpart) about in-room dynamics",
+    "priority": "low",
+    "client": "IBM",
+    "notes": "Not asking Kane to intervene — just mutual awareness when voices get talked over in client meetings (pattern flagged with Harsh on both IBM and Visa).",
+    "tags": ["granola", "ibm", "1:1"]
+  },
+  {
+    "title": "Confirm Khaki (or team bandwidth) for the Orchestration Assessment workshop build",
+    "priority": "medium",
+    "client": null,
+    "notes": "Will Leivenberg is waiting on an answer. Ties to the \"Orchestration Gap\" WSJ report launching Oct 6 and a Sept 15 internal readiness target.",
+    "tags": ["granola", "follow-up", "decision"]
+  },
+  {
+    "title": "Give input on the Orchestration Gap Sales Enablement Toolkit brief",
+    "priority": "medium",
+    "client": null,
+    "notes": "Will Leivenberg shared the doc by email (Aug 5) for review; ties directly to today's noon prep session with him.",
+    "tags": ["email", "review", "today"]
+  },
+  {
+    "title": "Follow up on Vercel credits for the Brandweek workshop",
+    "priority": "high",
+    "client": null,
+    "notes": "Peter was going to ping this week for a yes/no. Need the answer soon to plan tooling for the Sept 16 session if it falls through.",
+    "tags": ["granola", "follow-up", "this-week"]
+  },
+  {
+    "title": "React to the Brandweek workshop outline once Jess shares the Social Media Week deck",
+    "priority": "medium",
+    "client": null,
+    "notes": "Karen wants to review the flow before drafting the Brandweek outline; she's stretched until 3M wraps so this may slip to next week.",
+    "tags": ["granola", "this-week"]
+  },
+  {
+    "title": "Fill out the Alexa Amato interview scorecard",
+    "priority": "urgent",
+    "client": null,
+    "notes": "Greenhouse reminder (Aug 6) — blocking the hiring decision for the Social Content Creator for Studio role.",
+    "tags": ["email", "hiring", "today", "reply"]
+  },
+  {
+    "title": "Review Pretium budget sheets ahead of today's 10:30am deck & budget connect",
+    "priority": "urgent",
+    "client": "Pretium",
+    "notes": "Two Airtable budget sheets submitted Aug 6 (Positioning RFP response + Investment Budget) feed directly into Victoria Krueger's 10:30am \"Pretium Positioning deck & budget connect\" today.",
+    "tags": ["email", "pretium", "today", "review"]
+  },
+  {
+    "title": "Resolve Figma comments on the Pretium_Code and Theory_Capabilities deck",
+    "priority": "medium",
+    "client": "Pretium",
+    "notes": "Vince Quilici and Victoria Krueger left comments (team-name fix, budget notes) — resolve ahead of the RFP response.",
+    "tags": ["email", "pretium", "review"]
+  },
+  {
+    "title": "Reply to Helen Ohlsson's comment on the 3M STGW IAT Deck",
+    "priority": "low",
+    "client": "3M",
+    "notes": "\"This is maybe personal preference but...\" — quick response needed to keep the deck moving.",
+    "tags": ["email", "3m", "reply"]
+  },
+  {
+    "title": "Sort out the WEX benefits card documentation request",
+    "priority": "medium",
+    "client": null,
+    "notes": "WEX needs receipts/documentation for a recent benefits-card purchase to stay IRS-compliant.",
+    "tags": ["email", "reply", "this-week"]
+  },
+  {
+    "title": "Review Sixth Street project status — flagged Red",
+    "priority": "medium",
+    "client": "Sixth Street",
+    "notes": "Website Transformation Investment job flagged Red in the week-of-7/27 report; no updated status seen since. Worth checking in directly (cc: chris.arcari, sowjanya.sakhamuri).",
+    "tags": ["ryg", "review", "client"]
+  },
+  {
+    "title": "Review Grayscale Investments project status — flagged Red",
+    "priority": "medium",
+    "client": "Grayscale",
+    "notes": "Retainer (website redesign) flagged Red in the week-of-7/27 report; no updated status seen since. Worth checking in directly (cc: melissa.ranalli, ailish.ryder, vince.quilici).",
+    "tags": ["ryg", "review", "client"]
+  },
+  {
+    "title": "Block time this weekend to triage the pre-OOO crunch (Aug 10-12)",
+    "priority": "high",
+    "client": null,
+    "notes": "Mon-Wed carries the 3M Tuesday commercial deadline plus a dense run of 1:1s and team meetings, all before approved vacation Aug 13-19 (which overlaps Parenting Week). Decide now what must close out by Wednesday.",
+    "tags": ["calendar", "this-week", "prep"]
+  },
+  {
+    "title": "Decide: keep, delegate, or cancel the Aug 13 Weekly Brand Strategy Full Team Meeting",
+    "priority": "high",
+    "client": null,
+    "notes": "24 attendees; Karen is organizer, and it falls on the first day of her approved OOO (Aug 13-19). Needs an agenda either way, or a reassigned owner.",
+    "tags": ["calendar", "agenda", "decision"]
+  },
+  {
+    "title": "Send an agenda for Monday's Brand Strat Leads Weekly",
+    "priority": "medium",
+    "client": null,
+    "notes": "Karen organizes this recurring Monday meeting; worth a tight agenda given how compressed the week is before OOO.",
+    "tags": ["calendar", "agenda", "this-week"]
+  }
 ]
