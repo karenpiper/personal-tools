@@ -1,0 +1,567 @@
+<title>Daily Briefing — Karen Piper, Tue Aug 11</title>
+<style>
+  @font-face {
+    font-family: 'system-serif';
+    src: local('Georgia');
+  }
+
+  :root {
+    --ink: #171b1f;
+    --ink-soft: #3a3f45;
+    --muted: #6b7178;
+    --bg: #f5f6f4;
+    --surface: #ffffff;
+    --surface-raised: #fbfbfa;
+    --line: #e1e4e0;
+    --line-soft: #ebece9;
+    --accent: #2447d6;
+    --accent-soft: #e8ecfb;
+    --urgent: #c23b2f;
+    --urgent-soft: #f8e6e3;
+    --high: #b06a17;
+    --high-soft: #f6ead4;
+    --medium: #4a5a72;
+    --medium-soft: #e6e9ee;
+    --low: #4f7a52;
+    --low-soft: #e5ede0;
+    --external: #7a3fae;
+    --external-soft: #efe3f7;
+    --shadow: 0 1px 2px rgba(23,27,31,0.04), 0 6px 20px rgba(23,27,31,0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eceeec;
+      --ink-soft: #c7cbca;
+      --muted: #93989a;
+      --bg: #14161a;
+      --surface: #1b1e23;
+      --surface-raised: #20242a;
+      --line: #2b2f35;
+      --line-soft: #24272c;
+      --accent: #7d95f0;
+      --accent-soft: #262c42;
+      --urgent: #e8746a;
+      --urgent-soft: #3a2222;
+      --high: #dda65b;
+      --high-soft: #3a2f1c;
+      --medium: #a9b6c9;
+      --medium-soft: #262a32;
+      --low: #8fb890;
+      --low-soft: #202a1f;
+      --external: #c79ee8;
+      --external-soft: #2b2436;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 24px rgba(0,0,0,0.4);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #eceeec;
+    --ink-soft: #c7cbca;
+    --muted: #93989a;
+    --bg: #14161a;
+    --surface: #1b1e23;
+    --surface-raised: #20242a;
+    --line: #2b2f35;
+    --line-soft: #24272c;
+    --accent: #7d95f0;
+    --accent-soft: #262c42;
+    --urgent: #e8746a;
+    --urgent-soft: #3a2222;
+    --high: #dda65b;
+    --high-soft: #3a2f1c;
+    --medium: #a9b6c9;
+    --medium-soft: #262a32;
+    --low: #8fb890;
+    --low-soft: #202a1f;
+    --external: #c79ee8;
+    --external-soft: #2b2436;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 6px 24px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+  }
+
+  h1, h2, h3 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; font-weight: 400; text-wrap: balance; margin: 0; }
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .masthead .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .masthead h1 { font-size: 34px; color: var(--ink); }
+  .masthead .dateline { color: var(--muted); font-size: 15px; }
+  .masthead .dateline strong { color: var(--ink-soft); font-weight: 600; }
+
+  section { margin-bottom: 44px; }
+  section > h2 {
+    font-size: 21px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section > h2 .count {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .flag-banner {
+    background: var(--urgent-soft);
+    border: 1px solid color-mix(in srgb, var(--urgent) 35%, transparent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .flag-banner strong { color: var(--urgent); }
+
+  /* schedule list */
+  .agenda { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+  .agenda-row {
+    display: grid;
+    grid-template-columns: 108px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .agenda-row:last-child { border-bottom: none; }
+  .agenda-row.gap-none { background: var(--urgent-soft); }
+  .agenda-time { font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--muted); padding-top: 2px; white-space: nowrap; }
+  .agenda-main .title { font-size: 15px; color: var(--ink); font-weight: 600; }
+  .agenda-main .meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .agenda-main .prep { font-size: 13px; color: var(--high); margin-top: 5px; font-weight: 600; }
+  .agenda-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; padding-top: 2px; }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge.external { background: var(--external-soft); color: var(--external); }
+  .badge.organizer { background: var(--accent-soft); color: var(--accent); }
+  .badge.declined { background: var(--line-soft); color: var(--muted); }
+  .badge.needs-action { background: var(--medium-soft); color: var(--medium); }
+  .badge.conflict { background: var(--urgent-soft); color: var(--urgent); }
+
+  /* week strip */
+  .week-strip { display: flex; flex-direction: column; gap: 8px; }
+  .week-day {
+    display: grid;
+    grid-template-columns: 150px 90px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 11px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .week-day .d { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .week-day .load { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+  .load-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .load-dot.heavy { background: var(--urgent); }
+  .load-dot.moderate { background: var(--high); }
+  .load-dot.light { background: var(--low); }
+  .load.heavy { color: var(--urgent); }
+  .load.moderate { color: var(--high); }
+  .load.light { color: var(--low); }
+  .week-day .items { font-size: 13.5px; color: var(--muted); }
+
+  /* email / slack cards */
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  .item-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--medium);
+    border-radius: 8px;
+    padding: 13px 16px;
+    box-shadow: var(--shadow);
+  }
+  .item-card.urgent { border-left-color: var(--urgent); }
+  .item-card.high { border-left-color: var(--high); }
+  .item-card.low { border-left-color: var(--low); }
+  .item-card .top-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .item-card .who { font-weight: 700; font-size: 14.5px; color: var(--ink); }
+  .item-card .subject { color: var(--muted); font-size: 13.5px; margin-top: 1px; }
+  .item-card .summary { font-size: 14px; color: var(--ink-soft); margin-top: 7px; }
+  .item-card .action { font-size: 13px; color: var(--accent); margin-top: 7px; font-weight: 600; }
+  .group-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; margin: 18px 0 8px; }
+  .group-label:first-child { margin-top: 0; }
+
+  /* granola */
+  .meeting-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; box-shadow: var(--shadow); margin-bottom: 18px; }
+  .meeting-card h3 { font-size: 18px; color: var(--ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .tag-pill { font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
+  .tag-pill.internal { background: var(--medium-soft); color: var(--medium); }
+  .tag-pill.external { background: var(--external-soft); color: var(--external); }
+  .meeting-card .tldr { color: var(--ink-soft); font-size: 14.5px; margin-top: 10px; }
+  .meeting-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 14px; }
+  .meeting-grid h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 6px; font-weight: 700; font-family: -apple-system, sans-serif; }
+  .meeting-grid ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-soft); }
+  .meeting-grid li { margin-bottom: 4px; }
+  .meeting-grid .full { grid-column: 1 / -1; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer strong { color: var(--accent); }
+
+  @media (max-width: 620px) {
+    .agenda-row { grid-template-columns: 1fr; }
+    .agenda-badges { justify-content: flex-start; }
+    .week-day { grid-template-columns: 1fr; }
+    .meeting-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="eyebrow">Daily Briefing &amp; Operating System</div>
+    <h1>Karen Piper</h1>
+    <div class="dateline"><strong>Tuesday, August 11, 2026</strong> · generated 5:42am PT · last briefing was June 26 — this covers what's moved since</div>
+  </div>
+
+  <section>
+    <h2>Today <span class="count">7:30AM – 4:30PM, zero breathing room until 1PM</span></h2>
+    <div class="flag-banner"><strong>Back-to-back:</strong> six meetings run 7:30am straight through 1:00pm with no gap. The 8am 3M Regroup is the one that matters most — prep note below.</div>
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="agenda-time">7:30 – 8:00</div>
+        <div class="agenda-main">
+          <div class="title">[INT] MarCom Progressive Campaign Delivery</div>
+          <div class="meta">Organizer: Dave Evans · 6 attendees, internal</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">8:00 – 8:30</div>
+        <div class="agenda-main">
+          <div class="title">3M | Pencils Down – Regroup</div>
+          <div class="meta">Organizer: Harris Baum · 25 attendees incl. Colle McVoy, Doner, Assembly, Allison, Sloane</div>
+          <div class="prep">Prep needed — Donor dropped 200 slides morning-of; B2C deck is now ~400 pages. Decide realistic scope before this call.</div>
+        </div>
+        <div class="agenda-badges"><span class="badge external">External</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">9:00 – 9:25</div>
+        <div class="agenda-main">
+          <div class="title">KP &lt;&gt; HO Monthly</div>
+          <div class="meta">Helen Ohlsson · 1:1</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">10:00 – 10:30</div>
+        <div class="agenda-main">
+          <div class="title">Karen / Laura weekly</div>
+          <div class="meta">Laura Casinelli · 1:1 — Laura flies back from 2 weeks out today; flight may be delayed</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">11:00 – 11:30</div>
+        <div class="agenda-main">
+          <div class="title">Karen &amp; Pam 1:1</div>
+          <div class="meta">Pamela Del Bene</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">11:30 – 12:00</div>
+        <div class="agenda-main">
+          <div class="title">Karen / Kira Monthly</div>
+          <div class="meta">Kira Feinstein · 1:1</div>
+        </div>
+        <div class="agenda-badges"><span class="badge needs-action">Not yet accepted</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">12:00 – 12:30</div>
+        <div class="agenda-main">
+          <div class="title">Devorne x Karen 1:1</div>
+          <div class="meta">Devorne Hormeku (Current Agency) · 1:1</div>
+        </div>
+        <div class="agenda-badges"><span class="badge external">External</span><span class="badge needs-action">Not yet accepted</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">12:30 – 1:00</div>
+        <div class="agenda-main">
+          <div class="title">Karen / Grace – monthly</div>
+          <div class="meta">Grace Zec · 1:1</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">1:00 – 2:00</div>
+        <div class="agenda-main">
+          <div class="title">Therapy</div>
+          <div class="meta">Personal</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">3:30 – 4:30</div>
+        <div class="agenda-main">
+          <div class="title">Nails</div>
+          <div class="meta">Personal</div>
+        </div>
+        <div class="agenda-badges"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tomorrow <span class="count">Wed Aug 12 — last full day before Karen is out Thu/Fri</span></h2>
+    <div class="flag-banner"><strong>Scheduling conflict:</strong> 9–11am is a genuine stack — Harris capes/C&amp;T needs, the MarCom final sync, KP/Pat weekly, Brand Intelligence Resourcing, and the 3M Core Leads Stand-up all overlap. Separately, the 3M RFP pitch-video review (hold) and Karen/Marti both sit at 12:30. Needs sorting today.</div>
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="agenda-time">8:00 – 8:15</div>
+        <div class="agenda-main"><div class="title">KP x Chelsea E-Meet</div><div class="meta">Chelsea Solitrin · 1:1</div></div>
+        <div class="agenda-badges"><span class="badge needs-action">Not yet accepted</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">8:30 – 9:00</div>
+        <div class="agenda-main"><div class="title">Flex: Karen / Lucy weekly</div><div class="meta">Lucy Ye · 1:1</div></div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">9:00 – 9:30</div>
+        <div class="agenda-main"><div class="title">MarCom final team sync before rollout</div><div class="meta">Dave Evans · 6 attendees, internal</div></div>
+        <div class="agenda-badges"><span class="badge conflict">Overlaps below</span><span class="badge needs-action">Not yet accepted</span></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">9:00 – 10:00</div>
+        <div class="agenda-main"><div class="title">Harris capes / C&amp;T needs</div><div class="meta">Pat McQueen · 6 attendees, incl. Harris Poll</div></div>
+        <div class="agenda-badges"><span class="badge external">External</span><span class="badge conflict">Overlaps above</span></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">10:00 – 10:30</div>
+        <div class="agenda-main"><div class="title">KP / Pat 2x weekly</div><div class="meta">Pat McQueen · 1:1</div></div>
+        <div class="agenda-badges"><span class="badge conflict">Overlaps below</span></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">10:00 – 10:45</div>
+        <div class="agenda-main"><div class="title">User &amp; Brand Intelligence Weekly Resourcing</div><div class="meta">Emily Richards · 14 attendees, 3 external</div></div>
+        <div class="agenda-badges"><span class="badge external">External</span><span class="badge conflict">Overlaps above</span></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">10:30 – 11:00</div>
+        <div class="agenda-main"><div class="title">3M | Core Leads Stand-up</div><div class="meta">Harris Baum · 24 attendees, 17 external</div></div>
+        <div class="agenda-badges"><span class="badge external">External</span><span class="badge conflict">Overlaps above</span></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">11:30 – 12:00</div>
+        <div class="agenda-main"><div class="title">Brand Strategy Resourcing (weekly)</div><div class="meta">Emily Richards · 9 attendees, internal</div></div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">12:00 – 12:30</div>
+        <div class="agenda-main"><div class="title">Punt (int) | Executive Sponsors Check-In</div><div class="meta">Kelsie Spilman · 8 attendees, internal</div></div>
+        <div class="agenda-badges"></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">12:30 – 1:00</div>
+        <div class="agenda-main"><div class="title">(Hold) 3M RFP — pitch videos script/assembly review</div><div class="meta">Donovan Tolledo · Karen optional</div></div>
+        <div class="agenda-badges"><span class="badge conflict">Double-booked</span><span class="badge needs-action">Not yet accepted</span></div>
+      </div>
+      <div class="agenda-row gap-none">
+        <div class="agenda-time">12:30 – 1:00</div>
+        <div class="agenda-main"><div class="title">Karen / Marti</div><div class="meta">Marti Rosenberger · 1:1</div></div>
+        <div class="agenda-badges"><span class="badge conflict">Double-booked</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>This Week at a Glance</h2>
+    <div class="week-strip">
+      <div class="week-day">
+        <div class="d">Tue Aug 11 — Today</div>
+        <div class="load heavy"><span class="load-dot heavy"></span>Heavy</div>
+        <div class="items">3M Pencils Down Regroup, six back-to-back 1:1s</div>
+      </div>
+      <div class="week-day">
+        <div class="d">Wed Aug 12</div>
+        <div class="load heavy"><span class="load-dot heavy"></span>Heavy</div>
+        <div class="items">Last day before OOO — 9–11am triple-booked, 3M Core Leads Stand-up, 12:30pm conflict</div>
+      </div>
+      <div class="week-day">
+        <div class="d">Thu Aug 13</div>
+        <div class="load light"><span class="load-dot light"></span>Light — OOO</div>
+        <div class="items">Karen's birthday, out; personal Hearing 1–2pm is the only thing on</div>
+      </div>
+      <div class="week-day">
+        <div class="d">Fri Aug 14</div>
+        <div class="load light"><span class="load-dot light"></span>Light — OOO</div>
+        <div class="items">Out for birthday; everything declined</div>
+      </div>
+      <div class="week-day">
+        <div class="d">Mon Aug 17</div>
+        <div class="load moderate"><span class="load-dot moderate"></span>Moderate</div>
+        <div class="items">Back on: Mini Monday, KP/Pat, Karen | Jim 1:1, Brand Strat leads weekly</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Emails Requiring Action</h2>
+    <div class="stack">
+      <div class="group-label">Reply this week</div>
+      <div class="item-card">
+        <div class="top-row"><span class="who">Jenna Martin</span></div>
+        <div class="subject">3M STGW IAT Deck WIP — comment thread</div>
+        <div class="summary">Jenna responded to Karen's comment questioning whether naming the "Let's Play"/"Dream Up" ways-in as platforms first, then the taglines, reads as confusing. She agreed to review with the team.</div>
+        <div class="action">Close the loop — worth doing before or right after today's Pencils Down Regroup.</div>
+      </div>
+      <div class="group-label">Watch</div>
+      <div class="item-card low">
+        <div class="top-row"><span class="who">Stephen Gariepy</span></div>
+        <div class="subject">Broadridge Campaign — Project Retrospective Survey</div>
+        <div class="summary">Collecting feedback from the full account team on the Broadridge Tokenization campaign to improve future process. No deadline stated.</div>
+        <div class="action">Complete when there's a spare 5 minutes.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Slack — Needs Response</h2>
+    <div class="stack">
+      <div class="item-card urgent">
+        <div class="top-row"><span class="who">Eunice Laude</span><span class="badge conflict">Blocking her</span></div>
+        <div class="subject">DM · Workfront issue closure</div>
+        <div class="summary">Asked Karen to confirm she's good with closing a specific Workfront request so she can proceed.</div>
+        <div class="action">Quick yes/no — she's waiting on it.</div>
+      </div>
+      <div class="item-card">
+        <div class="top-row"><span class="who">Josh Currie</span></div>
+        <div class="subject">DM · "recon" as a term</div>
+        <div class="summary">Asked whether there's real pushback from leadership on using the word "recon," or if it's just secondhand (Andrea says Larry is upset, but has never used the term herself).</div>
+        <div class="action">Give him a real read when there's a moment — not urgent.</div>
+      </div>
+      <div class="item-card high">
+        <div class="top-row"><span class="who">Pat, Adam, JJ, Zack</span><span class="badge external">Abu Dhabi (DCT) group DM</span></div>
+        <div class="subject">Overnight thread · comparing our deck to Create's (incumbent)</div>
+        <div class="summary">Karen sent detailed feedback last night; her central ask was resolving <em>who makes the call when the team disagrees</em>. The group kept debating specifics from 3–5am without settling that question directly.</div>
+        <div class="action">Worth a direct check-in — this can't stay unresolved much longer.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Granola — Meeting Summaries <span class="count">Monday, Aug 10</span></h2>
+
+    <div class="meeting-card">
+      <h3>Karen x Yenteen: Biweekly <span class="tag-pill internal">Internal</span></h3>
+      <div class="tldr">Regular sync covering the 3M pitch crisis and Visa/Con Ed coverage while Laura is out. The B2C deck for 3M ballooned to ~400 pages after Donor dropped 200 slides the morning of the pitch — Karen flagged to Harris it's unclear how much is fixable in time, and has been using a Claude-based tool to help wrangle the narrative. On Visa/Con Ed, Yenteen is covering for Laura and leaning on Kane as the strongest thought partner while Harsh/Craig hold creative seniority.</div>
+      <div class="meeting-grid">
+        <div>
+          <h4>Decisions</h4>
+          <ul>
+            <li>Best mitigation on Visa creative leverage is leaning on Kane, not pushing against Harsh/Craig directly.</li>
+            <li>Yenteen's approach: instate structure subtly, stay close with Kane.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Open / Unresolved</h4>
+          <ul>
+            <li>How much of the 400-page 3M B2C deck can realistically be fixed before the pitch.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>[KP] Action Items</h4>
+          <ul>
+            <li>Review Workfront resources; confirm Con Ed staffing coverage against Adam's plan.</li>
+            <li>Share the trimmed 3M deck with the team once it's cut down.</li>
+            <li>Share the Claude narrative-integration skill with Yenteen.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>[Others] Commitments</h4>
+          <ul>
+            <li>Yenteen managing Visa coverage and training up Kira on Con Ed.</li>
+          </ul>
+        </div>
+        <div class="full">
+          <h4>Deadline context</h4>
+          <ul>
+            <li>The 3M pitch was imminent as of this call. Karen is out Thu–Fri (Aug 13–14) for her birthday — async only, not blocking reviews.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card">
+      <h3>Karen / Benaelle <span class="tag-pill internal">Internal</span></h3>
+      <div class="tldr">1:1 check-in. Benaelle is holding IBM strategy solo while the anomaly strategist is on honeymoon leave and Millie has been out (grandmother passed, father's health). Both return today (Tue Aug 11). Sam Chotner has been pushing the team toward competitor spend analysis, which Benaelle found genuinely useful for 2027 planning. Karen and Adam are covering extra management support while Julian is out.</div>
+      <div class="meeting-grid">
+        <div>
+          <h4>Decisions</h4>
+          <ul>
+            <li>Benaelle gets the month to let her roommate situation firm up; Karen watching.</li>
+            <li>Adam runs the team meeting this week while Karen is out Thu/Fri.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>[KP] Action Items</h4>
+          <ul>
+            <li>Review Benaelle's self-initiated IBM brief — extra context may be needed since it wasn't requested.</li>
+            <li>Check in on Millie once she's back today.</li>
+          </ul>
+        </div>
+        <div class="full">
+          <h4>[Others] Commitments</h4>
+          <ul>
+            <li>Benaelle to flag anything she needs — extra review time, check-ins, or escalations.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span><strong>12</strong> tasks extracted and pushed to Karenban this run.</span>
+    <span>Generated by Karen's daily briefing routine · sources: Calendar, Gmail, Slack, Granola</span>
+  </footer>
+
+</div>
